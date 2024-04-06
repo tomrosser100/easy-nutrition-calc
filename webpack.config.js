@@ -4,7 +4,7 @@ module.exports = {
   mode: "development",
   entry: './front/src/index.js',
   output: {
-    filename: 'main.js',
+    filename: 'index.js',
     path: path.resolve(__dirname, 'front/dist'),
   },
   devtool: 'inline-source-map',

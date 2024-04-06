@@ -8,6 +8,9 @@
     "build": "webpack",
     "start": "webpack serve --open"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
