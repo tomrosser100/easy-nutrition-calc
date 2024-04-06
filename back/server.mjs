@@ -6,9 +6,9 @@ const port = 3000
 
 console.log('process.cwd is', process.cwd())
 
-app.use(express.static(process.cwd() + 'front/dist'))
+app.use(express.static('front/dist'))
 app.get('/**', (req, res) => {
-  res.sendFile(process.cwd() + '/front/dist/index.html')
+  res.sendFile('/front/dist/index.html')
 })
 
 app.listen(process.env.PORT || port, () => {
