@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: "development",
-  entry: './front/src/index.js',
+  entry: './front/src/index.jsx',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'front/dist'),
@@ -14,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(?:js|mjs|cjs)$/,
+        test: /\.(?:js|mjs|cjs|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -26,5 +26,5 @@ module.exports = {
         }
       }
     ]
-  }
+  },
 };
