@@ -8,7 +8,7 @@ console.log('process.cwd is', process.cwd())
 
 app.use(express.static('front/dist'))
 app.get('/**', (req, res) => {
-  res.sendFile('/front/dist/index.html')
+  res.sendFile('front/dist/index.html')
 })
 
 app.listen(process.env.PORT || port, () => {
