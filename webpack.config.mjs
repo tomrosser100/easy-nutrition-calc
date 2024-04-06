@@ -50,9 +50,16 @@ const common = {
             ]
           }
         }
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs', '...'],
+  }
 }
 
 export default [ merge(common, frontConfig), merge(common, backConfig) ]
