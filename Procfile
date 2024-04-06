@@ -1,1 +1,1 @@
-web: node back/server.mjs
+web: node back/dist/bundle-back.js
