@@ -4,16 +4,14 @@ const app = express()
 
 const port = 3000
 
-//console.log('process.cwd is', process.cwd())
+console.log('process.cwd is', process.cwd())
+console.log('path.resolve prefix is', path.resolve(__dirname))
 
-console.log('dirname:', __dirname)
-console.log('process.cwd:', process.cwd())
-console.log('full path:', path.join(__dirname, 'front/dist', 'index.html'))
-
-app.use(express.static(process.cwd() + 'front/dist'))
+app.use(express.static(process.cwd() + '/front/dist'))
 app.get('/**', function (req, res) {
-  const index = path.join(__dirname, 'front/dist', 'index.html');
-  res.sendFile(index);
-});
+  res.sendFile(process.cwd() + '/front/dist/index.html')
+})
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT || port, () => {
+  console.log(`app listening on port ${port}, http://192.168.1.35:${port}/`)
+})
