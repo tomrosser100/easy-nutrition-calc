@@ -1,7 +1,21 @@
-#navbar {
+#output {
   background-color: bisque;
+  width: 100px;
+  height: 100px;
+  opacity: .75;
 }
 
-#rest {
+#input {
   background-color: aqua;
+  width: 100px;
+  height: 100px;
+  opacity: .75;
+
+}
+
+#popup {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  opacity: .75;
 }
