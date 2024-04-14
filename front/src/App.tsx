@@ -15,7 +15,7 @@ export default () => {
           <div id='input_1a'>
             <div id='input_1a_1'></div>
             <div id='input_1a_2'>
-              <button type="submit">ADD</button>
+              <button id='add' type="submit">ADD</button>
             </div>
           </div>
           <div id='input_1b'></div>

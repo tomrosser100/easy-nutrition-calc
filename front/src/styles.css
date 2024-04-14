@@ -90,6 +90,14 @@ body {
 #input_1a_2 {
   grid-area: 'input_1a_2';
   background-color: rgb(0, 0, 255, .1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add {
+  width: 80%;
+  height: 80%;
 }
 
 #input_1b {
