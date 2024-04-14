@@ -4390,17 +4390,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "app"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "output"
-  }, "Output"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "output_1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "output_1a"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "input"
-  }, "Input"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "input_1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "input_1a"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "input_1a_1"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "input_1a_2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "submit"
+  }, "ADD"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "input_1b"
+  }))));
 });
 
 /***/ }),
@@ -4512,15 +4526,71 @@ body {
 
 #output {
   grid-area: "output";
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(0, 0, 255, .1);
   opacity: 0.75;
 }
 
+#output_1 {
+  background-color: rgb(0, 0, 255, .1);
+  width: 95%;
+  height: 95%;
+}
+
+#output_1a {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 255, .1);
+}
+
 #input {
   grid-area: "input";
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(0, 0, 255, .1);
   opacity: 0.75;
-}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,YAAY;EACZ,oCAAoC;EACpC,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;EACpC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,aAAa;AACf","sourcesContent":["* {\r\n  border: solid black .5px;\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  background-color: rgb(0, 128, 0, .1);\r\n}\r\n\r\nbody {\r\n  margin: 10px;\r\n  background-color: rgb(0, 128, 0, .1);\r\n  border: solid black 3px;\r\n}\r\n\r\n#app {\r\n  height: 90vh;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \r\n    \"output\"\r\n    \"input\";\r\n  max-width: 500px;\r\n  min-width: 250px;\r\n  margin: auto;\r\n}\r\n\r\n#output {\r\n  grid-area: \"output\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#input {\r\n  grid-area: \"input\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}"],"sourceRoot":""}]);
+}
+
+#input_1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas:
+    "input_1a"
+    "input_1b";
+  width: 95%;
+  height: 95%;
+  background-color: rgb(0, 0, 255, .1);
+}
+
+#input_1a {
+  grid-area: 'input_1a';
+  background-color: rgb(0, 0, 255, .1);
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "input_1a_1" "input_1a_2";
+}
+
+#input_1a_1 {
+  grid-area: 'input_1a_1';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+#input_1a_2 {
+  grid-area: 'input_1a_2';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+#input_1b {
+  grid-area: 'input_1b';
+  background-color: rgb(0, 0, 255, .1);
+}
+`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,YAAY;EACZ,oCAAoC;EACpC,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;EACpC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,WAAW;AACb;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;cAEY;EACZ,UAAU;EACV,WAAW;EACX,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;EACpC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB;6BAC2B;AAC7B;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;AACtC","sourcesContent":["* {\r\n  border: solid black .5px;\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  background-color: rgb(0, 128, 0, .1);\r\n}\r\n\r\nbody {\r\n  margin: 10px;\r\n  background-color: rgb(0, 128, 0, .1);\r\n  border: solid black 3px;\r\n}\r\n\r\n#app {\r\n  height: 90vh;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \r\n    \"output\"\r\n    \"input\";\r\n  max-width: 500px;\r\n  min-width: 250px;\r\n  margin: auto;\r\n}\r\n\r\n#output {\r\n  grid-area: \"output\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#output_1 {\r\n  background-color: rgb(0, 0, 255, .1);\r\n  width: 95%;\r\n  height: 95%;\r\n}\r\n\r\n#output_1a {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input {\r\n  grid-area: \"input\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#input_1 {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas:\r\n    \"input_1a\"\r\n    \"input_1b\";\r\n  width: 95%;\r\n  height: 95%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a {\r\n  grid-area: 'input_1a';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 4fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas:\r\n    \"input_1a_1\" \"input_1a_2\";\r\n}\r\n\r\n#input_1a_1 {\r\n  grid-area: 'input_1a_1';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a_2 {\r\n  grid-area: 'input_1a_2';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1b {\r\n  grid-area: 'input_1b';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
