@@ -4394,7 +4394,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "app"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "output"
   }, "Output"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "input"
@@ -4476,28 +4478,49 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `#output {
-  background-color: bisque;
-  width: 100px;
-  height: 100px;
-  opacity: .75;
+___CSS_LOADER_EXPORT___.push([module.id, `* {
+  border: solid black .5px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: rgb(0, 128, 0, .1);
+}
+
+body {
+  margin: 10px;
+  background-color: rgb(0, 128, 0, .1);
+  border: solid black 3px;
+}
+
+#app {
+  height: 90vh;
+  width: 100%;
+  background-color: rgb(0, 0, 255, .1);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "output"
+    "input";
+  max-width: 500px;
+  min-width: 250px;
+  margin: auto;
+}
+
+#output {
+  grid-area: "output";
+  background-color: rgb(0, 0, 255, .1);
+  opacity: 0.75;
 }
 
 #input {
-  background-color: aqua;
-  width: 100px;
-  height: 100px;
-  opacity: .75;
-
-}
-
-#popup {
-  background-color: red;
-  width: 100px;
-  height: 100px;
-  opacity: .75;
-}
-`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,YAAY;EACZ,aAAa;EACb,YAAY;AACd;;AAEA;EACE,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,YAAY;;AAEd;;AAEA;EACE,qBAAqB;EACrB,YAAY;EACZ,aAAa;EACb,YAAY;AACd","sourcesContent":["#output {\r\n  background-color: bisque;\r\n  width: 100px;\r\n  height: 100px;\r\n  opacity: .75;\r\n}\r\n\r\n#input {\r\n  background-color: aqua;\r\n  width: 100px;\r\n  height: 100px;\r\n  opacity: .75;\r\n\r\n}\r\n\r\n#popup {\r\n  background-color: red;\r\n  width: 100px;\r\n  height: 100px;\r\n  opacity: .75;\r\n}\r\n"],"sourceRoot":""}]);
+  grid-area: "input";
+  background-color: rgb(0, 0, 255, .1);
+  opacity: 0.75;
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,YAAY;EACZ,oCAAoC;EACpC,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;EACpC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,aAAa;AACf","sourcesContent":["* {\r\n  border: solid black .5px;\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  background-color: rgb(0, 128, 0, .1);\r\n}\r\n\r\nbody {\r\n  margin: 10px;\r\n  background-color: rgb(0, 128, 0, .1);\r\n  border: solid black 3px;\r\n}\r\n\r\n#app {\r\n  height: 90vh;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \r\n    \"output\"\r\n    \"input\";\r\n  max-width: 500px;\r\n  min-width: 250px;\r\n  margin: auto;\r\n}\r\n\r\n#output {\r\n  grid-area: \"output\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#input {\r\n  grid-area: \"input\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

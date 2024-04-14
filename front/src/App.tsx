@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
 export default () => {
+
   return (
-    <div>
+    <div id='app'>
       <div id='output'>Output</div>
       <Outlet />
       <div id='input'>Input</div>
