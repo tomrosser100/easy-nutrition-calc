@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import Dialog from './Dialog'
 
 export default () => {
 
@@ -15,7 +16,8 @@ export default () => {
           <div id='input_1a'>
             <div id='input_1a_1'></div>
             <div id='input_1a_2'>
-              <button id='add' type="submit">ADD</button>
+              {/*<button id='add' type="submit">ADD</button>*/}
+              <Dialog />
             </div>
           </div>
           <div id='input_1b'></div>
