@@ -4455,16 +4455,15 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
   } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useInteractions)([click, dismiss, role]);
   const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
     ref: refs.setReference
   }, getReferenceProps()), "Reference Element"), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingOverlay, {
-    lockScroll: true,
-    style: {
-      background: 'rgba(0, 0, 0, 0.8)'
-    }
+    className: "dialog-overlay",
+    lockScroll: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingFocusManager, {
     context: context
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
+    className: "dialog",
     ref: refs.setFloating,
     "aria-labelledby": labelId,
     "aria-describedby": descriptionId
@@ -4472,7 +4471,9 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
     id: labelId
   }, "Heading element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     id: descriptionId
-  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter your name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => setIsOpen(false)
   }, "Close")))));
 });
@@ -4572,6 +4573,8 @@ body {
 #app {
   height: 90vh;
   width: 100%;
+  max-width: 500px;
+  min-width: 250px;
   background-color: rgb(0, 0, 255, .1);
   display: grid;
   grid-template-columns: 1fr;
@@ -4579,8 +4582,6 @@ body {
   grid-template-areas: 
     "output"
     "input";
-  max-width: 500px;
-  min-width: 250px;
   margin: auto;
 }
 
@@ -4658,7 +4659,22 @@ body {
   grid-area: 'input_1b';
   background-color: rgb(0, 0, 255, .1);
 }
-`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,YAAY;EACZ,oCAAoC;EACpC,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;EACpC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,WAAW;AACb;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;cAEY;EACZ,UAAU;EACV,WAAW;EACX,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;EACpC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB;6BAC2B;AAC7B;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;EACpC,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,UAAU;EACV,WAAW;AACb;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;AACtC","sourcesContent":["* {\r\n  border: solid black .5px;\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  background-color: rgb(0, 128, 0, .1);\r\n}\r\n\r\nbody {\r\n  margin: 10px;\r\n  background-color: rgb(0, 128, 0, .1);\r\n  border: solid black 3px;\r\n}\r\n\r\n#app {\r\n  height: 90vh;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \r\n    \"output\"\r\n    \"input\";\r\n  max-width: 500px;\r\n  min-width: 250px;\r\n  margin: auto;\r\n}\r\n\r\n#output {\r\n  grid-area: \"output\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#output_1 {\r\n  background-color: rgb(0, 0, 255, .1);\r\n  width: 95%;\r\n  height: 95%;\r\n}\r\n\r\n#output_1a {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input {\r\n  grid-area: \"input\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#input_1 {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas:\r\n    \"input_1a\"\r\n    \"input_1b\";\r\n  width: 95%;\r\n  height: 95%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a {\r\n  grid-area: 'input_1a';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 4fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas:\r\n    \"input_1a_1\" \"input_1a_2\";\r\n}\r\n\r\n#input_1a_1 {\r\n  grid-area: 'input_1a_1';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a_2 {\r\n  grid-area: 'input_1a_2';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#add {\r\n  width: 80%;\r\n  height: 80%;\r\n}\r\n\r\n#input_1b {\r\n  grid-area: 'input_1b';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n"],"sourceRoot":""}]);
+
+.dialog-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  place-items: top;
+}
+
+.dialog {
+  background-color: white;
+  height: 80vh;
+  width: 80%;
+  max-width: 480px;
+  min-width: 250px;
+  margin: auto;
+}
+`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,YAAY;EACZ,oCAAoC;EACpC,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,gBAAgB;EAChB,oCAAoC;EACpC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,WAAW;AACb;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;cAEY;EACZ,UAAU;EACV,WAAW;EACX,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;EACpC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB;6BAC2B;AAC7B;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;EACpC,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,UAAU;EACV,WAAW;AACb;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;AACtC;;AAEA;EACE,8BAA8B;EAC9B,aAAa;EACb,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,UAAU;EACV,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;AACd","sourcesContent":["* {\r\n  border: solid black .5px;\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  background-color: rgb(0, 128, 0, .1);\r\n}\r\n\r\nbody {\r\n  margin: 10px;\r\n  background-color: rgb(0, 128, 0, .1);\r\n  border: solid black 3px;\r\n}\r\n\r\n#app {\r\n  height: 90vh;\r\n  width: 100%;\r\n  max-width: 500px;\r\n  min-width: 250px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \r\n    \"output\"\r\n    \"input\";\r\n  margin: auto;\r\n}\r\n\r\n#output {\r\n  grid-area: \"output\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#output_1 {\r\n  background-color: rgb(0, 0, 255, .1);\r\n  width: 95%;\r\n  height: 95%;\r\n}\r\n\r\n#output_1a {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input {\r\n  grid-area: \"input\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#input_1 {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas:\r\n    \"input_1a\"\r\n    \"input_1b\";\r\n  width: 95%;\r\n  height: 95%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a {\r\n  grid-area: 'input_1a';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 4fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas:\r\n    \"input_1a_1\" \"input_1a_2\";\r\n}\r\n\r\n#input_1a_1 {\r\n  grid-area: 'input_1a_1';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a_2 {\r\n  grid-area: 'input_1a_2';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#add {\r\n  width: 80%;\r\n  height: 80%;\r\n}\r\n\r\n#input_1b {\r\n  grid-area: 'input_1b';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: top;\r\n}\r\n\r\n.dialog {\r\n  background-color: white;\r\n  height: 80vh;\r\n  width: 80%;\r\n  max-width: 480px;\r\n  min-width: 250px;\r\n  margin: auto;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

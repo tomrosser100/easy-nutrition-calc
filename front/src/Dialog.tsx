@@ -33,27 +33,32 @@ export default () => {
   const descriptionId = useId()
 
   return (
-    <>
+    <div>
       <button ref={refs.setReference} {...getReferenceProps()}>
         Reference Element
       </button>
       {isOpen && (
-        <FloatingOverlay
-          lockScroll
-          style={{ background: 'rgba(0, 0, 0, 0.8)' }}>
+        <FloatingOverlay className='dialog-overlay' lockScroll>
           <FloatingFocusManager context={context}>
             <div
+              className='dialog'
               ref={refs.setFloating}
               aria-labelledby={labelId}
               aria-describedby={descriptionId}
               {...getFloatingProps()}>
               <h2 id={labelId}>Heading element</h2>
               <p id={descriptionId}>Description element</p>
+              <form>
+                <label>
+                  Enter your name:
+                  <input type='text' />
+                </label>
+              </form>
               <button onClick={() => setIsOpen(false)}>Close</button>
             </div>
           </FloatingFocusManager>
         </FloatingOverlay>
       )}
-    </>
+    </div>
   )
 }
