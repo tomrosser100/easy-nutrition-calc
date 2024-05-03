@@ -1,6 +1,7 @@
 import React from 'react'
 import App from './App'
 import ErrorPage from './ErrorPage'
+import Dialog from './Dialog'
 
 export default [
   {
@@ -10,7 +11,7 @@ export default [
     children: [
       {
         path: 'add',
-        element: <div id='popup'>Popup</div>
+        element: <Dialog />
       }
     ],
   }

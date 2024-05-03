@@ -4397,25 +4397,37 @@ __webpack_require__.r(__webpack_exports__);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "app"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "output"
+    className: "nav-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "output_1"
+    className: "about"
+  }, "about")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "flex-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "output_1a"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "input"
+    className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "input_1"
+    className: "output-grid"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "input_1a"
+    className: "input-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "input_1a_1"
+    className: "calibrate-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "sex"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "input_1a_2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "input_1b"
-  }))));
+    className: "age"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "help"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "foods-grid"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "bot-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 });
+
+/*
+
+*/
 
 /***/ }),
 
@@ -4517,6 +4529,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./front/src/App.tsx");
 /* harmony import */ var _ErrorPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorPage */ "./front/src/ErrorPage.tsx");
+/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dialog */ "./front/src/Dialog.tsx");
+
 
 
 
@@ -4526,9 +4540,7 @@ __webpack_require__.r(__webpack_exports__);
   errorElement: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorPage__WEBPACK_IMPORTED_MODULE_2__["default"], null),
   children: [{
     path: 'add',
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      id: "popup"
-    }, "Popup")
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], null)
   }]
 }]);
 
@@ -4554,130 +4566,136 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `* {
-  border: solid black .5px;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  border: 1px solid black;
 }
 
 html {
-  background-color: rgb(0, 128, 0, .1);
+  min-width: 350px;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-  margin: 10px;
-  background-color: rgb(0, 128, 0, .1);
-  border: solid black 3px;
+  min-width: 350px;
+  margin: 0px;
+  padding: 0px;
 }
 
-#app {
-  height: 90vh;
-  width: 100%;
-  max-width: 500px;
-  min-width: 250px;
-  background-color: rgb(0, 0, 255, .1);
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-    "output"
-    "input";
+.nav-flex {
   margin: auto;
-}
-
-#output {
-  grid-area: "output";
+  max-width: 1000px;
+  min-width: 350px;
+  height: 60px;
+  background-color: rgb(0, 128, 0, .5);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(0, 0, 255, .1);
-  opacity: 0.75;
+  justify-content: flex-end;
 }
 
-#output_1 {
-  background-color: rgb(0, 0, 255, .1);
-  width: 95%;
-  height: 95%;
+.about {
+  width: 125px;
+  background-color: rgb(0, 0, 255, .1)
 }
 
-#output_1a {
+.bot-flex {
+  margin: auto;
+  min-width: 350px;
+  max-width: 1000px;
   width: 100%;
+  height: 60px;
+  background-color: rgb(0, 128, 0, .5)
+}
+
+.flex-container {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  min-width: 350px;
   height: 100%;
-  background-color: rgb(0, 0, 255, .1);
-}
-
-#input {
-  grid-area: "input";
-  display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: rgb(0, 0, 255, .1);
-  opacity: 0.75;
+  background-color: rgb(0, 0, 255, .2)
 }
 
-#input_1 {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 4fr;
-  grid-template-areas:
-    "input_1a"
-    "input_1b";
-  width: 95%;
-  height: 95%;
-  background-color: rgb(0, 0, 255, .1);
+.flex-item {
+  min-width: 350px;
+  min-height: 450px;
+  max-height: 500px;
+  flex-grow: 1;
+  align-self: stretch;
+  background-color: rgb(0, 0, 255, .1)
 }
 
-#input_1a {
-  grid-area: 'input_1a';
-  background-color: rgb(0, 0, 255, .1);
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas:
-    "input_1a_1" "input_1a_2";
-}
-
-#input_1a_1 {
-  grid-area: 'input_1a_1';
-  background-color: rgb(0, 0, 255, .1);
-}
-
-#input_1a_2 {
-  grid-area: 'input_1a_2';
-  background-color: rgb(0, 0, 255, .1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#add {
-  width: 80%;
-  height: 80%;
-}
-
-#input_1b {
-  grid-area: 'input_1b';
+.output-grid {
+  height: 100%;
+  width: 100%;
   background-color: rgb(0, 0, 255, .1);
 }
 
 .dialog-overlay {
   background: rgba(0, 0, 0, 0.8);
   display: grid;
-  place-items: top;
+  place-items: center;
 }
 
 .dialog {
+  margin: 15px;
   background-color: white;
-  height: 75vh;
-  width: 80%;
-  max-width: 450px;
-  min-width: 250px;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
+  padding: 15px;
+  border-radius: 4px;
 }
-`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,wBAAwB;EACxB,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,YAAY;EACZ,oCAAoC;EACpC,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,gBAAgB;EAChB,oCAAoC;EACpC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,WAAW;AACb;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,oCAAoC;EACpC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;cAEY;EACZ,UAAU;EACV,WAAW;EACX,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;EACpC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB;6BAC2B;AAC7B;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;EACpC,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,UAAU;EACV,WAAW;AACb;;AAEA;EACE,qBAAqB;EACrB,oCAAoC;AACtC;;AAEA;EACE,8BAA8B;EAC9B,aAAa;EACb,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,UAAU;EACV,gBAAgB;EAChB,gBAAgB;EAChB,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB","sourcesContent":["* {\r\n  border: solid black .5px;\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  background-color: rgb(0, 128, 0, .1);\r\n}\r\n\r\nbody {\r\n  margin: 10px;\r\n  background-color: rgb(0, 128, 0, .1);\r\n  border: solid black 3px;\r\n}\r\n\r\n#app {\r\n  height: 90vh;\r\n  width: 100%;\r\n  max-width: 500px;\r\n  min-width: 250px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \r\n    \"output\"\r\n    \"input\";\r\n  margin: auto;\r\n}\r\n\r\n#output {\r\n  grid-area: \"output\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#output_1 {\r\n  background-color: rgb(0, 0, 255, .1);\r\n  width: 95%;\r\n  height: 95%;\r\n}\r\n\r\n#output_1a {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input {\r\n  grid-area: \"input\";\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  opacity: 0.75;\r\n}\r\n\r\n#input_1 {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas:\r\n    \"input_1a\"\r\n    \"input_1b\";\r\n  width: 95%;\r\n  height: 95%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a {\r\n  grid-area: 'input_1a';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 4fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas:\r\n    \"input_1a_1\" \"input_1a_2\";\r\n}\r\n\r\n#input_1a_1 {\r\n  grid-area: 'input_1a_1';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n#input_1a_2 {\r\n  grid-area: 'input_1a_2';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#add {\r\n  width: 80%;\r\n  height: 80%;\r\n}\r\n\r\n#input_1b {\r\n  grid-area: 'input_1b';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: top;\r\n}\r\n\r\n.dialog {\r\n  background-color: white;\r\n  height: 75vh;\r\n  width: 80%;\r\n  max-width: 450px;\r\n  min-width: 250px;\r\n  margin-top: 30px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  margin-bottom: auto;\r\n}\r\n"],"sourceRoot":""}]);
+
+
+.input-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5fr;
+  grid-template-areas: "calibrate"
+  "foods";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.calibrate-grid {
+  grid-area: 'calibrate';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "sex" "age" "help";
+}
+
+.sex {
+  grid-area: 'sex';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+}
+
+.age {
+  grid-area: 'age';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+}
+
+.help {
+  grid-area: 'help';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+}
+.foods-grid {
+  grid-area: 'foods';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;AACtC;;AAEA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;;AAGA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;SACO;EACP,oCAAoC;;AAEtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;AACA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex-grow: 1;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.dialog {\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
