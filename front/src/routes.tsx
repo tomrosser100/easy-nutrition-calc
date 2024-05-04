@@ -1,7 +1,7 @@
 import React from 'react'
 import App from './App'
 import ErrorPage from './ErrorPage'
-import Dialog from './Dialog'
+import Dialog from './dialog/Add'
 
 export default [
   {
@@ -11,8 +11,8 @@ export default [
     children: [
       {
         path: 'add',
-        element: <Dialog />
-      }
+        element: <Dialog />,
+      },
     ],
-  }
+  },
 ]

@@ -4390,7 +4390,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dialog */ "./front/src/Dialog.tsx");
+/* harmony import */ var _dialog_Add__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialog/Add */ "./front/src/dialog/Add.tsx");
+/* harmony import */ var _dialog_Confirm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialog/Confirm */ "./front/src/dialog/Confirm.tsx");
+/* harmony import */ var _dialog_Inform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Inform */ "./front/src/dialog/Inform.tsx");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
@@ -4400,7 +4404,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "nav-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "about"
-  }, "about")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Inform__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
@@ -4420,7 +4424,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "age"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "help"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Inform__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "foods-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "top"
@@ -4430,9 +4434,9 @@ __webpack_require__.r(__webpack_exports__);
     className: "whitespace"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "clear"
-  }, "Clear"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Confirm__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "add"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
@@ -4440,9 +4444,9 @@ __webpack_require__.r(__webpack_exports__);
     className: "whitespace"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "edit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "delete"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Confirm__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "whitespace"
@@ -4469,67 +4473,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./front/src/Dialog.tsx":
-/*!******************************!*\
-  !*** ./front/src/Dialog.tsx ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  const [isOpen, setIsOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const {
-    refs,
-    context
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useFloating)({
-    open: isOpen,
-    onOpenChange: setIsOpen
-  });
-  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useClick)(context);
-  const dismiss = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useDismiss)(context, {
-    outsidePressEvent: 'mousedown'
-  });
-  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useRole)(context);
-  const {
-    getReferenceProps,
-    getFloatingProps
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useInteractions)([click, dismiss, role]);
-  const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
-    ref: refs.setReference
-  }, getReferenceProps()), "Add"), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingOverlay, {
-    className: "dialog-overlay",
-    lockScroll: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingFocusManager, {
-    context: context
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
-    className: "dialog",
-    ref: refs.setFloating,
-    "aria-labelledby": labelId,
-    "aria-describedby": descriptionId
-  }, getFloatingProps()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
-    id: labelId
-  }, "Heading element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    id: descriptionId
-  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter your name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => setIsOpen(false)
-  }, "Close")))));
-});
-
-/***/ }),
-
 /***/ "./front/src/ErrorPage.tsx":
 /*!*********************************!*\
   !*** ./front/src/ErrorPage.tsx ***!
@@ -4553,6 +4496,429 @@ function ErrorPage() {
 
 /***/ }),
 
+/***/ "./front/src/ResuableDialog.tsx":
+/*!**************************************!*\
+  !*** ./front/src/ResuableDialog.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Dialog: () => (/* binding */ Dialog),
+/* harmony export */   DialogClose: () => (/* binding */ DialogClose),
+/* harmony export */   DialogContent: () => (/* binding */ DialogContent),
+/* harmony export */   DialogDescription: () => (/* binding */ DialogDescription),
+/* harmony export */   DialogHeading: () => (/* binding */ DialogHeading),
+/* harmony export */   DialogTrigger: () => (/* binding */ DialogTrigger),
+/* harmony export */   useDialog: () => (/* binding */ useDialog),
+/* harmony export */   useDialogContext: () => (/* binding */ useDialogContext)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+function useDialog() {
+  let {
+    initialOpen = false,
+    open: controlledOpen,
+    onOpenChange: setControlledOpen
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  const [uncontrolledOpen, setUncontrolledOpen] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(initialOpen);
+  const [labelId, setLabelId] = react__WEBPACK_IMPORTED_MODULE_0___default().useState();
+  const [descriptionId, setDescriptionId] = react__WEBPACK_IMPORTED_MODULE_0___default().useState();
+  const open = controlledOpen ?? uncontrolledOpen;
+  const setOpen = setControlledOpen ?? setUncontrolledOpen;
+  const data = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useFloating)({
+    open,
+    onOpenChange: setOpen
+  });
+  const context = data.context;
+  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useClick)(context, {
+    enabled: controlledOpen == null
+  });
+  const dismiss = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useDismiss)(context, {
+    outsidePressEvent: "mousedown"
+  });
+  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useRole)(context);
+  const interactions = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useInteractions)([click, dismiss, role]);
+  return react__WEBPACK_IMPORTED_MODULE_0___default().useMemo(() => ({
+    open,
+    setOpen,
+    ...interactions,
+    ...data,
+    labelId,
+    descriptionId,
+    setLabelId,
+    setDescriptionId
+  }), [open, setOpen, interactions, data, labelId, descriptionId]);
+}
+const DialogContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createContext(null);
+const useDialogContext = () => {
+  const context = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(DialogContext);
+  if (context == null) {
+    throw new Error("Dialog components must be wrapped in <Dialog />");
+  }
+  return context;
+};
+function Dialog(_ref) {
+  let {
+    children,
+    ...options
+  } = _ref;
+  const dialog = useDialog(options);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DialogContext.Provider, {
+    value: dialog
+  }, children);
+}
+const DialogTrigger = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogTrigger(_ref2, propRef) {
+  let {
+    children,
+    asChild = false,
+    ...props
+  } = _ref2;
+  const context = useDialogContext();
+  const childrenRef = children.ref;
+  const ref = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useMergeRefs)([context.refs.setReference, propRef, childrenRef]);
+
+  // `asChild` allows the user to pass any element as the anchor
+  if (asChild && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().isValidElement(children)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().cloneElement(children, context.getReferenceProps({
+      ref,
+      ...props,
+      ...children.props,
+      "data-state": context.open ? "open" : "closed"
+    }));
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
+    ref: ref
+    // The user can style the trigger based on the state
+    ,
+    "data-state": context.open ? "open" : "closed"
+  }, context.getReferenceProps(props)), children);
+});
+const DialogContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogContent(props, propRef) {
+  const {
+    context: floatingContext,
+    ...context
+  } = useDialogContext();
+  const ref = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useMergeRefs)([context.refs.setFloating, propRef]);
+  if (!floatingContext.open) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingPortal, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingOverlay, {
+    className: "Dialog-overlay",
+    lockScroll: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingFocusManager, {
+    context: floatingContext
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
+    ref: ref,
+    "aria-labelledby": context.labelId,
+    "aria-describedby": context.descriptionId
+  }, context.getFloatingProps(props)), props.children))));
+});
+const DialogHeading = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogHeading(_ref3, ref) {
+  let {
+    children,
+    ...props
+  } = _ref3;
+  const {
+    setLabelId
+  } = useDialogContext();
+  const id = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useId)();
+
+  // Only sets `aria-labelledby` on the Dialog root element
+  // if this component is mounted inside it.
+  react__WEBPACK_IMPORTED_MODULE_0___default().useLayoutEffect(() => {
+    setLabelId(id);
+    return () => setLabelId(undefined);
+  }, [id, setLabelId]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", _extends({}, props, {
+    ref: ref,
+    id: id
+  }), children);
+});
+const DialogDescription = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogDescription(_ref4, ref) {
+  let {
+    children,
+    ...props
+  } = _ref4;
+  const {
+    setDescriptionId
+  } = useDialogContext();
+  const id = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useId)();
+
+  // Only sets `aria-describedby` on the Dialog root element
+  // if this component is mounted inside it.
+  react__WEBPACK_IMPORTED_MODULE_0___default().useLayoutEffect(() => {
+    setDescriptionId(id);
+    return () => setDescriptionId(undefined);
+  }, [id, setDescriptionId]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", _extends({}, props, {
+    ref: ref,
+    id: id
+  }), children);
+});
+const DialogClose = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogClose(props, ref) {
+  const {
+    setOpen
+  } = useDialogContext();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
+    type: "button"
+  }, props, {
+    ref: ref,
+    onClick: () => setOpen(false)
+  }));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/Add.tsx":
+/*!**********************************!*\
+  !*** ./front/src/dialog/Add.tsx ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ResuableDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ResuableDialog */ "./front/src/ResuableDialog.tsx");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
+    className: "Dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, null, "Add New Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, null, "My dialog description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Close"))));
+});
+
+/*
+export default () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const { refs, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+  })
+
+  const click = useClick(context)
+  const dismiss = useDismiss(context, {
+    outsidePressEvent: 'mousedown',
+  })
+  const role = useRole(context)
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    role,
+  ])
+
+  const labelId = useId()
+  const descriptionId = useId()
+
+  return (
+    <div>
+      <button ref={refs.setReference} {...getReferenceProps()}>
+        Add
+      </button>
+      {isOpen && (
+        <FloatingOverlay className='dialog-overlay' lockScroll>
+          <FloatingFocusManager context={context}>
+            <div
+              className='dialog'
+              ref={refs.setFloating}
+              aria-labelledby={labelId}
+              aria-describedby={descriptionId}
+              {...getFloatingProps()}>
+              <h2 id={labelId}>Heading element</h2>
+              <p id={descriptionId}>Description element</p>
+              <form>
+                <label>
+                  Enter your name:
+                  <input type='text' />
+                </label>
+              </form>
+              <button onClick={() => setIsOpen(false)}>Close</button>
+            </div>
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      )}
+    </div>
+  )
+}
+*/
+
+/***/ }),
+
+/***/ "./front/src/dialog/Confirm.tsx":
+/*!**************************************!*\
+  !*** ./front/src/dialog/Confirm.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ResuableDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ResuableDialog */ "./front/src/ResuableDialog.tsx");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
+    className: "Dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "confirm-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header"
+  }, "Are you sure you want to ...?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, {
+    className: "delete"
+  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, {
+    className: "cancel"
+  }, "Cancel"))))));
+});
+
+/*
+export default () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const { refs, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+  })
+
+  const click = useClick(context)
+  const dismiss = useDismiss(context, {
+    outsidePressEvent: 'mousedown',
+  })
+  const role = useRole(context)
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    role,
+  ])
+
+  const labelId = useId()
+  const descriptionId = useId()
+
+  return (
+    <div>
+      <button ref={refs.setReference} {...getReferenceProps()}>
+        Add
+      </button>
+      {isOpen && (
+        <FloatingOverlay className='dialog-overlay' lockScroll>
+          <FloatingFocusManager context={context}>
+            <div
+              className='dialog'
+              ref={refs.setFloating}
+              aria-labelledby={labelId}
+              aria-describedby={descriptionId}
+              {...getFloatingProps()}>
+              <h2 id={labelId}>Heading element</h2>
+              <p id={descriptionId}>Description element</p>
+              <form>
+                <label>
+                  Enter your name:
+                  <input type='text' />
+                </label>
+              </form>
+              <button onClick={() => setIsOpen(false)}>Close</button>
+            </div>
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      )}
+    </div>
+  )
+}
+*/
+
+/***/ }),
+
+/***/ "./front/src/dialog/Inform.tsx":
+/*!*************************************!*\
+  !*** ./front/src/dialog/Inform.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ResuableDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ResuableDialog */ "./front/src/ResuableDialog.tsx");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Inform"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
+    className: "Dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, null, "Here's some useful information."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, null, "My dialog description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Close"))));
+});
+
+/*
+export default () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const { refs, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+  })
+
+  const click = useClick(context)
+  const dismiss = useDismiss(context, {
+    outsidePressEvent: 'mousedown',
+  })
+  const role = useRole(context)
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    role,
+  ])
+
+  const labelId = useId()
+  const descriptionId = useId()
+
+  return (
+    <div>
+      <button ref={refs.setReference} {...getReferenceProps()}>
+        Add
+      </button>
+      {isOpen && (
+        <FloatingOverlay className='dialog-overlay' lockScroll>
+          <FloatingFocusManager context={context}>
+            <div
+              className='dialog'
+              ref={refs.setFloating}
+              aria-labelledby={labelId}
+              aria-describedby={descriptionId}
+              {...getFloatingProps()}>
+              <h2 id={labelId}>Heading element</h2>
+              <p id={descriptionId}>Description element</p>
+              <form>
+                <label>
+                  Enter your name:
+                  <input type='text' />
+                </label>
+              </form>
+              <button onClick={() => setIsOpen(false)}>Close</button>
+            </div>
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      )}
+    </div>
+  )
+}
+*/
+
+/***/ }),
+
 /***/ "./front/src/routes.tsx":
 /*!******************************!*\
   !*** ./front/src/routes.tsx ***!
@@ -4567,7 +4933,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./front/src/App.tsx");
 /* harmony import */ var _ErrorPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorPage */ "./front/src/ErrorPage.tsx");
-/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dialog */ "./front/src/Dialog.tsx");
+/* harmony import */ var _dialog_Add__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Add */ "./front/src/dialog/Add.tsx");
 
 
 
@@ -4578,7 +4944,7 @@ __webpack_require__.r(__webpack_exports__);
   errorElement: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorPage__WEBPACK_IMPORTED_MODULE_2__["default"], null),
   children: [{
     path: 'add',
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null)
   }]
 }]);
 
@@ -4683,17 +5049,61 @@ body {
 
 }
 
-.dialog-overlay {
+.Dialog-overlay {
   background: rgba(0, 0, 0, 0.8);
   display: grid;
   place-items: center;
 }
 
-.dialog {
+.Dialog {
   margin: 15px;
   background-color: white;
   padding: 15px;
   border-radius: 4px;
+}
+
+.confirm-grid {
+  height: 100px;
+  width: 300px;
+  min-width: 0px;
+  min-height: 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "header" "buttons";
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.confirm-grid .header {
+  grid-area: "header";
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.confirm-grid .buttons {
+  grid-area: "buttons";
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "delete cancel";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.buttons .delete {
+  grid-area: 'delete';
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.buttons .cancel {
+  grid-area: 'cancel';
+  background-color: rgb(0, 0, 255, .1);
+
 }
 
 .input-grid {
@@ -4831,7 +5241,7 @@ body {
   grid-area: "delete";
   background-color: rgb(0, 0, 255, .1);
 
-}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB;AACF;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,uBAAuB;EACvB,gCAAgC;EAChC,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,aAAa;EACb,WAAW;;AAEb;;AAEA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;SACO;EACP,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,2BAA2B;EAC3B,iCAAiC;AACnC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;AACtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,aAAa;EACb,oCAAoC;EACpC,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,kDAAkD;AACpD;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;;AAEtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,mBAAmB;EACnB,oCAAoC;;AAEtC","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"test-grid\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.output-grid .test-grid {\r\n  grid-area: 'test-grid';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100px;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.dialog {\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: \"top\" \"list\";\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"title whitespace clear add\";\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"name whitespace edit delete\"; \r\n}\r\n\r\n.list li .name {\r\n  grid-area: \"name\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: \"whitespace\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: \"edit\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: \"delete\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"test-grid\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.output-grid .test-grid {\r\n  grid-area: 'test-grid';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100px;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \"header\" \"buttons\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: \"header\";\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: \"buttons\";\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"delete cancel\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: \"top\" \"list\";\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"title whitespace clear add\";\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"name whitespace edit delete\"; \r\n}\r\n\r\n.list li .name {\r\n  grid-area: \"name\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: \"whitespace\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: \"edit\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: \"delete\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

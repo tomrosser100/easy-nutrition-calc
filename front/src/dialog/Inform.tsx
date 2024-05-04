@@ -1,14 +1,29 @@
+import React from 'react'
 import {
-  FloatingFocusManager,
-  FloatingOverlay,
-  useClick,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useRole,
-} from '@floating-ui/react'
-import React, { useId, useState } from 'react'
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogDescription,
+  DialogHeading,
+  DialogClose,
+} from '../ResuableDialog'
 
+export default () => {
+  return (
+    <div>
+      <Dialog>
+        <DialogTrigger>Inform</DialogTrigger>
+        <DialogContent className='Dialog'>
+          <DialogHeading>Here's some useful information.</DialogHeading>
+          <DialogDescription>My dialog description</DialogDescription>
+          <DialogClose>Close</DialogClose>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}
+
+/*
 export default () => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -62,3 +77,4 @@ export default () => {
     </div>
   )
 }
+*/
