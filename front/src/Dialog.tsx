@@ -35,7 +35,7 @@ export default () => {
   return (
     <div>
       <button ref={refs.setReference} {...getReferenceProps()}>
-        Reference Element
+        Add
       </button>
       {isOpen && (
         <FloatingOverlay className='dialog-overlay' lockScroll>

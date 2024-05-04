@@ -55,7 +55,7 @@ body {
   min-width: 350px;
   min-height: 450px;
   max-height: 500px;
-  flex-grow: 1;
+  flex: 1 1 0px;
   align-self: stretch;
   background-color: rgb(0, 0, 255, .1)
 }
@@ -63,7 +63,19 @@ body {
 .output-grid {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "test-grid";
   background-color: rgb(0, 0, 255, .1);
+}
+
+.output-grid .test-grid {
+  grid-area: 'test-grid';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100px;
+  width: 100%;
+
 }
 
 .dialog-overlay {
@@ -79,7 +91,6 @@ body {
   border-radius: 4px;
 }
 
-
 .input-grid {
   height: 100%;
   width: 100%;
@@ -89,7 +100,6 @@ body {
   grid-template-areas: "calibrate"
   "foods";
   background-color: rgb(0, 0, 255, .1);
-
 }
 
 .calibrate-grid {
@@ -98,6 +108,8 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
+  min-width: 0px;
+  min-height: 0px;
   grid-template-columns: 2fr 2fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "sex" "age" "help";
@@ -123,9 +135,95 @@ body {
   height: 100%;
   width: 100%;
 }
+
 .foods-grid {
   grid-area: 'foods';
   background-color: rgb(0, 0, 255, .1);
   height: 100%;
   width: 100%;
+  display: grid;
+  min-width: 0px;
+  min-height: 0px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas: "top" "list";
+}
+
+.top {
+  grid-area: 'top';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "title whitespace clear add";
+}
+
+.top .title {
+  grid-area: 'title';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.top .whitespace {
+  grid-area: 'whitespace';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.top .clear {
+  grid-area: 'clear';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.top .add {
+  grid-area: 'add';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.list {
+  grid-area: 'list';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.list li {
+  height: 150px;
+  background-color: rgb(0, 0, 255, .1);
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "name whitespace edit delete"; 
+}
+
+.list li .name {
+  grid-area: "name";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.list li .whitespace {
+  grid-area: "whitespace";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.list li .edit {
+  grid-area: "edit";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.list li .delete {
+  grid-area: "delete";
+  background-color: rgb(0, 0, 255, .1);
+
 }

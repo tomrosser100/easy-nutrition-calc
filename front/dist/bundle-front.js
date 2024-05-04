@@ -4406,7 +4406,9 @@ __webpack_require__.r(__webpack_exports__);
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "output-grid"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "test-grid"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "input-grid"
@@ -4420,9 +4422,45 @@ __webpack_require__.r(__webpack_exports__);
     className: "help"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "foods-grid"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "top"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "title"
+  }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "whitespace"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "clear"
+  }, "Clear"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "add"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "name"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "whitespace"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "delete"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "name"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "whitespace"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "delete"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "name"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "whitespace"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "delete"
+  })))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "bot-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Dialog__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  }));
 });
 
 /*
@@ -4469,7 +4507,7 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
   const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
     ref: refs.setReference
-  }, getReferenceProps()), "Reference Element"), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingOverlay, {
+  }, getReferenceProps()), "Add"), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingOverlay, {
     className: "dialog-overlay",
     lockScroll: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingFocusManager, {
@@ -4622,7 +4660,7 @@ body {
   min-width: 350px;
   min-height: 450px;
   max-height: 500px;
-  flex-grow: 1;
+  flex: 1 1 0px;
   align-self: stretch;
   background-color: rgb(0, 0, 255, .1)
 }
@@ -4630,7 +4668,19 @@ body {
 .output-grid {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "test-grid";
   background-color: rgb(0, 0, 255, .1);
+}
+
+.output-grid .test-grid {
+  grid-area: 'test-grid';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100px;
+  width: 100%;
+
 }
 
 .dialog-overlay {
@@ -4646,7 +4696,6 @@ body {
   border-radius: 4px;
 }
 
-
 .input-grid {
   height: 100%;
   width: 100%;
@@ -4656,7 +4705,6 @@ body {
   grid-template-areas: "calibrate"
   "foods";
   background-color: rgb(0, 0, 255, .1);
-
 }
 
 .calibrate-grid {
@@ -4665,6 +4713,8 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
+  min-width: 0px;
+  min-height: 0px;
   grid-template-columns: 2fr 2fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "sex" "age" "help";
@@ -4690,12 +4740,98 @@ body {
   height: 100%;
   width: 100%;
 }
+
 .foods-grid {
   grid-area: 'foods';
   background-color: rgb(0, 0, 255, .1);
   height: 100%;
   width: 100%;
-}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;AACtC;;AAEA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;;AAGA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;SACO;EACP,oCAAoC;;AAEtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;AACA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex-grow: 1;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.dialog {\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}"],"sourceRoot":""}]);
+  display: grid;
+  min-width: 0px;
+  min-height: 0px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas: "top" "list";
+}
+
+.top {
+  grid-area: 'top';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "title whitespace clear add";
+}
+
+.top .title {
+  grid-area: 'title';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.top .whitespace {
+  grid-area: 'whitespace';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.top .clear {
+  grid-area: 'clear';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.top .add {
+  grid-area: 'add';
+  background-color: rgb(0, 0, 255, .1);
+}
+
+.list {
+  grid-area: 'list';
+  background-color: rgb(0, 0, 255, .1);
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.list li {
+  height: 150px;
+  background-color: rgb(0, 0, 255, .1);
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "name whitespace edit delete"; 
+}
+
+.list li .name {
+  grid-area: "name";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.list li .whitespace {
+  grid-area: "whitespace";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.list li .edit {
+  grid-area: "edit";
+  background-color: rgb(0, 0, 255, .1);
+
+}
+
+.list li .delete {
+  grid-area: "delete";
+  background-color: rgb(0, 0, 255, .1);
+
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB;AACF;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,uBAAuB;EACvB,gCAAgC;EAChC,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,aAAa;EACb,WAAW;;AAEb;;AAEA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;SACO;EACP,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,2BAA2B;EAC3B,iCAAiC;AACnC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;AACtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,aAAa;EACb,oCAAoC;EACpC,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,kDAAkD;AACpD;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;;AAEtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,mBAAmB;EACnB,oCAAoC;;AAEtC","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"test-grid\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.output-grid .test-grid {\r\n  grid-area: 'test-grid';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100px;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.dialog {\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: \"top\" \"list\";\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"title whitespace clear add\";\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"name whitespace edit delete\"; \r\n}\r\n\r\n.list li .name {\r\n  grid-area: \"name\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: \"whitespace\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: \"edit\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: \"delete\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
