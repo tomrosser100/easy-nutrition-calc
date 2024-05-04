@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles.css'
+import './dialog-styles.css'
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import routes from './routes'

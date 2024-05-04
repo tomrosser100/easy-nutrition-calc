@@ -14,9 +14,38 @@ export default () => {
       <Dialog>
         <DialogTrigger>Add</DialogTrigger>
         <DialogContent className='Dialog'>
-          <DialogHeading>Add New Food</DialogHeading>
-          <DialogDescription>My dialog description</DialogDescription>
-          <DialogClose>Close</DialogClose>
+          <div className='add-grid'>
+            <DialogHeading className='title'>Add New Food</DialogHeading>
+            <DialogDescription className='step1'>
+              <div className='name'>
+                <div className='label'>Pick a name</div>
+                <div className='input'>
+                  <input type='text'></input>
+                </div>
+              </div>
+              <div className='amount'>
+                <div className='label'>How much will you eat</div>
+                <div className='input'>
+                  <input type='text'></input>
+                </div>
+              </div>
+            </DialogDescription>
+            <DialogDescription className='step2'>
+                <div className='per'>Nutrients per how many grams?</div>
+                <div className='macro'>Energy</div>
+                <div className='macro'>Fat</div>
+                <div className='macro'>... of which saturates</div>
+                <div className='macro'>Carbohydrate</div>
+                <div className='macro'>... of which sugars</div>
+                <div className='macro'>Fibre</div>
+                <div className='macro'>Protein</div>
+                <div className='macro'>Salt</div>
+            </DialogDescription>
+            <DialogDescription className='finish'>
+              <DialogClose>Add</DialogClose>
+              <DialogClose>Cancel</DialogClose>
+            </DialogDescription>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

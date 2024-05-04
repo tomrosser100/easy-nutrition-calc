@@ -4632,7 +4632,7 @@ const DialogHeading = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().
     setLabelId(id);
     return () => setLabelId(undefined);
   }, [id, setLabelId]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", _extends({}, props, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({}, props, {
     ref: ref,
     id: id
   }), children);
@@ -4653,7 +4653,7 @@ const DialogDescription = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___defaul
     setDescriptionId(id);
     return () => setDescriptionId(undefined);
   }, [id, setDescriptionId]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", _extends({}, props, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({}, props, {
     ref: ref,
     id: id
   }), children);
@@ -4690,7 +4690,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
     className: "Dialog"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, null, "Add New Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, null, "My dialog description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Close"))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "add-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, {
+    className: "title"
+  }, "Add New Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, {
+    className: "step1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "name"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "label"
+  }, "Pick a name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "input"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "amount"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "label"
+  }, "How much will you eat"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "input"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, {
+    className: "step2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "per"
+  }, "Nutrients per how many grams?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "Energy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "Fat"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "... of which saturates"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "Carbohydrate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "... of which sugars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "Fibre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "Protein"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "macro"
+  }, "Salt")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, {
+    className: "finish"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Cancel"))))));
 });
 
 /*
@@ -4771,7 +4815,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "Dialog"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "confirm-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, {
     className: "header"
   }, "Are you sure you want to ...?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttons"
@@ -4950,6 +4994,171 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./front/src/dialog-styles.css":
+/*!***************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./front/src/dialog-styles.css ***!
+  \***************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.Dialog-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  place-items: center;
+}
+
+.Dialog {
+  min-width: 335px;
+  margin: 15px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.confirm-grid {
+  height: 100px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'header' 'buttons';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.confirm-grid .header {
+  grid-area: 'header';
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.confirm-grid .buttons {
+  grid-area: 'buttons';
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'delete cancel';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.confirm-grid .buttons .delete {
+  grid-area: 'delete';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.confirm-grid .buttons .cancel {
+  grid-area: 'cancel';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid {
+  min-height: 500px;
+  min-width: 340px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 4fr 1fr;
+  grid-template-areas: 'title' 'step1' 'step2' 'finish';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .title {
+  grid-area: 'title';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .step1 {
+  width: 100%;
+  height: 100%;
+  grid-area: 'step1';
+  background-color: rgb(0, 0, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'name' 'amount';
+}
+
+.add-grid .step1 .name {
+  grid-area: 'name';
+  background-color: rgb(0, 0, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'label input';
+}
+
+.add-grid .step1 .name .label {
+  grid-area: 'label';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .step1 .name .input {
+  grid-area: 'input';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .step1 .amount {
+  grid-area: 'amount';
+  background-color: rgb(0, 0, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'label input';
+}
+
+.add-grid .step1 .amount .label {
+  grid-area: 'label';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .step1 .amount .input {
+  grid-area: 'input';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .step2 {
+  grid-area: 'step2';
+  background-color: rgb(0, 0, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-areas: 'per' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro';
+}
+
+.add-grid .step2 .per {
+  grid-area: "per";
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .step2 .macro {
+  grid-area: "macro";
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-grid .finish {
+  grid-area: 'finish';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+`, "",{"version":3,"sources":["webpack://./front/src/dialog-styles.css"],"names":[],"mappings":"AAAA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,oCAAoC;EACpC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,iBAAiB;EACjB,gBAAgB;EAChB,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,qDAAqD;EACrD,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,qCAAqC;EACrC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,oCAAoC;AACtC;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,kCAAkC;AACpC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;EACrC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,kCAAkC;AACpC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;EACrC,aAAa;EACb,0BAA0B;EAC1B,kCAAkC;EAClC,0FAA0F;AAC5F;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC","sourcesContent":[".Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  min-width: 335px;\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'header' 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: 'header';\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: 'buttons';\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'delete cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid {\r\n  min-height: 500px;\r\n  min-width: 340px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 4fr 1fr;\r\n  grid-template-areas: 'title' 'step1' 'step2' 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 {\r\n  width: 100%;\r\n  height: 100%;\r\n  grid-area: 'step1';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'name' 'amount';\r\n}\r\n\r\n.add-grid .step1 .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .name .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .name .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount {\r\n  grid-area: 'amount';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .amount .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 {\r\n  grid-area: 'step2';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(9, 1fr);\r\n  grid-template-areas: 'per' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro';\r\n}\r\n\r\n.add-grid .step2 .per {\r\n  grid-area: \"per\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 .macro {\r\n  grid-area: \"macro\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .finish {\r\n  grid-area: 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./front/src/styles.css":
 /*!********************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./front/src/styles.css ***!
@@ -5046,63 +5255,6 @@ body {
   background-color: rgb(0, 0, 255, .1);
   height: 100px;
   width: 100%;
-
-}
-
-.Dialog-overlay {
-  background: rgba(0, 0, 0, 0.8);
-  display: grid;
-  place-items: center;
-}
-
-.Dialog {
-  margin: 15px;
-  background-color: white;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-.confirm-grid {
-  height: 100px;
-  width: 300px;
-  min-width: 0px;
-  min-height: 0px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "header" "buttons";
-  background-color: rgb(0, 0, 255, .1);
-}
-
-.confirm-grid .header {
-  grid-area: "header";
-  height: 100%;
-  width: 100%;
-  background-color: rgb(0, 0, 255, .1);
-
-}
-
-.confirm-grid .buttons {
-  grid-area: "buttons";
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "delete cancel";
-  background-color: rgb(0, 0, 255, .1);
-
-}
-
-.buttons .delete {
-  grid-area: 'delete';
-  background-color: rgb(0, 0, 255, .1);
-
-}
-
-.buttons .cancel {
-  grid-area: 'cancel';
-  background-color: rgb(0, 0, 255, .1);
 
 }
 
@@ -5241,7 +5393,7 @@ body {
   grid-area: "delete";
   background-color: rgb(0, 0, 255, .1);
 
-}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"test-grid\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.output-grid .test-grid {\r\n  grid-area: 'test-grid';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100px;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: \"header\" \"buttons\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: \"header\";\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: \"buttons\";\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"delete cancel\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: \"top\" \"list\";\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"title whitespace clear add\";\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"name whitespace edit delete\"; \r\n}\r\n\r\n.list li .name {\r\n  grid-area: \"name\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: \"whitespace\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: \"edit\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: \"delete\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB;AACF;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,uBAAuB;EACvB,gCAAgC;EAChC,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,aAAa;EACb,WAAW;;AAEb;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;SACO;EACP,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,2BAA2B;EAC3B,iCAAiC;AACnC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;AACtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,aAAa;EACb,oCAAoC;EACpC,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,kDAAkD;AACpD;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;;AAEtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,mBAAmB;EACnB,oCAAoC;;AAEtC","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"test-grid\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.output-grid .test-grid {\r\n  grid-area: 'test-grid';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100px;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: \"top\" \"list\";\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"title whitespace clear add\";\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"name whitespace edit delete\"; \r\n}\r\n\r\n.list li .name {\r\n  grid-area: \"name\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: \"whitespace\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: \"edit\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: \"delete\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41798,6 +41950,60 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./front/src/dialog-styles.css":
+/*!*************************************!*\
+  !*** ./front/src/dialog-styles.css ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_dialog_styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./dialog-styles.css */ "./node_modules/css-loader/dist/cjs.js!./front/src/dialog-styles.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_dialog_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_dialog_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_dialog_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_dialog_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./front/src/styles.css":
 /*!******************************!*\
   !*** ./front/src/styles.css ***!
@@ -49869,18 +50075,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ "./front/src/styles.css");
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes */ "./front/src/routes.tsx");
+/* harmony import */ var _dialog_styles_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialog-styles.css */ "./front/src/dialog-styles.css");
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes */ "./front/src/routes.tsx");
 
 
 
 
 
-const router = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.createBrowserRouter)(_routes__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+const router = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.createBrowserRouter)(_routes__WEBPACK_IMPORTED_MODULE_4__["default"]);
 document.body.innerHTML = '<div id="app"></div>';
-const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot)(document.getElementById('app'));
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.RouterProvider, {
+const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_3__.createRoot)(document.getElementById('app'));
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.RouterProvider, {
   router: router
 })));
 })();

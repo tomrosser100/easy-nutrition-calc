@@ -15,9 +15,9 @@ export default () => {
         <DialogTrigger>Delete</DialogTrigger>
         <DialogContent className='Dialog'>
           <div className='confirm-grid'>
-            <div className='header'>
+            <DialogHeading className='header'>
               Are you sure you want to ...?
-            </div>
+            </DialogHeading>
             <div className='buttons'>
               <DialogClose className='delete'>Delete</DialogClose>
               <DialogClose className='cancel'>Cancel</DialogClose>

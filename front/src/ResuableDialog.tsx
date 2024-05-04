@@ -175,9 +175,9 @@ export const DialogHeading = React.forwardRef<
   }, [id, setLabelId]);
 
   return (
-    <h2 {...props} ref={ref} id={id}>
+    <div {...props} ref={ref} id={id}>
       {children}
-    </h2>
+    </div>
   );
 });
 
@@ -196,9 +196,9 @@ export const DialogDescription = React.forwardRef<
   }, [id, setDescriptionId]);
 
   return (
-    <p {...props} ref={ref} id={id}>
+    <div {...props} ref={ref} id={id}>
       {children}
-    </p>
+    </div>
   );
 });
 
