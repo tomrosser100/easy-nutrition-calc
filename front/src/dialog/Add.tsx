@@ -1,13 +1,108 @@
-import React from 'react'
 import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogDescription,
-  DialogHeading,
-  DialogClose,
-} from '../ResuableDialog'
+  useFloating,
+  useClick,
+  useDismiss,
+  useRole,
+  useInteractions,
+  FloatingOverlay,
+  FloatingFocusManager,
+} from '@floating-ui/react'
+import React, { useEffect, useId, useState } from 'react'
+import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
+import eventEmitter from '../eventEmitter'
+import type { ListElement } from '../types'
+import EventEmitter from 'events'
 
+const emitter = new EventEmitter()
+
+export async function loader() {
+  console.log('add loader fired')
+  return null
+}
+
+export async function action({ request }: { request: any }) {
+  emitter.emit('buttonDisabled', true)
+  const data = Object.fromEntries(await request.formData()) as ListElement
+  console.log('add action fired')
+  console.log(data)
+  const response = (await new Promise((resolve) => {
+    eventEmitter.emit('add', data, (response) => {
+      resolve(response)
+    })
+  })) as { status: 'ok' | 'failed' }
+  if (response.status === 'failed') {
+    emitter.emit('buttonDisabled', false)
+    return response
+  }
+  return redirect('/')
+}
+
+export default () => {
+  const error = useActionData() as { status: 'failed' }
+  const navigate = useNavigate()
+  const [buttonDisabled, setbuttonDisabled] = useState(false)
+
+  useEffect(() => {
+    function buttonDisabled(boolean: boolean) {
+      setbuttonDisabled(boolean)
+    }
+
+    emitter.on('buttonDisabled', buttonDisabled)
+
+    return () => {
+      emitter.off('buttonDisabled', buttonDisabled)
+    }
+  })
+
+  const { refs, context } = useFloating({
+    open: true,
+  })
+
+  const click = useClick(context)
+  const role = useRole(context)
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, role])
+
+  const labelId = useId()
+  const descriptionId = useId()
+
+  return (
+    <div>
+      <button ref={refs.setReference} {...getReferenceProps()}>
+        Add
+      </button>
+      <FloatingOverlay className='Dialog-overlay' lockScroll>
+        <FloatingFocusManager context={context}>
+          <div
+            className='Dialog'
+            ref={refs.setFloating}
+            aria-labelledby={labelId}
+            aria-describedby={descriptionId}
+            {...getFloatingProps()}>
+            <h2 id={labelId}>Heading element</h2>
+            <p id={descriptionId}>Description element</p>
+            <Form method='post'>
+              <label>
+                Enter name:
+                <input type='text' name='name' />
+              </label>
+              <label>
+                Enter number:
+                <input type='number' min='0' name='num' placeholder='0' />
+              </label>
+              <button disabled={buttonDisabled} type='submit'>
+                Close
+              </button>
+              {error?.status && <p>Something went wrong...</p>}
+            </Form>
+          </div>
+        </FloatingFocusManager>
+      </FloatingOverlay>
+    </div>
+  )
+}
+
+/*
 export default () => {
   return (
     <div>
@@ -51,59 +146,8 @@ export default () => {
     </div>
   )
 }
+*/
 
 /*
-export default () => {
-  const [isOpen, setIsOpen] = useState(false)
 
-  const { refs, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
-  })
-
-  const click = useClick(context)
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: 'mousedown',
-  })
-  const role = useRole(context)
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ])
-
-  const labelId = useId()
-  const descriptionId = useId()
-
-  return (
-    <div>
-      <button ref={refs.setReference} {...getReferenceProps()}>
-        Add
-      </button>
-      {isOpen && (
-        <FloatingOverlay className='dialog-overlay' lockScroll>
-          <FloatingFocusManager context={context}>
-            <div
-              className='dialog'
-              ref={refs.setFloating}
-              aria-labelledby={labelId}
-              aria-describedby={descriptionId}
-              {...getFloatingProps()}>
-              <h2 id={labelId}>Heading element</h2>
-              <p id={descriptionId}>Description element</p>
-              <form>
-                <label>
-                  Enter your name:
-                  <input type='text' />
-                </label>
-              </form>
-              <button onClick={() => setIsOpen(false)}>Close</button>
-            </div>
-          </FloatingFocusManager>
-        </FloatingOverlay>
-      )}
-    </div>
-  )
-}
 */

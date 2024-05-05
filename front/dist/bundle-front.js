@@ -4386,25 +4386,42 @@ function persistAppliedTransitions(_window, transitions) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   loader: () => (/* binding */ loader)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _dialog_Add__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialog/Add */ "./front/src/dialog/Add.tsx");
-/* harmony import */ var _dialog_Confirm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialog/Confirm */ "./front/src/dialog/Confirm.tsx");
-/* harmony import */ var _dialog_Inform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Inform */ "./front/src/dialog/Inform.tsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventEmitter */ "./front/src/eventEmitter.ts");
 
 
 
-
+async function loader() {
+  console.log('app loader fired');
+  const response = await new Promise(resolve => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('getAll', response => {
+      resolve(response);
+    });
+  });
+  console.log(response);
+  return response;
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  const data = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLoaderData)();
+  const sum = data => {
+    // get all numbers
+    let numbers = [];
+    data.forEach(entry => numbers.push(Number(entry.num)));
+    return numbers.reduce((accumulator, current) => accumulator + current, 0);
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "app"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "nav-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "about"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Inform__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
@@ -4412,7 +4429,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "output-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "test-grid"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, sum(data)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "input-grid"
@@ -4424,7 +4441,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "age"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "help"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Inform__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "foods-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "top"
@@ -4434,19 +4451,31 @@ __webpack_require__.r(__webpack_exports__);
     className: "whitespace"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "clear"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Confirm__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "add"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('add')
+  }, "add"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, data.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    key: i
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "name"
+  }, entry.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "whitespace"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "delete"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "whitespace"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "edit"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "delete"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Confirm__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "whitespace"
@@ -4496,182 +4525,6 @@ function ErrorPage() {
 
 /***/ }),
 
-/***/ "./front/src/ResuableDialog.tsx":
-/*!**************************************!*\
-  !*** ./front/src/ResuableDialog.tsx ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Dialog: () => (/* binding */ Dialog),
-/* harmony export */   DialogClose: () => (/* binding */ DialogClose),
-/* harmony export */   DialogContent: () => (/* binding */ DialogContent),
-/* harmony export */   DialogDescription: () => (/* binding */ DialogDescription),
-/* harmony export */   DialogHeading: () => (/* binding */ DialogHeading),
-/* harmony export */   DialogTrigger: () => (/* binding */ DialogTrigger),
-/* harmony export */   useDialog: () => (/* binding */ useDialog),
-/* harmony export */   useDialogContext: () => (/* binding */ useDialogContext)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-function useDialog() {
-  let {
-    initialOpen = false,
-    open: controlledOpen,
-    onOpenChange: setControlledOpen
-  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  const [uncontrolledOpen, setUncontrolledOpen] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(initialOpen);
-  const [labelId, setLabelId] = react__WEBPACK_IMPORTED_MODULE_0___default().useState();
-  const [descriptionId, setDescriptionId] = react__WEBPACK_IMPORTED_MODULE_0___default().useState();
-  const open = controlledOpen ?? uncontrolledOpen;
-  const setOpen = setControlledOpen ?? setUncontrolledOpen;
-  const data = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useFloating)({
-    open,
-    onOpenChange: setOpen
-  });
-  const context = data.context;
-  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useClick)(context, {
-    enabled: controlledOpen == null
-  });
-  const dismiss = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useDismiss)(context, {
-    outsidePressEvent: "mousedown"
-  });
-  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useRole)(context);
-  const interactions = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useInteractions)([click, dismiss, role]);
-  return react__WEBPACK_IMPORTED_MODULE_0___default().useMemo(() => ({
-    open,
-    setOpen,
-    ...interactions,
-    ...data,
-    labelId,
-    descriptionId,
-    setLabelId,
-    setDescriptionId
-  }), [open, setOpen, interactions, data, labelId, descriptionId]);
-}
-const DialogContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createContext(null);
-const useDialogContext = () => {
-  const context = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(DialogContext);
-  if (context == null) {
-    throw new Error("Dialog components must be wrapped in <Dialog />");
-  }
-  return context;
-};
-function Dialog(_ref) {
-  let {
-    children,
-    ...options
-  } = _ref;
-  const dialog = useDialog(options);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DialogContext.Provider, {
-    value: dialog
-  }, children);
-}
-const DialogTrigger = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogTrigger(_ref2, propRef) {
-  let {
-    children,
-    asChild = false,
-    ...props
-  } = _ref2;
-  const context = useDialogContext();
-  const childrenRef = children.ref;
-  const ref = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useMergeRefs)([context.refs.setReference, propRef, childrenRef]);
-
-  // `asChild` allows the user to pass any element as the anchor
-  if (asChild && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().isValidElement(children)) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().cloneElement(children, context.getReferenceProps({
-      ref,
-      ...props,
-      ...children.props,
-      "data-state": context.open ? "open" : "closed"
-    }));
-  }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
-    ref: ref
-    // The user can style the trigger based on the state
-    ,
-    "data-state": context.open ? "open" : "closed"
-  }, context.getReferenceProps(props)), children);
-});
-const DialogContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogContent(props, propRef) {
-  const {
-    context: floatingContext,
-    ...context
-  } = useDialogContext();
-  const ref = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useMergeRefs)([context.refs.setFloating, propRef]);
-  if (!floatingContext.open) return null;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingPortal, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingOverlay, {
-    className: "Dialog-overlay",
-    lockScroll: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.FloatingFocusManager, {
-    context: floatingContext
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
-    ref: ref,
-    "aria-labelledby": context.labelId,
-    "aria-describedby": context.descriptionId
-  }, context.getFloatingProps(props)), props.children))));
-});
-const DialogHeading = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogHeading(_ref3, ref) {
-  let {
-    children,
-    ...props
-  } = _ref3;
-  const {
-    setLabelId
-  } = useDialogContext();
-  const id = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useId)();
-
-  // Only sets `aria-labelledby` on the Dialog root element
-  // if this component is mounted inside it.
-  react__WEBPACK_IMPORTED_MODULE_0___default().useLayoutEffect(() => {
-    setLabelId(id);
-    return () => setLabelId(undefined);
-  }, [id, setLabelId]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({}, props, {
-    ref: ref,
-    id: id
-  }), children);
-});
-const DialogDescription = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogDescription(_ref4, ref) {
-  let {
-    children,
-    ...props
-  } = _ref4;
-  const {
-    setDescriptionId
-  } = useDialogContext();
-  const id = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.useId)();
-
-  // Only sets `aria-describedby` on the Dialog root element
-  // if this component is mounted inside it.
-  react__WEBPACK_IMPORTED_MODULE_0___default().useLayoutEffect(() => {
-    setDescriptionId(id);
-    return () => setDescriptionId(undefined);
-  }, [id, setDescriptionId]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({}, props, {
-    ref: ref,
-    id: id
-  }), children);
-});
-const DialogClose = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function DialogClose(props, ref) {
-  const {
-    setOpen
-  } = useDialogContext();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
-    type: "button"
-  }, props, {
-    ref: ref,
-    onClick: () => setOpen(false)
-  }));
-});
-
-/***/ }),
-
 /***/ "./front/src/dialog/Add.tsx":
 /*!**********************************!*\
   !*** ./front/src/dialog/Add.tsx ***!
@@ -4680,286 +4533,185 @@ const DialogClose = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().fo
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   action: () => (/* binding */ action),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   loader: () => (/* binding */ loader)
 /* harmony export */ });
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ResuableDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ResuableDialog */ "./front/src/ResuableDialog.tsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../eventEmitter */ "./front/src/eventEmitter.ts");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_2__);
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
+
+
+
+const emitter = new (events__WEBPACK_IMPORTED_MODULE_2___default())();
+async function loader() {
+  console.log('add loader fired');
+  return null;
+}
+async function action(_ref) {
+  let {
+    request
+  } = _ref;
+  emitter.emit('buttonDisabled', true);
+  const data = Object.fromEntries(await request.formData());
+  console.log('add action fired');
+  console.log(data);
+  const response = await new Promise(resolve => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('add', data, response => {
+      resolve(response);
+    });
+  });
+  if (response.status === 'failed') {
+    emitter.emit('buttonDisabled', false);
+    return response;
+  }
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
-    className: "Dialog"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "add-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, {
-    className: "title"
-  }, "Add New Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, {
-    className: "step1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "name"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "label"
-  }, "Pick a name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "input"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "amount"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "label"
-  }, "How much will you eat"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "input"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, {
-    className: "step2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "per"
-  }, "Nutrients per how many grams?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "Energy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "Fat"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "... of which saturates"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "Carbohydrate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "... of which sugars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "Fibre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "Protein"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "macro"
-  }, "Salt")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, {
-    className: "finish"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Cancel"))))));
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  const [buttonDisabled, setbuttonDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    function buttonDisabled(boolean) {
+      setbuttonDisabled(boolean);
+    }
+    emitter.on('buttonDisabled', buttonDisabled);
+    return () => {
+      emitter.off('buttonDisabled', buttonDisabled);
+    };
+  });
+  const {
+    refs,
+    context
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useFloating)({
+    open: true
+  });
+  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useClick)(context);
+  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useRole)(context);
+  const {
+    getReferenceProps,
+    getFloatingProps
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useInteractions)([click, role]);
+  const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
+  const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
+    ref: refs.setReference
+  }, getReferenceProps()), "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingOverlay, {
+    className: "Dialog-overlay",
+    lockScroll: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingFocusManager, {
+    context: context
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
+    className: "Dialog",
+    ref: refs.setFloating,
+    "aria-labelledby": labelId,
+    "aria-describedby": descriptionId
+  }, getFloatingProps()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    id: labelId
+  }, "Heading element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    id: descriptionId
+  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Form, {
+    method: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "name"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    min: "0",
+    name: "num",
+    placeholder: "0"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    type: "submit"
+  }, "Close"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."))))));
 });
 
 /*
 export default () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const { refs, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
-  })
-
-  const click = useClick(context)
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: 'mousedown',
-  })
-  const role = useRole(context)
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ])
-
-  const labelId = useId()
-  const descriptionId = useId()
-
   return (
     <div>
-      <button ref={refs.setReference} {...getReferenceProps()}>
-        Add
-      </button>
-      {isOpen && (
-        <FloatingOverlay className='dialog-overlay' lockScroll>
-          <FloatingFocusManager context={context}>
-            <div
-              className='dialog'
-              ref={refs.setFloating}
-              aria-labelledby={labelId}
-              aria-describedby={descriptionId}
-              {...getFloatingProps()}>
-              <h2 id={labelId}>Heading element</h2>
-              <p id={descriptionId}>Description element</p>
-              <form>
-                <label>
-                  Enter your name:
-                  <input type='text' />
-                </label>
-              </form>
-              <button onClick={() => setIsOpen(false)}>Close</button>
-            </div>
-          </FloatingFocusManager>
-        </FloatingOverlay>
-      )}
+      <Dialog>
+        <DialogTrigger>Add</DialogTrigger>
+        <DialogContent className='Dialog'>
+          <div className='add-grid'>
+            <DialogHeading className='title'>Add New Food</DialogHeading>
+            <DialogDescription className='step1'>
+              <div className='name'>
+                <div className='label'>Pick a name</div>
+                <div className='input'>
+                  <input type='text'></input>
+                </div>
+              </div>
+              <div className='amount'>
+                <div className='label'>How much will you eat</div>
+                <div className='input'>
+                  <input type='text'></input>
+                </div>
+              </div>
+            </DialogDescription>
+            <DialogDescription className='step2'>
+                <div className='per'>Nutrients per how many grams?</div>
+                <div className='macro'>Energy</div>
+                <div className='macro'>Fat</div>
+                <div className='macro'>... of which saturates</div>
+                <div className='macro'>Carbohydrate</div>
+                <div className='macro'>... of which sugars</div>
+                <div className='macro'>Fibre</div>
+                <div className='macro'>Protein</div>
+                <div className='macro'>Salt</div>
+            </DialogDescription>
+            <DialogDescription className='finish'>
+              <DialogClose>Add</DialogClose>
+              <DialogClose>Cancel</DialogClose>
+            </DialogDescription>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
 */
 
+/*
+
+*/
+
 /***/ }),
 
-/***/ "./front/src/dialog/Confirm.tsx":
-/*!**************************************!*\
-  !*** ./front/src/dialog/Confirm.tsx ***!
-  \**************************************/
+/***/ "./front/src/eventEmitter.ts":
+/*!***********************************!*\
+  !*** ./front/src/eventEmitter.ts ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ResuableDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ResuableDialog */ "./front/src/ResuableDialog.tsx");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./front/src/store.ts");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
-    className: "Dialog"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "confirm-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, {
-    className: "header"
-  }, "Are you sure you want to ...?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, {
-    className: "delete"
-  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, {
-    className: "cancel"
-  }, "Cancel"))))));
+const eventEmitter = new (events__WEBPACK_IMPORTED_MODULE_0___default())();
+eventEmitter.on('add', async (data, callback) => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].add(data);
+  callback(response);
 });
-
-/*
-export default () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const { refs, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
-  })
-
-  const click = useClick(context)
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: 'mousedown',
-  })
-  const role = useRole(context)
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ])
-
-  const labelId = useId()
-  const descriptionId = useId()
-
-  return (
-    <div>
-      <button ref={refs.setReference} {...getReferenceProps()}>
-        Add
-      </button>
-      {isOpen && (
-        <FloatingOverlay className='dialog-overlay' lockScroll>
-          <FloatingFocusManager context={context}>
-            <div
-              className='dialog'
-              ref={refs.setFloating}
-              aria-labelledby={labelId}
-              aria-describedby={descriptionId}
-              {...getFloatingProps()}>
-              <h2 id={labelId}>Heading element</h2>
-              <p id={descriptionId}>Description element</p>
-              <form>
-                <label>
-                  Enter your name:
-                  <input type='text' />
-                </label>
-              </form>
-              <button onClick={() => setIsOpen(false)}>Close</button>
-            </div>
-          </FloatingFocusManager>
-        </FloatingOverlay>
-      )}
-    </div>
-  )
-}
-*/
-
-/***/ }),
-
-/***/ "./front/src/dialog/Inform.tsx":
-/*!*************************************!*\
-  !*** ./front/src/dialog/Inform.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ResuableDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ResuableDialog */ "./front/src/ResuableDialog.tsx");
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.Dialog, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogTrigger, null, "Inform"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogContent, {
-    className: "Dialog"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogHeading, null, "Here's some useful information."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogDescription, null, "My dialog description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ResuableDialog__WEBPACK_IMPORTED_MODULE_1__.DialogClose, null, "Close"))));
+eventEmitter.on('getAll', async callback => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].getAll();
+  callback(response);
 });
-
-/*
-export default () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const { refs, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
-  })
-
-  const click = useClick(context)
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: 'mousedown',
-  })
-  const role = useRole(context)
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ])
-
-  const labelId = useId()
-  const descriptionId = useId()
-
-  return (
-    <div>
-      <button ref={refs.setReference} {...getReferenceProps()}>
-        Add
-      </button>
-      {isOpen && (
-        <FloatingOverlay className='dialog-overlay' lockScroll>
-          <FloatingFocusManager context={context}>
-            <div
-              className='dialog'
-              ref={refs.setFloating}
-              aria-labelledby={labelId}
-              aria-describedby={descriptionId}
-              {...getFloatingProps()}>
-              <h2 id={labelId}>Heading element</h2>
-              <p id={descriptionId}>Description element</p>
-              <form>
-                <label>
-                  Enter your name:
-                  <input type='text' />
-                </label>
-              </form>
-              <button onClick={() => setIsOpen(false)}>Close</button>
-            </div>
-          </FloatingFocusManager>
-        </FloatingOverlay>
-      )}
-    </div>
-  )
-}
-*/
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (eventEmitter);
 
 /***/ }),
 
@@ -4985,12 +4737,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   path: '/',
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App__WEBPACK_IMPORTED_MODULE_1__["default"], null),
+  loader: _App__WEBPACK_IMPORTED_MODULE_1__.loader,
   errorElement: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorPage__WEBPACK_IMPORTED_MODULE_2__["default"], null),
   children: [{
     path: 'add',
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    action: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.action
   }]
 }]);
+
+/***/ }),
+
+/***/ "./front/src/store.ts":
+/*!****************************!*\
+  !*** ./front/src/store.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
+
+class Store {
+  constructor() {
+    this.list = [];
+  }
+  async add(data) {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_0__.nanoid)().slice(7);
+        const name = data.name;
+        const num = data.num;
+
+        //if (this.list[id] !== undefined) resolve({ status: 'failed' })
+
+        this.list.push({
+          id,
+          name,
+          num
+        });
+        resolve({
+          status: 'ok'
+        });
+      }, 1000);
+    });
+    console.log(this.list);
+    return response;
+  }
+  async getAll() {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        resolve(this.list);
+      }, 1000);
+    });
+    return response;
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new Store());
 
 /***/ }),
 
@@ -5516,6 +5321,513 @@ module.exports = function (item) {
   }
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./node_modules/events/events.js":
+/*!***************************************!*\
+  !*** ./node_modules/events/events.js ***!
+  \***************************************/
+/***/ ((module) => {
+
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+var R = typeof Reflect === 'object' ? Reflect : null
+var ReflectApply = R && typeof R.apply === 'function'
+  ? R.apply
+  : function ReflectApply(target, receiver, args) {
+    return Function.prototype.apply.call(target, receiver, args);
+  }
+
+var ReflectOwnKeys
+if (R && typeof R.ownKeys === 'function') {
+  ReflectOwnKeys = R.ownKeys
+} else if (Object.getOwnPropertySymbols) {
+  ReflectOwnKeys = function ReflectOwnKeys(target) {
+    return Object.getOwnPropertyNames(target)
+      .concat(Object.getOwnPropertySymbols(target));
+  };
+} else {
+  ReflectOwnKeys = function ReflectOwnKeys(target) {
+    return Object.getOwnPropertyNames(target);
+  };
+}
+
+function ProcessEmitWarning(warning) {
+  if (console && console.warn) console.warn(warning);
+}
+
+var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
+  return value !== value;
+}
+
+function EventEmitter() {
+  EventEmitter.init.call(this);
+}
+module.exports = EventEmitter;
+module.exports.once = once;
+
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
+
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._eventsCount = 0;
+EventEmitter.prototype._maxListeners = undefined;
+
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+var defaultMaxListeners = 10;
+
+function checkListener(listener) {
+  if (typeof listener !== 'function') {
+    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+  }
+}
+
+Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
+  enumerable: true,
+  get: function() {
+    return defaultMaxListeners;
+  },
+  set: function(arg) {
+    if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) {
+      throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.');
+    }
+    defaultMaxListeners = arg;
+  }
+});
+
+EventEmitter.init = function() {
+
+  if (this._events === undefined ||
+      this._events === Object.getPrototypeOf(this)._events) {
+    this._events = Object.create(null);
+    this._eventsCount = 0;
+  }
+
+  this._maxListeners = this._maxListeners || undefined;
+};
+
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
+  if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) {
+    throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n + '.');
+  }
+  this._maxListeners = n;
+  return this;
+};
+
+function _getMaxListeners(that) {
+  if (that._maxListeners === undefined)
+    return EventEmitter.defaultMaxListeners;
+  return that._maxListeners;
+}
+
+EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
+  return _getMaxListeners(this);
+};
+
+EventEmitter.prototype.emit = function emit(type) {
+  var args = [];
+  for (var i = 1; i < arguments.length; i++) args.push(arguments[i]);
+  var doError = (type === 'error');
+
+  var events = this._events;
+  if (events !== undefined)
+    doError = (doError && events.error === undefined);
+  else if (!doError)
+    return false;
+
+  // If there is no 'error' event listener then throw.
+  if (doError) {
+    var er;
+    if (args.length > 0)
+      er = args[0];
+    if (er instanceof Error) {
+      // Note: The comments on the `throw` lines are intentional, they show
+      // up in Node's output if this results in an unhandled exception.
+      throw er; // Unhandled 'error' event
+    }
+    // At least give some kind of context to the user
+    var err = new Error('Unhandled error.' + (er ? ' (' + er.message + ')' : ''));
+    err.context = er;
+    throw err; // Unhandled 'error' event
+  }
+
+  var handler = events[type];
+
+  if (handler === undefined)
+    return false;
+
+  if (typeof handler === 'function') {
+    ReflectApply(handler, this, args);
+  } else {
+    var len = handler.length;
+    var listeners = arrayClone(handler, len);
+    for (var i = 0; i < len; ++i)
+      ReflectApply(listeners[i], this, args);
+  }
+
+  return true;
+};
+
+function _addListener(target, type, listener, prepend) {
+  var m;
+  var events;
+  var existing;
+
+  checkListener(listener);
+
+  events = target._events;
+  if (events === undefined) {
+    events = target._events = Object.create(null);
+    target._eventsCount = 0;
+  } else {
+    // To avoid recursion in the case that type === "newListener"! Before
+    // adding it to the listeners, first emit "newListener".
+    if (events.newListener !== undefined) {
+      target.emit('newListener', type,
+                  listener.listener ? listener.listener : listener);
+
+      // Re-assign `events` because a newListener handler could have caused the
+      // this._events to be assigned to a new object
+      events = target._events;
+    }
+    existing = events[type];
+  }
+
+  if (existing === undefined) {
+    // Optimize the case of one listener. Don't need the extra array object.
+    existing = events[type] = listener;
+    ++target._eventsCount;
+  } else {
+    if (typeof existing === 'function') {
+      // Adding the second element, need to change to array.
+      existing = events[type] =
+        prepend ? [listener, existing] : [existing, listener];
+      // If we've already got an array, just append.
+    } else if (prepend) {
+      existing.unshift(listener);
+    } else {
+      existing.push(listener);
+    }
+
+    // Check for listener leak
+    m = _getMaxListeners(target);
+    if (m > 0 && existing.length > m && !existing.warned) {
+      existing.warned = true;
+      // No error code for this since it is a Warning
+      // eslint-disable-next-line no-restricted-syntax
+      var w = new Error('Possible EventEmitter memory leak detected. ' +
+                          existing.length + ' ' + String(type) + ' listeners ' +
+                          'added. Use emitter.setMaxListeners() to ' +
+                          'increase limit');
+      w.name = 'MaxListenersExceededWarning';
+      w.emitter = target;
+      w.type = type;
+      w.count = existing.length;
+      ProcessEmitWarning(w);
+    }
+  }
+
+  return target;
+}
+
+EventEmitter.prototype.addListener = function addListener(type, listener) {
+  return _addListener(this, type, listener, false);
+};
+
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+EventEmitter.prototype.prependListener =
+    function prependListener(type, listener) {
+      return _addListener(this, type, listener, true);
+    };
+
+function onceWrapper() {
+  if (!this.fired) {
+    this.target.removeListener(this.type, this.wrapFn);
+    this.fired = true;
+    if (arguments.length === 0)
+      return this.listener.call(this.target);
+    return this.listener.apply(this.target, arguments);
+  }
+}
+
+function _onceWrap(target, type, listener) {
+  var state = { fired: false, wrapFn: undefined, target: target, type: type, listener: listener };
+  var wrapped = onceWrapper.bind(state);
+  wrapped.listener = listener;
+  state.wrapFn = wrapped;
+  return wrapped;
+}
+
+EventEmitter.prototype.once = function once(type, listener) {
+  checkListener(listener);
+  this.on(type, _onceWrap(this, type, listener));
+  return this;
+};
+
+EventEmitter.prototype.prependOnceListener =
+    function prependOnceListener(type, listener) {
+      checkListener(listener);
+      this.prependListener(type, _onceWrap(this, type, listener));
+      return this;
+    };
+
+// Emits a 'removeListener' event if and only if the listener was removed.
+EventEmitter.prototype.removeListener =
+    function removeListener(type, listener) {
+      var list, events, position, i, originalListener;
+
+      checkListener(listener);
+
+      events = this._events;
+      if (events === undefined)
+        return this;
+
+      list = events[type];
+      if (list === undefined)
+        return this;
+
+      if (list === listener || list.listener === listener) {
+        if (--this._eventsCount === 0)
+          this._events = Object.create(null);
+        else {
+          delete events[type];
+          if (events.removeListener)
+            this.emit('removeListener', type, list.listener || listener);
+        }
+      } else if (typeof list !== 'function') {
+        position = -1;
+
+        for (i = list.length - 1; i >= 0; i--) {
+          if (list[i] === listener || list[i].listener === listener) {
+            originalListener = list[i].listener;
+            position = i;
+            break;
+          }
+        }
+
+        if (position < 0)
+          return this;
+
+        if (position === 0)
+          list.shift();
+        else {
+          spliceOne(list, position);
+        }
+
+        if (list.length === 1)
+          events[type] = list[0];
+
+        if (events.removeListener !== undefined)
+          this.emit('removeListener', type, originalListener || listener);
+      }
+
+      return this;
+    };
+
+EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+
+EventEmitter.prototype.removeAllListeners =
+    function removeAllListeners(type) {
+      var listeners, events, i;
+
+      events = this._events;
+      if (events === undefined)
+        return this;
+
+      // not listening for removeListener, no need to emit
+      if (events.removeListener === undefined) {
+        if (arguments.length === 0) {
+          this._events = Object.create(null);
+          this._eventsCount = 0;
+        } else if (events[type] !== undefined) {
+          if (--this._eventsCount === 0)
+            this._events = Object.create(null);
+          else
+            delete events[type];
+        }
+        return this;
+      }
+
+      // emit removeListener for all listeners on all events
+      if (arguments.length === 0) {
+        var keys = Object.keys(events);
+        var key;
+        for (i = 0; i < keys.length; ++i) {
+          key = keys[i];
+          if (key === 'removeListener') continue;
+          this.removeAllListeners(key);
+        }
+        this.removeAllListeners('removeListener');
+        this._events = Object.create(null);
+        this._eventsCount = 0;
+        return this;
+      }
+
+      listeners = events[type];
+
+      if (typeof listeners === 'function') {
+        this.removeListener(type, listeners);
+      } else if (listeners !== undefined) {
+        // LIFO order
+        for (i = listeners.length - 1; i >= 0; i--) {
+          this.removeListener(type, listeners[i]);
+        }
+      }
+
+      return this;
+    };
+
+function _listeners(target, type, unwrap) {
+  var events = target._events;
+
+  if (events === undefined)
+    return [];
+
+  var evlistener = events[type];
+  if (evlistener === undefined)
+    return [];
+
+  if (typeof evlistener === 'function')
+    return unwrap ? [evlistener.listener || evlistener] : [evlistener];
+
+  return unwrap ?
+    unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
+}
+
+EventEmitter.prototype.listeners = function listeners(type) {
+  return _listeners(this, type, true);
+};
+
+EventEmitter.prototype.rawListeners = function rawListeners(type) {
+  return _listeners(this, type, false);
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  if (typeof emitter.listenerCount === 'function') {
+    return emitter.listenerCount(type);
+  } else {
+    return listenerCount.call(emitter, type);
+  }
+};
+
+EventEmitter.prototype.listenerCount = listenerCount;
+function listenerCount(type) {
+  var events = this._events;
+
+  if (events !== undefined) {
+    var evlistener = events[type];
+
+    if (typeof evlistener === 'function') {
+      return 1;
+    } else if (evlistener !== undefined) {
+      return evlistener.length;
+    }
+  }
+
+  return 0;
+}
+
+EventEmitter.prototype.eventNames = function eventNames() {
+  return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
+};
+
+function arrayClone(arr, n) {
+  var copy = new Array(n);
+  for (var i = 0; i < n; ++i)
+    copy[i] = arr[i];
+  return copy;
+}
+
+function spliceOne(list, index) {
+  for (; index + 1 < list.length; index++)
+    list[index] = list[index + 1];
+  list.pop();
+}
+
+function unwrapListeners(arr) {
+  var ret = new Array(arr.length);
+  for (var i = 0; i < ret.length; ++i) {
+    ret[i] = arr[i].listener || arr[i];
+  }
+  return ret;
+}
+
+function once(emitter, name) {
+  return new Promise(function (resolve, reject) {
+    function errorListener(err) {
+      emitter.removeListener(name, resolver);
+      reject(err);
+    }
+
+    function resolver() {
+      if (typeof emitter.removeListener === 'function') {
+        emitter.removeListener('error', errorListener);
+      }
+      resolve([].slice.call(arguments));
+    };
+
+    eventTargetAgnosticAddListener(emitter, name, resolver, { once: true });
+    if (name !== 'error') {
+      addErrorHandlerIfEventEmitter(emitter, errorListener, { once: true });
+    }
+  });
+}
+
+function addErrorHandlerIfEventEmitter(emitter, handler, flags) {
+  if (typeof emitter.on === 'function') {
+    eventTargetAgnosticAddListener(emitter, 'error', handler, flags);
+  }
+}
+
+function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
+  if (typeof emitter.on === 'function') {
+    if (flags.once) {
+      emitter.once(name, listener);
+    } else {
+      emitter.on(name, listener);
+    }
+  } else if (typeof emitter.addEventListener === 'function') {
+    // EventTarget does not have `error` event semantics like Node
+    // EventEmitters, we do not listen for `error` events here.
+    emitter.addEventListener(name, function wrapListener(arg) {
+      // IE does not have builtin `{ once: true }` support so we
+      // have to do it manually.
+      if (flags.once) {
+        emitter.removeEventListener(name, wrapListener);
+      }
+      listener(arg);
+    });
+  } else {
+    throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
+  }
+}
+
 
 /***/ }),
 
@@ -49946,6 +50258,69 @@ function rectToClientRect(rect) {
 }
 
 
+
+
+/***/ }),
+
+/***/ "./node_modules/nanoid/index.browser.js":
+/*!**********************************************!*\
+  !*** ./node_modules/nanoid/index.browser.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   customAlphabet: () => (/* binding */ customAlphabet),
+/* harmony export */   customRandom: () => (/* binding */ customRandom),
+/* harmony export */   nanoid: () => (/* binding */ nanoid),
+/* harmony export */   random: () => (/* binding */ random),
+/* harmony export */   urlAlphabet: () => (/* reexport safe */ _url_alphabet_index_js__WEBPACK_IMPORTED_MODULE_0__.urlAlphabet)
+/* harmony export */ });
+/* harmony import */ var _url_alphabet_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./url-alphabet/index.js */ "./node_modules/nanoid/url-alphabet/index.js");
+
+
+let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
+let customRandom = (alphabet, defaultSize, getRandom) => {
+  let mask = (2 << (Math.log(alphabet.length - 1) / Math.LN2)) - 1
+  let step = -~((1.6 * mask * defaultSize) / alphabet.length)
+  return (size = defaultSize) => {
+    let id = ''
+    while (true) {
+      let bytes = getRandom(step)
+      let j = step
+      while (j--) {
+        id += alphabet[bytes[j] & mask] || ''
+        if (id.length === size) return id
+      }
+    }
+  }
+}
+let customAlphabet = (alphabet, size = 21) =>
+  customRandom(alphabet, size, random)
+let nanoid = (size = 21) => {
+  let id = ''
+  let bytes = crypto.getRandomValues(new Uint8Array(size))
+  while (size--) {
+    id += _url_alphabet_index_js__WEBPACK_IMPORTED_MODULE_0__.urlAlphabet[bytes[size] & 63]
+  }
+  return id
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/nanoid/url-alphabet/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/nanoid/url-alphabet/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   urlAlphabet: () => (/* binding */ urlAlphabet)
+/* harmony export */ });
+const urlAlphabet =
+  'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
 
 
 /***/ })
