@@ -4407,7 +4407,6 @@ async function loader() {
   return response;
 }
 const sum = data => {
-  // get all numbers
   let numbers = [];
   data.forEach(entry => numbers.push(Number(entry.num)));
   return numbers.reduce((accumulator, current) => accumulator + current, 0);
@@ -4469,7 +4468,9 @@ const sum = data => {
     className: "whitespace"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "clear"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('clear')
+  }, "clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "add"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => navigate('add')
@@ -4487,7 +4488,9 @@ const sum = data => {
     onClick: () => navigate(`edit/` + entry.id)
   }, "edit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "delete"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('delete/' + entry.id)
+  }, "del")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "whitespace"
@@ -4545,35 +4548,326 @@ function ErrorPage() {
 
 /***/ }),
 
-/***/ "./front/src/dialog/Add.tsx":
-/*!**********************************!*\
-  !*** ./front/src/dialog/Add.tsx ***!
-  \**********************************/
+/***/ "./front/src/dialog/Dialog.tsx":
+/*!*************************************!*\
+  !*** ./front/src/dialog/Dialog.tsx ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addAction: () => (/* binding */ addAction),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   editAction: () => (/* binding */ editAction),
-/* harmony export */   loader: () => (/* binding */ loader)
+/* harmony export */   emitter: () => (/* binding */ emitter)
 /* harmony export */ });
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../eventEmitter */ "./front/src/eventEmitter.ts");
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _content_Add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content/Add */ "./front/src/dialog/content/Add.tsx");
+/* harmony import */ var _content_Clear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./content/Clear */ "./front/src/dialog/content/Clear.tsx");
+/* harmony import */ var _content_Edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./content/Edit */ "./front/src/dialog/content/Edit.tsx");
+/* harmony import */ var _content_Delete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./content/Delete */ "./front/src/dialog/content/Delete.tsx");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
 
 
 
-const emitter = new (events__WEBPACK_IMPORTED_MODULE_2___default())();
+
+
+
+const emitter = new (events__WEBPACK_IMPORTED_MODULE_1___default())();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    type
+  } = _ref;
+  const [buttonDisabled, setbuttonDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    function buttonDisabled(boolean) {
+      setbuttonDisabled(boolean);
+    }
+    emitter.on('buttonDisabled', buttonDisabled);
+    return () => {
+      emitter.off('buttonDisabled', buttonDisabled);
+    };
+  });
+  const {
+    refs,
+    context
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useFloating)({
+    open: true
+  });
+  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useClick)(context);
+  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useRole)(context);
+  const {
+    getReferenceProps,
+    getFloatingProps
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useInteractions)([click, role]);
+  const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
+  const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.FloatingOverlay, {
+    className: "Dialog-overlay",
+    lockScroll: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.FloatingFocusManager, {
+    context: context
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
+    className: "Dialog",
+    ref: refs.setFloating,
+    "aria-labelledby": labelId,
+    "aria-describedby": descriptionId
+  }, getFloatingProps()), type === 'add' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Add__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId,
+    buttonDisabled: buttonDisabled
+  }), type === 'edit' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Edit__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId,
+    buttonDisabled: buttonDisabled
+  }), type === 'clear' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Clear__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId,
+    buttonDisabled: buttonDisabled
+  }), type === 'delete' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Delete__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId,
+    buttonDisabled: buttonDisabled
+  })))));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/content/Add.tsx":
+/*!******************************************!*\
+  !*** ./front/src/dialog/content/Add.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addAction: () => (/* binding */ addAction),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
+/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Dialog */ "./front/src/dialog/Dialog.tsx");
+
+
+
+
+async function addAction(_ref) {
+  let {
+    request
+  } = _ref;
+  _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
+  const data = Object.fromEntries(await request.formData());
+  console.log('add action fired');
+  console.log(data);
+  const response = await new Promise(resolve => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('add', data, response => {
+      resolve(response);
+    });
+  });
+  if (response.status === 'failed') {
+    _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
+    return response;
+  }
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref2 => {
+  let {
+    labelId,
+    descriptionId,
+    buttonDisabled
+  } = _ref2;
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    id: labelId
+  }, "Heading element: ADD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    id: descriptionId
+  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
+    method: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "text",
+    name: "name"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "number",
+    min: "0",
+    name: "num"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    type: "submit"
+  }, "Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    onClick: () => navigate('/')
+  }, "Cancel"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/content/Clear.tsx":
+/*!********************************************!*\
+  !*** ./front/src/dialog/content/Clear.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clearAction: () => (/* binding */ clearAction),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
+/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Dialog */ "./front/src/dialog/Dialog.tsx");
+
+
+
+
+async function clearAction(_ref) {
+  let {
+    request
+  } = _ref;
+  _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
+  const response = await new Promise(resolve => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('clear', response => {
+      resolve(response);
+    });
+  });
+  if (response.status === 'failed') {
+    _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
+    return response;
+  }
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref2 => {
+  let {
+    labelId,
+    descriptionId,
+    buttonDisabled
+  } = _ref2;
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
+    method: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "confirm-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header",
+    id: labelId
+  }, "Are you sure you want to clear all and start again?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    type: "submit"
+  }, "Clear"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    onClick: () => navigate('/')
+  }, "Cancel")))), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/content/Delete.tsx":
+/*!*********************************************!*\
+  !*** ./front/src/dialog/content/Delete.tsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   deleteAction: () => (/* binding */ deleteAction)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
+/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Dialog */ "./front/src/dialog/Dialog.tsx");
+
+
+
+
+async function deleteAction(_ref) {
+  let {
+    params
+  } = _ref;
+  _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
+  const response = await new Promise(resolve => {
+    if (!params.id) throw new Error();
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('delete', params.id, response => {
+      resolve(response);
+    });
+  });
+  if (response.status === 'failed') {
+    _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
+    return response;
+  }
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref2 => {
+  let {
+    labelId,
+    descriptionId,
+    buttonDisabled
+  } = _ref2;
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
+    method: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "confirm-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header",
+    id: labelId
+  }, "Are you sure you want to delete this entry?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    type: "submit"
+  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    onClick: () => navigate('/')
+  }, "Cancel")))), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/content/Edit.tsx":
+/*!*******************************************!*\
+  !*** ./front/src/dialog/content/Edit.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   editAction: () => (/* binding */ editAction),
+/* harmony export */   loader: () => (/* binding */ loader)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
+/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Dialog */ "./front/src/dialog/Dialog.tsx");
+
+
+
+
 async function loader(_ref) {
   let {
     params
@@ -4588,31 +4882,12 @@ async function loader(_ref) {
   console.log('loading', response);
   return response;
 }
-async function addAction(_ref2) {
-  let {
-    request
-  } = _ref2;
-  emitter.emit('buttonDisabled', true);
-  const data = Object.fromEntries(await request.formData());
-  console.log('add action fired');
-  console.log(data);
-  const response = await new Promise(resolve => {
-    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('add', data, response => {
-      resolve(response);
-    });
-  });
-  if (response.status === 'failed') {
-    emitter.emit('buttonDisabled', false);
-    return response;
-  }
-  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
-}
-async function editAction(_ref3) {
+async function editAction(_ref2) {
   let {
     params,
     request
-  } = _ref3;
-  emitter.emit('buttonDisabled', true);
+  } = _ref2;
+  _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
   const data = {
     id: params.id,
     ...Object.fromEntries(await request.formData())
@@ -4624,119 +4899,45 @@ async function editAction(_ref3) {
     });
   });
   if (response.status === 'failed') {
-    emitter.emit('buttonDisabled', false);
+    _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
     return response;
   }
   return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  const listElement = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref3 => {
+  let {
+    labelId,
+    descriptionId,
+    buttonDisabled
+  } = _ref3;
   const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
+  const listElement = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-  const [buttonDisabled, setbuttonDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    function buttonDisabled(boolean) {
-      setbuttonDisabled(boolean);
-    }
-    emitter.on('buttonDisabled', buttonDisabled);
-    return () => {
-      emitter.off('buttonDisabled', buttonDisabled);
-    };
-  });
-  const {
-    refs,
-    context
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useFloating)({
-    open: true
-  });
-  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useClick)(context);
-  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useRole)(context);
-  const {
-    getReferenceProps,
-    getFloatingProps
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useInteractions)([click, role]);
-  const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingOverlay, {
-    className: "Dialog-overlay",
-    lockScroll: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingFocusManager, {
-    context: context
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
-    className: "Dialog",
-    ref: refs.setFloating,
-    "aria-labelledby": labelId,
-    "aria-describedby": descriptionId
-  }, getFloatingProps()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     id: labelId
-  }, "Heading element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, "Heading element: EDIT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     id: descriptionId
-  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Form, {
+  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
     method: "post"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
     type: "text",
     name: "name",
-    defaultValue: listElement && listElement.name
+    defaultValue: listElement?.name
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
     type: "number",
     min: "0",
     name: "num",
-    defaultValue: listElement ? listElement.num : '0'
+    defaultValue: listElement?.num
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     type: "submit"
-  }, "Close"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."))))));
+  }, "Save")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: buttonDisabled,
+    onClick: () => navigate('/')
+  }, "Cancel"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
 });
-
-/*
-export default () => {
-  return (
-    <div>
-      <Dialog>
-        <DialogTrigger>Add</DialogTrigger>
-        <DialogContent className='Dialog'>
-          <div className='add-grid'>
-            <DialogHeading className='title'>Add New Food</DialogHeading>
-            <DialogDescription className='step1'>
-              <div className='name'>
-                <div className='label'>Pick a name</div>
-                <div className='input'>
-                  <input type='text'></input>
-                </div>
-              </div>
-              <div className='amount'>
-                <div className='label'>How much will you eat</div>
-                <div className='input'>
-                  <input type='text'></input>
-                </div>
-              </div>
-            </DialogDescription>
-            <DialogDescription className='step2'>
-                <div className='per'>Nutrients per how many grams?</div>
-                <div className='macro'>Energy</div>
-                <div className='macro'>Fat</div>
-                <div className='macro'>... of which saturates</div>
-                <div className='macro'>Carbohydrate</div>
-                <div className='macro'>... of which sugars</div>
-                <div className='macro'>Fibre</div>
-                <div className='macro'>Protein</div>
-                <div className='macro'>Salt</div>
-            </DialogDescription>
-            <DialogDescription className='finish'>
-              <DialogClose>Add</DialogClose>
-              <DialogClose>Cancel</DialogClose>
-            </DialogDescription>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
-  )
-}
-*/
-
-/*
-
-*/
 
 /***/ }),
 
@@ -4756,12 +4957,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const eventEmitter = new (events__WEBPACK_IMPORTED_MODULE_0___default())();
+eventEmitter.on('clear', async callback => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].clear();
+  callback(response);
+});
 eventEmitter.on('add', async (data, callback) => {
   const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].add(data);
   callback(response);
 });
 eventEmitter.on('edit', async (data, callback) => {
   const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].edit(data);
+  callback(response);
+});
+eventEmitter.on('delete', async (id, callback) => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].delete(id);
   callback(response);
 });
 eventEmitter.on('getAll', async callback => {
@@ -4786,7 +4995,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./front/src/App.tsx");
 /* harmony import */ var _ErrorPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorPage */ "./front/src/ErrorPage.tsx");
-/* harmony import */ var _dialog_Add__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Add */ "./front/src/dialog/Add.tsx");
+/* harmony import */ var _dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Dialog */ "./front/src/dialog/Dialog.tsx");
+/* harmony import */ var _dialog_content_Add__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialog/content/Add */ "./front/src/dialog/content/Add.tsx");
+/* harmony import */ var _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialog/content/Edit */ "./front/src/dialog/content/Edit.tsx");
+/* harmony import */ var _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialog/content/Clear */ "./front/src/dialog/content/Clear.tsx");
+/* harmony import */ var _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialog/content/Delete */ "./front/src/dialog/content/Delete.tsx");
+
+
+
+
 
 
 
@@ -4798,13 +5015,29 @@ __webpack_require__.r(__webpack_exports__);
   errorElement: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorPage__WEBPACK_IMPORTED_MODULE_2__["default"], null),
   children: [{
     path: 'add',
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-    action: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.addAction
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "add"
+    }),
+    action: _dialog_content_Add__WEBPACK_IMPORTED_MODULE_4__.addAction
   }, {
     path: 'edit/:id',
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-    loader: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.loader,
-    action: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.editAction
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "edit"
+    }),
+    loader: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__.loader,
+    action: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__.editAction
+  }, {
+    path: 'clear',
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "clear"
+    }),
+    action: _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_6__.clearAction
+  }, {
+    path: 'delete/:id',
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "delete"
+    }),
+    action: _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__.deleteAction
   }]
 }]);
 
@@ -4825,6 +5058,9 @@ __webpack_require__.r(__webpack_exports__);
 class Store {
   constructor() {
     this.list = [];
+  }
+  getIndexById(id) {
+    return this.list.findIndex(entry => entry.id === id);
   }
   async add(data) {
     const response = await new Promise(resolve => {
@@ -4851,14 +5087,37 @@ class Store {
   async edit(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        const targetIndex = this.list.findIndex(entry => entry.id === data.id);
-        this.list[targetIndex] = data;
+        this.list[this.getIndexById(data.id)] = data;
         resolve({
           status: 'ok'
         });
       }, 1000);
     });
     console.log('edited', data.id);
+    return response;
+  }
+  async clear() {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        this.list = [];
+        resolve({
+          status: 'ok'
+        });
+      }, 1000);
+    });
+    console.log('cleared list');
+    return response;
+  }
+  async delete(id) {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        this.list.splice(this.getIndexById(id), 1);
+        resolve({
+          status: 'ok'
+        });
+      }, 1000);
+    });
+    console.log('deleted', id);
     return response;
   }
   async getAll() {

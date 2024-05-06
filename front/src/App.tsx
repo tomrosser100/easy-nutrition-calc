@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Outlet, useLoaderData, useNavigate } from 'react-router-dom'
-import Add from './dialog/Add'
-import Confirm from './dialog/Confirm'
-import Inform from './dialog/Inform'
 import eventEmitter from './eventEmitter'
 import type { ListElement } from './types'
 
@@ -18,7 +15,6 @@ export async function loader() {
 }
 
 const sum = (data: ListElement[]) => {
-  // get all numbers
   let numbers = [] as number[]
   data.forEach((entry) => numbers.push(Number(entry.num)))
   return numbers.reduce((accumulator, current) => accumulator + current, 0)
@@ -73,7 +69,9 @@ export default () => {
               <div className='top'>
                 <div className='title'>Title</div>
                 <div className='whitespace'></div>
-                <div className='clear'>{/*<Confirm />*/}</div>
+                <div className='clear'>
+                  <button onClick={() => navigate('clear')}>clear</button>
+                </div>
                 <div className='add'>
                   <button onClick={() => navigate('add')}>add</button>
                 </div>
@@ -89,7 +87,11 @@ export default () => {
                           edit
                         </button>
                       </div>
-                      <div className='delete'></div>
+                      <div className='delete'>
+                        <button onClick={() => navigate('delete/' + entry.id)}>
+                          del
+                        </button>
+                      </div>
                     </li>
                   ))}
                   <li>

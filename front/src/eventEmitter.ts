@@ -12,13 +12,18 @@ type Events = {
     data: ListElement,
     callback: (response: { status: 'ok' | 'failed' }) => void
   ) => void
+  clear: (callback: (response: { status: 'ok' | 'failed' }) => void) => void
+  delete: (id: string, callback: (response: { status: 'ok' | 'failed' }) => void) => void
   getAll: (callback: (response: ListElement[]) => void) => void
-  fill: (
-    id: string, 
-    callback: (response: ListElement) => void) => void
+  fill: (id: string, callback: (response: ListElement) => void) => void
 }
 
 const eventEmitter = new EventEmitter() as TypedEmitter<Events>
+
+eventEmitter.on('clear', async (callback) => {
+  const response = await store.clear()
+  callback(response)
+})
 
 eventEmitter.on('add', async (data, callback) => {
   const response = await store.add(data)
@@ -27,6 +32,11 @@ eventEmitter.on('add', async (data, callback) => {
 
 eventEmitter.on('edit', async (data, callback) => {
   const response = await store.edit(data)
+  callback(response)
+})
+
+eventEmitter.on('delete', async (id, callback) => {
+  const response = await store.delete(id)
   callback(response)
 })
 

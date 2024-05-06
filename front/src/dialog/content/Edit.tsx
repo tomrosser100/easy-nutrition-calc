@@ -1,0 +1,82 @@
+import React from 'react'
+import { Form, redirect, useActionData, useLoaderData, useNavigate } from 'react-router-dom'
+import eventEmitter from '../../eventEmitter'
+import type { ListElement } from '../../types'
+import { emitter } from '../Dialog'
+
+export async function loader({ params }: { params: { id?: string } }) {
+  console.log('add loader fired')
+
+  const response = await new Promise((resolve) => {
+    if (!params.id) throw new Error()
+
+    eventEmitter.emit('fill', params.id, (response) => {
+      resolve(response)
+    })
+  })
+  console.log('loading', response)
+  return response
+}
+
+export async function editAction({
+  params,
+  request,
+}: {
+  params: { id?: string }
+  request: any
+}) {
+  emitter.emit('buttonDisabled', true)
+  
+  const data = {
+    id: params.id,
+    ...Object.fromEntries(await request.formData())
+  } as ListElement
+
+  const response = (await new Promise((resolve) => {
+    if (!params.id) throw new Error()
+    eventEmitter.emit('edit', data, (response) => {
+      resolve(response)
+    })
+  })) as { status: 'ok' | 'failed' }
+  if (response.status === 'failed') {
+    emitter.emit('buttonDisabled', false)
+    return response
+  }
+  return redirect('/')
+}
+
+export default ({
+  labelId,
+  descriptionId,
+  buttonDisabled,
+}: {
+  labelId: string
+  descriptionId: string
+  buttonDisabled: boolean
+}) => {
+  const error = useActionData() as { status: 'failed' }
+  const listElement = useLoaderData() as ListElement
+  const navigate = useNavigate()
+
+  return (
+    <div>
+      <h2 id={labelId}>Heading element: EDIT</h2>
+      <p id={descriptionId}>Description element</p>
+      <Form method='post'>
+        <label>
+          Enter name:
+          <input disabled={buttonDisabled} type='text' name='name' defaultValue={listElement?.name} />
+        </label>
+        <label>
+          Enter number:
+          <input disabled={buttonDisabled} type='number' min='0' name='num' defaultValue={listElement?.num} />
+        </label>
+        <button disabled={buttonDisabled} type='submit'>
+          Save
+        </button>
+      </Form>
+      <button disabled={buttonDisabled} onClick={() => navigate('/')}>Cancel</button>
+        {error?.status && <p>Something went wrong...</p>}
+    </div>
+  )
+}
