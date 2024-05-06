@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import Add from './dialog/Add'
 import Confirm from './dialog/Confirm'
@@ -17,15 +17,37 @@ export async function loader() {
   return response
 }
 
+const sum = (data: ListElement[]) => {
+  // get all numbers
+  let numbers = [] as number[]
+  data.forEach((entry) => numbers.push(Number(entry.num)))
+  return numbers.reduce((accumulator, current) => accumulator + current, 0)
+}
+
 export default () => {
   const navigate = useNavigate()
   const data = useLoaderData() as ListElement[]
 
-  const sum = (data: ListElement[]) => {
-    // get all numbers
-    let numbers = [] as number[]
-    data.forEach(entry => numbers.push(Number(entry.num)))
-    return numbers.reduce((accumulator, current) => accumulator + current, 0)
+  useEffect(() => {
+    function fill(id: string, callback: (response: ListElement) => void) {
+      return callback(getListElementById(id))
+    }
+
+    eventEmitter.on('fill', fill)
+
+    return () => {
+      eventEmitter.off('fill', fill)
+    }
+  })
+
+  const getListElementById = (id: string) => {
+    let target = {}
+    data.forEach((entry) => {
+      if (entry.id === id) {
+        return (target = entry)
+      }
+    })
+    return target as ListElement
   }
 
   return (
@@ -62,7 +84,11 @@ export default () => {
                     <li key={i}>
                       <div className='name'>{entry.name}</div>
                       <div className='whitespace'></div>
-                      <div className='edit'></div>
+                      <div className='edit'>
+                        <button onClick={() => navigate(`edit/` + entry.id)}>
+                          edit
+                        </button>
+                      </div>
                       <div className='delete'></div>
                     </li>
                   ))}

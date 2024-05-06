@@ -12,7 +12,7 @@ class Store {
   async add(data: ListElement) {
     const response = await new Promise((resolve) => {
       setTimeout(() => {
-        const id = nanoid().slice(7)
+        const id = nanoid().slice(0,7)
         const name = data.name
         const num = data.num
     
@@ -25,6 +25,20 @@ class Store {
     }) as { status: 'ok' | 'failed' }
 
     console.log(this.list)
+    return response
+  }
+
+  async edit(data: ListElement) {
+    const response = await new Promise((resolve) => {
+      setTimeout(() => {
+        const targetIndex = this.list.findIndex((entry => entry.id === data.id))
+        this.list[targetIndex] = data
+
+        resolve({ status: 'ok' })
+      }, 1000)
+    }) as { status: 'ok' | 'failed' }
+
+    console.log('edited', data.id)
     return response
   }
 

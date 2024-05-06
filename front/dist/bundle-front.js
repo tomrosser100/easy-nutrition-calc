@@ -4406,14 +4406,32 @@ async function loader() {
   console.log(response);
   return response;
 }
+const sum = data => {
+  // get all numbers
+  let numbers = [];
+  data.forEach(entry => numbers.push(Number(entry.num)));
+  return numbers.reduce((accumulator, current) => accumulator + current, 0);
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   const data = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLoaderData)();
-  const sum = data => {
-    // get all numbers
-    let numbers = [];
-    data.forEach(entry => numbers.push(Number(entry.num)));
-    return numbers.reduce((accumulator, current) => accumulator + current, 0);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    function fill(id, callback) {
+      return callback(getListElementById(id));
+    }
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].on('fill', fill);
+    return () => {
+      _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].off('fill', fill);
+    };
+  });
+  const getListElementById = id => {
+    let target = {};
+    data.forEach(entry => {
+      if (entry.id === id) {
+        return target = entry;
+      }
+    });
+    return target;
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "app"
@@ -4465,7 +4483,9 @@ async function loader() {
     className: "whitespace"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "edit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate(`edit/` + entry.id)
+  }, "edit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "delete"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
@@ -4533,8 +4553,9 @@ function ErrorPage() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   action: () => (/* binding */ action),
+/* harmony export */   addAction: () => (/* binding */ addAction),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   editAction: () => (/* binding */ editAction),
 /* harmony export */   loader: () => (/* binding */ loader)
 /* harmony export */ });
 /* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
@@ -4553,14 +4574,24 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 const emitter = new (events__WEBPACK_IMPORTED_MODULE_2___default())();
-async function loader() {
+async function loader(_ref) {
+  let {
+    params
+  } = _ref;
   console.log('add loader fired');
-  return null;
+  const response = await new Promise(resolve => {
+    if (!params.id) throw new Error();
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('fill', params.id, response => {
+      resolve(response);
+    });
+  });
+  console.log('loading', response);
+  return response;
 }
-async function action(_ref) {
+async function addAction(_ref2) {
   let {
     request
-  } = _ref;
+  } = _ref2;
   emitter.emit('buttonDisabled', true);
   const data = Object.fromEntries(await request.formData());
   console.log('add action fired');
@@ -4576,7 +4607,30 @@ async function action(_ref) {
   }
   return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
 }
+async function editAction(_ref3) {
+  let {
+    params,
+    request
+  } = _ref3;
+  emitter.emit('buttonDisabled', true);
+  const data = {
+    id: params.id,
+    ...Object.fromEntries(await request.formData())
+  };
+  const response = await new Promise(resolve => {
+    if (!params.id) throw new Error();
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('edit', data, response => {
+      resolve(response);
+    });
+  });
+  if (response.status === 'failed') {
+    emitter.emit('buttonDisabled', false);
+    return response;
+  }
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  const listElement = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
   const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   const [buttonDisabled, setbuttonDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
@@ -4603,9 +4657,7 @@ async function action(_ref) {
   } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.useInteractions)([click, role]);
   const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", _extends({
-    ref: refs.setReference
-  }, getReferenceProps()), "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingOverlay, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingOverlay, {
     className: "Dialog-overlay",
     lockScroll: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.FloatingFocusManager, {
@@ -4623,12 +4675,13 @@ async function action(_ref) {
     method: "post"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "name"
+    name: "name",
+    defaultValue: listElement && listElement.name
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "number",
     min: "0",
     name: "num",
-    placeholder: "0"
+    defaultValue: listElement ? listElement.num : '0'
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     type: "submit"
@@ -4707,6 +4760,10 @@ eventEmitter.on('add', async (data, callback) => {
   const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].add(data);
   callback(response);
 });
+eventEmitter.on('edit', async (data, callback) => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].edit(data);
+  callback(response);
+});
 eventEmitter.on('getAll', async callback => {
   const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].getAll();
   callback(response);
@@ -4742,7 +4799,12 @@ __webpack_require__.r(__webpack_exports__);
   children: [{
     path: 'add',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-    action: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.action
+    action: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.addAction
+  }, {
+    path: 'edit/:id',
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Add__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    loader: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.loader,
+    action: _dialog_Add__WEBPACK_IMPORTED_MODULE_3__.editAction
   }]
 }]);
 
@@ -4767,7 +4829,7 @@ class Store {
   async add(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_0__.nanoid)().slice(7);
+        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_0__.nanoid)().slice(0, 7);
         const name = data.name;
         const num = data.num;
 
@@ -4784,6 +4846,19 @@ class Store {
       }, 1000);
     });
     console.log(this.list);
+    return response;
+  }
+  async edit(data) {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        const targetIndex = this.list.findIndex(entry => entry.id === data.id);
+        this.list[targetIndex] = data;
+        resolve({
+          status: 'ok'
+        });
+      }, 1000);
+    });
+    console.log('edited', data.id);
     return response;
   }
   async getAll() {
