@@ -1,28 +1,43 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import eventEmitter from './eventEmitter'
-import type { ListElement } from './types'
+import type { AgeRange, ListElement, Sex, StoreData } from './types'
+import SelectAgeRange from './components/SelectAgeRange'
+import SelectSex from './components/SelectSex'
 
 export async function loader() {
   console.log('app loader fired')
-  const response = await new Promise((resolve) => {
-    eventEmitter.emit('getAll', (response: ListElement[]) => {
+  const response = (await new Promise((resolve) => {
+    eventEmitter.emit('retrieve', (response: StoreData) => {
       resolve(response)
     })
-  })
-  console.log(response)
+  })) as StoreData
+
   return response
 }
 
-const sum = (data: ListElement[]) => {
+const sum = (data: ListElement[], sex: Sex, ageRange: AgeRange) => {
   let numbers = [] as number[]
+  console.log(data)
   data.forEach((entry) => numbers.push(Number(entry.num)))
-  return numbers.reduce((accumulator, current) => accumulator + current, 0)
+  let value = numbers.reduce((accumulator, current) => accumulator + current, 0)
+
+  if (ageRange === '7') value = value + 1
+  if (ageRange === '11') value = value + 2
+  if (ageRange === '15') value = value + 3
+  if (ageRange === '19') value = value + 4
+  if (ageRange === '65') value = value + 5
+  if (ageRange === '75') value = value + 6
+
+  if (sex === 'male') value = value * 100
+  if (sex === 'female') value = value * 1000
+
+  return value
 }
 
 export default () => {
   const navigate = useNavigate()
-  const data = useLoaderData() as ListElement[]
+  const data = useLoaderData() as StoreData
 
   useEffect(() => {
     function fill(id: string, callback: (response: ListElement) => void) {
@@ -38,7 +53,7 @@ export default () => {
 
   const getListElementById = (id: string) => {
     let target = {}
-    data.forEach((entry) => {
+    data.list.forEach((entry) => {
       if (entry.id === id) {
         return (target = entry)
       }
@@ -50,20 +65,30 @@ export default () => {
     <div id='app'>
       <Outlet />
       <div className='nav-flex'>
-        <div className='about'>{/*<Inform />*/}</div>
+        <div className='about'>
+          <button onClick={() => navigate('about')}>about</button>
+        </div>
       </div>
       <div className='flex-container'>
         <div className='flex-item'>
           <div className='output-grid'>
-            <div className='test-grid'>{sum(data)}</div>
+            <div className='test-grid'>
+              {sum(data.list, data.sex, data.ageRange)}
+            </div>
           </div>
         </div>
         <div className='flex-item'>
           <div className='input-grid'>
             <div className='calibrate-grid'>
-              <div className='sex'></div>
-              <div className='age'></div>
-              <div className='help'>{/*<Inform />*/}</div>
+              <div className='sex'>
+                <SelectSex />
+              </div>
+              <div className='age'>
+                <SelectAgeRange />
+              </div>
+              <div className='help'>
+                <button onClick={() => navigate('info')}>?</button>
+              </div>
             </div>
             <div className='foods-grid'>
               <div className='top'>
@@ -78,7 +103,7 @@ export default () => {
               </div>
               <div className='list'>
                 <ul>
-                  {data.map((entry, i) => (
+                  {data.list.map((entry, i) => (
                     <li key={i}>
                       <div className='name'>{entry.name}</div>
                       <div className='whitespace'></div>

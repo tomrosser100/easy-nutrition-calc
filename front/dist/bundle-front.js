@@ -4391,29 +4391,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventEmitter */ "./front/src/eventEmitter.ts");
+/* harmony import */ var _components_SelectAgeRange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SelectAgeRange */ "./front/src/components/SelectAgeRange.tsx");
+/* harmony import */ var _components_SelectSex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SelectSex */ "./front/src/components/SelectSex.tsx");
+
+
 
 
 
 async function loader() {
   console.log('app loader fired');
   const response = await new Promise(resolve => {
-    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('getAll', response => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('retrieve', response => {
       resolve(response);
     });
   });
-  console.log(response);
   return response;
 }
-const sum = data => {
+const sum = (data, sex, ageRange) => {
   let numbers = [];
+  console.log(data);
   data.forEach(entry => numbers.push(Number(entry.num)));
-  return numbers.reduce((accumulator, current) => accumulator + current, 0);
+  let value = numbers.reduce((accumulator, current) => accumulator + current, 0);
+  if (ageRange === '7') value = value + 1;
+  if (ageRange === '11') value = value + 2;
+  if (ageRange === '15') value = value + 3;
+  if (ageRange === '19') value = value + 4;
+  if (ageRange === '65') value = value + 5;
+  if (ageRange === '75') value = value + 6;
+  if (sex === 'male') value = value * 100;
+  if (sex === 'female') value = value * 1000;
+  return value;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-  const data = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLoaderData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  const data = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     function fill(id, callback) {
       return callback(getListElementById(id));
@@ -4425,7 +4438,7 @@ const sum = data => {
   });
   const getListElementById = id => {
     let target = {};
-    data.forEach(entry => {
+    data.list.forEach(entry => {
       if (entry.id === id) {
         return target = entry;
       }
@@ -4434,11 +4447,13 @@ const sum = data => {
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "app"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "nav-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "about"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('about')
+  }, "about"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
@@ -4446,7 +4461,7 @@ const sum = data => {
     className: "output-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "test-grid"
-  }, sum(data)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, sum(data.list, data.sex, data.ageRange)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "input-grid"
@@ -4454,11 +4469,13 @@ const sum = data => {
     className: "calibrate-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "sex"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_SelectSex__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "age"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_SelectAgeRange__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "help"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('info')
+  }, "?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "foods-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "top"
@@ -4476,7 +4493,7 @@ const sum = data => {
     onClick: () => navigate('add')
   }, "add"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, data.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, data.list.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: i
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
@@ -4548,6 +4565,132 @@ function ErrorPage() {
 
 /***/ }),
 
+/***/ "./front/src/components/SelectAgeRange.tsx":
+/*!*************************************************!*\
+  !*** ./front/src/components/SelectAgeRange.tsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../eventEmitter */ "./front/src/eventEmitter.ts");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  const [selectDisabled, setSelectDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  const handleChange = async e => {
+    setSelectDisabled(true);
+    const ageRange = e.target.value;
+    const response = await new Promise(resolve => {
+      _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('updateAgeRange', ageRange, response => {
+        resolve(response);
+      });
+    });
+    setSelectDisabled(false);
+    return navigate('/');
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "ageRange"
+  }, "age range"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    disabled: selectDisabled,
+    name: "ageRange",
+    id: "ageRange",
+    defaultValue: "19",
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "7"
+  }, "7-10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "11"
+  }, "11-14"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "15"
+  }, "15-18"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "19"
+  }, "19-64"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "65"
+  }, "65-74"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "75"
+  }, "75+")));
+});
+
+/***/ }),
+
+/***/ "./front/src/components/SelectSex.tsx":
+/*!********************************************!*\
+  !*** ./front/src/components/SelectSex.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../eventEmitter */ "./front/src/eventEmitter.ts");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  const [radioDisabled, setRadioDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  const handleChange = async e => {
+    setRadioDisabled(true);
+    const sex = e.target.value;
+    if (sex !== 'male' && sex !== 'female') throw new Error();
+    const response = await new Promise(resolve => {
+      _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('updateSex', sex, response => {
+        resolve(response);
+      });
+    });
+    setRadioDisabled(false);
+    return navigate('/');
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "male"
+  }, "male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: radioDisabled,
+    type: "radio",
+    id: "male",
+    name: "sex",
+    value: "male",
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "female"
+  }, "female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: radioDisabled,
+    type: "radio",
+    id: "female",
+    name: "sex",
+    value: "female",
+    onChange: handleChange,
+    defaultChecked: true
+  }));
+});
+
+/***/ }),
+
+/***/ "./front/src/constants.ts":
+/*!********************************!*\
+  !*** ./front/src/constants.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   delay: () => (/* binding */ delay)
+/* harmony export */ });
+const delay = 100;
+
+/***/ }),
+
 /***/ "./front/src/dialog/Dialog.tsx":
 /*!*************************************!*\
   !*** ./front/src/dialog/Dialog.tsx ***!
@@ -4561,14 +4704,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _content_Add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content/Add */ "./front/src/dialog/content/Add.tsx");
 /* harmony import */ var _content_Clear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./content/Clear */ "./front/src/dialog/content/Clear.tsx");
 /* harmony import */ var _content_Edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./content/Edit */ "./front/src/dialog/content/Edit.tsx");
 /* harmony import */ var _content_Delete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./content/Delete */ "./front/src/dialog/content/Delete.tsx");
+/* harmony import */ var _content_About__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./content/About */ "./front/src/dialog/content/About.tsx");
+/* harmony import */ var _content_Info__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./content/Info */ "./front/src/dialog/content/Info.tsx");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 
 
@@ -4595,21 +4742,21 @@ const emitter = new (events__WEBPACK_IMPORTED_MODULE_1___default())();
   const {
     refs,
     context
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useFloating)({
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useFloating)({
     open: true
   });
-  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useClick)(context);
-  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useRole)(context);
+  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useClick)(context);
+  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useRole)(context);
   const {
     getReferenceProps,
     getFloatingProps
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.useInteractions)([click, role]);
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useInteractions)([click, role]);
   const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.FloatingOverlay, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.FloatingOverlay, {
     className: "Dialog-overlay",
     lockScroll: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_6__.FloatingFocusManager, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.FloatingFocusManager, {
     context: context
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
     className: "Dialog",
@@ -4632,7 +4779,45 @@ const emitter = new (events__WEBPACK_IMPORTED_MODULE_1___default())();
     labelId: labelId,
     descriptionId: descriptionId,
     buttonDisabled: buttonDisabled
+  }), type === 'about' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_About__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId
+  }), type === 'info' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Info__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId
   })))));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/content/About.tsx":
+/*!********************************************!*\
+  !*** ./front/src/dialog/content/About.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    labelId,
+    descriptionId
+  } = _ref;
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    id: labelId
+  }, "Heading element: About my app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    id: descriptionId
+  }, "Hi and welcome to my app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('/')
+  }, "Return"));
 });
 
 /***/ }),
@@ -4941,6 +5126,38 @@ async function editAction(_ref2) {
 
 /***/ }),
 
+/***/ "./front/src/dialog/content/Info.tsx":
+/*!*******************************************!*\
+  !*** ./front/src/dialog/content/Info.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    labelId,
+    descriptionId
+  } = _ref;
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    id: labelId
+  }, "Heading element: Where did I get this data?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    id: descriptionId
+  }, "Here's where I got the reference data from"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('/')
+  }, "Return"));
+});
+
+/***/ }),
+
 /***/ "./front/src/eventEmitter.ts":
 /*!***********************************!*\
   !*** ./front/src/eventEmitter.ts ***!
@@ -4973,8 +5190,16 @@ eventEmitter.on('delete', async (id, callback) => {
   const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].delete(id);
   callback(response);
 });
-eventEmitter.on('getAll', async callback => {
-  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].getAll();
+eventEmitter.on('retrieve', async callback => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].retrieve();
+  callback(response);
+});
+eventEmitter.on('updateSex', async (sex, callback) => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].updateSex(sex);
+  callback(response);
+});
+eventEmitter.on('updateAgeRange', async (ageRange, callback) => {
+  const response = await _store__WEBPACK_IMPORTED_MODULE_1__["default"].updateAgeRange(ageRange);
   callback(response);
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (eventEmitter);
@@ -5038,6 +5263,16 @@ __webpack_require__.r(__webpack_exports__);
       type: "delete"
     }),
     action: _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__.deleteAction
+  }, {
+    path: 'about',
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "about"
+    })
+  }, {
+    path: 'info',
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "info"
+    })
   }]
 }]);
 
@@ -5053,11 +5288,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./front/src/constants.ts");
+
 
 class Store {
   constructor() {
     this.list = [];
+    this.sex = 'female';
+    this.ageRange = '19';
   }
   getIndexById(id) {
     return this.list.findIndex(entry => entry.id === id);
@@ -5065,7 +5304,7 @@ class Store {
   async add(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_0__.nanoid)().slice(0, 7);
+        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_1__.nanoid)().slice(0, 7);
         const name = data.name;
         const num = data.num;
 
@@ -5079,7 +5318,7 @@ class Store {
         resolve({
           status: 'ok'
         });
-      }, 1000);
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
     });
     console.log(this.list);
     return response;
@@ -5091,7 +5330,7 @@ class Store {
         resolve({
           status: 'ok'
         });
-      }, 1000);
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
     });
     console.log('edited', data.id);
     return response;
@@ -5103,7 +5342,7 @@ class Store {
         resolve({
           status: 'ok'
         });
-      }, 1000);
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
     });
     console.log('cleared list');
     return response;
@@ -5115,16 +5354,43 @@ class Store {
         resolve({
           status: 'ok'
         });
-      }, 1000);
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
     });
     console.log('deleted', id);
     return response;
   }
-  async getAll() {
+  async retrieve() {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        resolve(this.list);
-      }, 1000);
+        const storeData = {
+          sex: this.sex,
+          ageRange: this.ageRange,
+          list: this.list
+        };
+        resolve(storeData);
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
+    });
+    return response;
+  }
+  async updateSex(sex) {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        this.sex = sex;
+        resolve({
+          status: 'ok'
+        });
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
+    });
+    return response;
+  }
+  async updateAgeRange(ageRange) {
+    const response = await new Promise(resolve => {
+      setTimeout(() => {
+        this.ageRange = ageRange;
+        resolve({
+          status: 'ok'
+        });
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
     });
     return response;
   }

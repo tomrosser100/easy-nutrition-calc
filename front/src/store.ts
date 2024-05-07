@@ -1,11 +1,16 @@
 import { nanoid } from 'nanoid'
-import type { ListElement } from './types'
+import type { AgeRange, ListElement, Sex, StoreData } from './types'
+import { delay } from './constants'
 
 class Store {
-  list: ListElement[]
+  private list: ListElement[]
+  private sex: Sex
+  private ageRange: AgeRange
 
   constructor() {
     this.list = []
+    this.sex = 'female'
+    this.ageRange = '19'
   }
 
   getIndexById(id: string) {
@@ -24,7 +29,7 @@ class Store {
         this.list.push({ id, name, num })
 
         resolve({ status: 'ok' })
-      }, 1000)
+      }, delay)
     })) as { status: 'ok' | 'failed' }
 
     console.log(this.list)
@@ -37,7 +42,7 @@ class Store {
         this.list[this.getIndexById(data.id)] = data
 
         resolve({ status: 'ok' })
-      }, 1000)
+      }, delay)
     })) as { status: 'ok' | 'failed' }
 
     console.log('edited', data.id)
@@ -50,7 +55,7 @@ class Store {
         this.list = []
 
         resolve({ status: 'ok' })
-      }, 1000)
+      }, delay)
     })) as { status: 'ok' | 'failed' }
 
     console.log('cleared list')
@@ -63,19 +68,47 @@ class Store {
         this.list.splice(this.getIndexById(id), 1)
 
         resolve({ status: 'ok' })
-      }, 1000)
+      }, delay)
     })) as { status: 'ok' | 'failed' }
 
     console.log('deleted', id)
     return response
   }
 
-  async getAll() {
+  async retrieve() {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        resolve(this.list)
-      }, 1000)
-    })) as ListElement[]
+        const storeData = {
+          sex: this.sex,
+          ageRange: this.ageRange,
+          list: this.list
+        }
+        resolve(storeData)
+      }, delay)
+    })) as StoreData
+
+    return response
+  }
+
+  async updateSex(sex: Sex) {
+    const response = await new Promise((resolve) => {
+      setTimeout(() => {
+        this.sex = sex
+        resolve({ status: 'ok' })
+      }, delay)
+    }) as { status: 'ok' | 'failed' }
+
+    return response
+  }
+
+  async updateAgeRange(ageRange: AgeRange) {
+    const response = await new Promise((resolve) => {
+      setTimeout(() => {
+        this.ageRange = ageRange
+
+        resolve({ status: 'ok' })
+      }, delay)
+    }) as { status: 'ok' | 'failed' }
 
     return response
   }

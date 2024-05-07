@@ -1,7 +1,6 @@
 import React from 'react'
 import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
 import eventEmitter from '../../eventEmitter'
-import type { ListElement } from '../../types'
 import { emitter } from '../Dialog'
 
 export async function clearAction({ request }: { request: any }) {

@@ -14,13 +14,19 @@ import Add from './content/Add'
 import Clear from './content/Clear'
 import Edit from './content/Edit'
 import Delete from './content/Delete'
+import About from './content/About'
+import Info from './content/Info'
 
 type Events = {
   buttonDisabled: (bool: boolean) => void
 }
 export const emitter = new EventEmitter() as TypedEventEmitter<Events>
 
-export default ({ type }: { type: 'add' | 'edit' | 'clear' | 'delete' }) => {
+export default ({
+  type,
+}: {
+  type: 'add' | 'edit' | 'clear' | 'delete' | 'about' | 'info'
+}) => {
   const [buttonDisabled, setbuttonDisabled] = useState(false)
 
   useEffect(() => {
@@ -84,6 +90,12 @@ export default ({ type }: { type: 'add' | 'edit' | 'clear' | 'delete' }) => {
                 descriptionId={descriptionId}
                 buttonDisabled={buttonDisabled}
               />
+            )}
+            {type === 'about' && (
+              <About labelId={labelId} descriptionId={descriptionId} />
+            )}
+            {type === 'info' && (
+              <Info labelId={labelId} descriptionId={descriptionId} />
             )}
           </div>
         </FloatingFocusManager>

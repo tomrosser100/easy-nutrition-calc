@@ -34,6 +34,14 @@ export default [
         path: 'delete/:id',
         element: <Dialog type='delete' />,
         action: deleteAction,
+      },
+      {
+        path: 'about',
+        element: <Dialog type='about' />,
+      },
+      {
+        path: 'info',
+        element: <Dialog type='info' />
       }
     ],
   },

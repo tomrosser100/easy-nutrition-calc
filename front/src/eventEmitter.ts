@@ -1,6 +1,6 @@
 import EventEmitter from 'events'
 import type TypedEmitter from 'typed-emitter'
-import type { ListElement } from './types'
+import type { AgeRange, ListElement, Sex, StoreData } from './types'
 import store from './store'
 
 type Events = {
@@ -13,9 +13,20 @@ type Events = {
     callback: (response: { status: 'ok' | 'failed' }) => void
   ) => void
   clear: (callback: (response: { status: 'ok' | 'failed' }) => void) => void
-  delete: (id: string, callback: (response: { status: 'ok' | 'failed' }) => void) => void
-  getAll: (callback: (response: ListElement[]) => void) => void
+  delete: (
+    id: string,
+    callback: (response: { status: 'ok' | 'failed' }) => void
+  ) => void
+  retrieve: (callback: (response: StoreData) => void) => void
   fill: (id: string, callback: (response: ListElement) => void) => void
+  updateSex: (
+    sex: Sex,
+    callback: (response: { status: 'ok' | 'failed' }) => void
+  ) => void
+  updateAgeRange: (
+    ageRange: AgeRange,
+    callback: (response: { status: 'ok' | 'failed' }) => void
+  ) => void
 }
 
 const eventEmitter = new EventEmitter() as TypedEmitter<Events>
@@ -40,8 +51,18 @@ eventEmitter.on('delete', async (id, callback) => {
   callback(response)
 })
 
-eventEmitter.on('getAll', async (callback) => {
-  const response = await store.getAll()
+eventEmitter.on('retrieve', async (callback) => {
+  const response = await store.retrieve()
+  callback(response)
+})
+
+eventEmitter.on('updateSex', async (sex, callback) => {
+  const response = await store.updateSex(sex)
+  callback(response)
+})
+
+eventEmitter.on('updateAgeRange', async (ageRange, callback) => {
+  const response = await store.updateAgeRange(ageRange)
   callback(response)
 })
 
