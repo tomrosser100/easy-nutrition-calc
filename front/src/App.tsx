@@ -38,6 +38,22 @@ const sum = (data: ListElement[], sex: Sex, ageRange: AgeRange) => {
 export default () => {
   const navigate = useNavigate()
   const data = useLoaderData() as StoreData
+  const displayData = [
+    {
+      nutrient: 'Carbohydrate',
+      advice: {
+        operator: 'not more than',
+        grams: 30,
+      },
+      user: {
+        grams: 16,
+        contributors: [
+          { name: 'mushroom', grams: 0.7 },
+          { name: 'spoonfork', grams: 0.5 },
+        ],
+      },
+    },
+  ]
 
   useEffect(() => {
     function fill(id: string, callback: (response: ListElement) => void) {
@@ -72,8 +88,27 @@ export default () => {
       <div className='flex-container'>
         <div className='flex-item'>
           <div className='output-grid'>
-            <div className='test-grid'>
-              {sum(data.list, data.sex, data.ageRange)}
+            <div className='table-grid'>
+              <ul>
+                <li>
+                  <div className='nutrient'>nutrient</div>
+                  <div className='advice'>advice</div>
+                  <div className='you'>you</div>
+                </li>
+                {displayData.map((entry, i) => (
+                  <li>
+                    <div className='nutrient'>{entry.nutrient}</div>
+                    <div className='advice'>
+                      {entry.advice.operator}
+                      {entry.advice.grams}
+                    </div>
+                    <div className='you'>
+                      {entry.user.grams}
+                      <button onClick={() => navigate(entry.nutrient.toLowerCase())}>More</button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

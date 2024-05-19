@@ -14,3 +14,20 @@ export interface StoreData {
   list: ListElement[]
 }
 
+export type Nutrient = 'fat' | 'carbohydrate' | 'sugar'
+export type Operator = 'at least' | 'at most' | 'around'
+
+export type DisplayData = {
+  nutrient: Nutrient,
+  advice: {
+    operator: Operator,
+    grams: number
+  },
+  user: {
+    grams: number
+    orderedContributors: {
+      name: string
+      grams: number
+    }[]
+  }
+}[]

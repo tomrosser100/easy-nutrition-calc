@@ -4427,6 +4427,23 @@ const sum = (data, sex, ageRange) => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   const data = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
+  const displayData = [{
+    nutrient: 'Carbohydrate',
+    advice: {
+      operator: 'not more than',
+      grams: 30
+    },
+    user: {
+      grams: 16,
+      contributors: [{
+        name: 'mushroom',
+        grams: 0.7
+      }, {
+        name: 'spoonfork',
+        grams: 0.5
+      }]
+    }
+  }];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     function fill(id, callback) {
       return callback(getListElementById(id));
@@ -4460,8 +4477,22 @@ const sum = (data, sex, ageRange) => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "output-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "test-grid"
-  }, sum(data.list, data.sex, data.ageRange)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "table-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "nutrient"
+  }, "nutrient"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "advice"
+  }, "advice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "you"
+  }, "you")), displayData.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "nutrient"
+  }, entry.nutrient), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "advice"
+  }, entry.advice.operator, entry.advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "you"
+  }, entry.user.grams, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate(entry.nutrient.toLowerCase())
+  }, "More")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "input-grid"
@@ -5605,14 +5636,14 @@ body {
   max-width: 1000px;
   min-width: 350px;
   height: 60px;
-  background-color: rgb(0, 128, 0, .5);
+  background-color: rgb(0, 128, 0, 0.5);
   display: flex;
   justify-content: flex-end;
 }
 
 .about {
   width: 125px;
-  background-color: rgb(0, 0, 255, .1)
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .bot-flex {
@@ -5621,7 +5652,7 @@ body {
   max-width: 1000px;
   width: 100%;
   height: 60px;
-  background-color: rgb(0, 128, 0, .5)
+  background-color: rgb(0, 128, 0, 0.5);
 }
 
 .flex-container {
@@ -5633,7 +5664,7 @@ body {
   min-width: 350px;
   height: 100%;
   align-items: center;
-  background-color: rgb(0, 0, 255, .2)
+  background-color: rgb(0, 0, 255, 0.2);
 }
 
 .flex-item {
@@ -5642,7 +5673,7 @@ body {
   max-height: 500px;
   flex: 1 1 0px;
   align-self: stretch;
-  background-color: rgb(0, 0, 255, .1)
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .output-grid {
@@ -5651,15 +5682,46 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "test-grid";
-  background-color: rgb(0, 0, 255, .1);
+  grid-template-areas: 'table-grid';
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
-.output-grid .test-grid {
-  grid-area: 'test-grid';
-  background-color: rgb(0, 0, 255, .1);
-  height: 100px;
+.output-grid ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
+}
+
+.output-grid .table-grid li {
+  grid-area: 'table-grid';
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "nutrient advice you";
+  background-color: rgb(0, 0, 255, 0.1);
+  height: 100%;
+  width: 100%;
+}
+
+li .nutrient {
+  grid-area: 'nutrient';
+  background-color: rgb(0, 0, 255, 0.1);
+
+}
+
+li .advice {
+  grid-area: 'advice';
+  background-color: rgb(0, 0, 255, 0.1);
+
+}
+
+li .you {
+  grid-area: 'you';  
+  background-color: rgb(0, 0, 255, 0.1);
 
 }
 
@@ -5669,14 +5731,15 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 5fr;
-  grid-template-areas: "calibrate"
-  "foods";
-  background-color: rgb(0, 0, 255, .1);
+  grid-template-areas:
+    'calibrate'
+    'foods';
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .calibrate-grid {
   grid-area: 'calibrate';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   display: grid;
@@ -5684,33 +5747,33 @@ body {
   min-height: 0px;
   grid-template-columns: 2fr 2fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "sex" "age" "help";
+  grid-template-areas: 'sex' 'age' 'help';
 }
 
 .sex {
   grid-area: 'sex';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
 }
 
 .age {
   grid-area: 'age';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
 }
 
 .help {
   grid-area: 'help';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
 }
 
 .foods-grid {
   grid-area: 'foods';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   display: grid;
@@ -5718,43 +5781,43 @@ body {
   min-height: 0px;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
-  grid-template-areas: "top" "list";
+  grid-template-areas: 'top' 'list';
 }
 
 .top {
   grid-area: 'top';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "title whitespace clear add";
+  grid-template-areas: 'title whitespace clear add';
 }
 
 .top .title {
   grid-area: 'title';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .top .whitespace {
   grid-area: 'whitespace';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .top .clear {
   grid-area: 'clear';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .top .add {
   grid-area: 'add';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .list {
   grid-area: 'list';
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -5769,36 +5832,33 @@ body {
 
 .list li {
   height: 150px;
-  background-color: rgb(0, 0, 255, .1);
+  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "name whitespace edit delete"; 
+  grid-template-areas: 'name whitespace edit delete';
 }
 
 .list li .name {
-  grid-area: "name";
-  background-color: rgb(0, 0, 255, .1);
-
+  grid-area: 'name';
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .list li .whitespace {
-  grid-area: "whitespace";
-  background-color: rgb(0, 0, 255, .1);
-
+  grid-area: 'whitespace';
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .list li .edit {
-  grid-area: "edit";
-  background-color: rgb(0, 0, 255, .1);
-
+  grid-area: 'edit';
+  background-color: rgb(0, 0, 255, 0.1);
 }
 
 .list li .delete {
-  grid-area: "delete";
-  background-color: rgb(0, 0, 255, .1);
-
-}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ;AACF;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB;AACF;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB;AACF;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,uBAAuB;EACvB,gCAAgC;EAChC,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,aAAa;EACb,WAAW;;AAEb;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;SACO;EACP,oCAAoC;AACtC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,2BAA2B;EAC3B,iCAAiC;AACnC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,kBAAkB;EAClB,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,oCAAoC;AACtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;EACpC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,aAAa;EACb,oCAAoC;EACpC,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,kDAAkD;AACpD;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,uBAAuB;EACvB,oCAAoC;;AAEtC;;AAEA;EACE,iBAAiB;EACjB,oCAAoC;;AAEtC;;AAEA;EACE,mBAAmB;EACnB,oCAAoC;;AAEtC","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, .5)\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, .2)\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, .1)\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"test-grid\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.output-grid .test-grid {\r\n  grid-area: 'test-grid';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100px;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas: \"calibrate\"\r\n  \"foods\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"sex\" \"age\" \"help\";\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: \"top\" \"list\";\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"title whitespace clear add\";\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, .1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, .1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, .1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"name whitespace edit delete\"; \r\n}\r\n\r\n.list li .name {\r\n  grid-area: \"name\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: \"whitespace\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: \"edit\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: \"delete\";\r\n  background-color: rgb(0, 0, 255, .1);\r\n\r\n}"],"sourceRoot":""}]);
+  grid-area: 'delete';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,qCAAqC;EACrC,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ,qCAAqC;AACvC;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,YAAY;EACZ,qCAAqC;AACvC;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,uBAAuB;EACvB,iCAAiC;EACjC,qCAAqC;AACvC;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,uBAAuB;EACvB,aAAa;EACb,kCAAkC;EAClC,uBAAuB;EACvB,0CAA0C;EAC1C,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,qBAAqB;EACrB,qCAAqC;;AAEvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;;AAEvC;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;;AAEvC;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B;;WAES;EACT,qCAAqC;AACvC;;AAEA;EACE,sBAAsB;EACtB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,kCAAkC;EAClC,uBAAuB;EACvB,uCAAuC;AACzC;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,2BAA2B;EAC3B,iCAAiC;AACnC;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,uBAAuB;EACvB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;AACvC;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,aAAa;EACb,qCAAqC;EACrC,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,kDAAkD;AACpD;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;AACvC;;AAEA;EACE,uBAAuB;EACvB,qCAAqC;AACvC;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, 0.2);\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'table-grid';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.output-grid .table-grid li {\r\n  grid-area: 'table-grid';\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"nutrient advice you\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\nli .nutrient {\r\n  grid-area: 'nutrient';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .advice {\r\n  grid-area: 'advice';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .you {\r\n  grid-area: 'you';  \r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas:\r\n    'calibrate'\r\n    'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'sex' 'age' 'help';\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: 'top' 'list';\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'title whitespace clear add';\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'name whitespace edit delete';\r\n}\r\n\r\n.list li .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: 'edit';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
