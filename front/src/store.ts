@@ -1,16 +1,37 @@
 import { nanoid } from 'nanoid'
-import type { AgeRange, ListElement, Sex, StoreData } from './types'
-import { delay } from './constants'
+import type { AgeRange, ListElement, Nutrient, Sex, StoreData, TargetedAdvice } from './types'
+import { delay, nutrients } from './constants'
+import Advisor from './Advisor'
 
 class Store {
+  private advisor: Advisor
   private list: ListElement[]
   private sex: Sex
   private ageRange: AgeRange
 
   constructor() {
+    this.advisor = new Advisor()
     this.list = []
     this.sex = 'female'
     this.ageRange = '19'
+  }
+
+  getAdvice() {
+    let data = [] as TargetedAdvice[]
+
+    nutrients.forEach(nutrient => {
+      data.push(this.advisor.get(nutrient, this.sex, this.ageRange))
+    })
+
+    return data
+  }
+
+  getTotals() {
+    // for every nutrient, gives user inputted total
+  }
+
+  getTopContributors(nutrient: Nutrient) {
+    // for given nutrient, gives ordered list of top contributors with respective grams
   }
 
   getIndexById(id: string) {

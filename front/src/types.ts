@@ -15,14 +15,25 @@ export interface StoreData {
 }
 
 export type Nutrient = 'fat' | 'carbohydrate' | 'sugar'
+
+export interface GeneralAdvice {
+  operator: Operator
+  grams: number[][]
+}
+export interface TargetedAdvice {
+  nutrient: Nutrient
+  operator: Operator
+  grams: number
+}
+
 export type Operator = 'at least' | 'at most' | 'around'
 
 export type DisplayData = {
-  nutrient: Nutrient,
+  nutrient: Nutrient
   advice: {
-    operator: Operator,
+    operator: Operator
     grams: number
-  },
+  }
   user: {
     grams: number
     orderedContributors: {
