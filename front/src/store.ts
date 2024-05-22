@@ -27,7 +27,7 @@ class Store {
   }
 
   getTotals() {
-    // for every nutrient, gives user inputted total
+    // for given nutrient, get total from list
   }
 
   getTopContributors(nutrient: Nutrient) {

@@ -26,6 +26,10 @@ export interface TargetedAdvice {
   grams: number
 }
 
+export interface UserTotals {
+  [index: string]: number
+}
+
 export type Operator = 'at least' | 'at most' | 'around'
 
 export type DisplayData = {

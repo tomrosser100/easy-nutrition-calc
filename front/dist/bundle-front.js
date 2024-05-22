@@ -4378,6 +4378,77 @@ function persistAppliedTransitions(_window, transitions) {
 
 /***/ }),
 
+/***/ "./front/src/Advisor.tsx":
+/*!*******************************!*\
+  !*** ./front/src/Advisor.tsx ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Advisor)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./front/src/constants.ts");
+
+class Advisor {
+  constructor() {
+    this.advice = {
+      fat: _constants__WEBPACK_IMPORTED_MODULE_0__.fat,
+      carbohydrate: _constants__WEBPACK_IMPORTED_MODULE_0__.fat,
+      sugar: _constants__WEBPACK_IMPORTED_MODULE_0__.fat
+    };
+  }
+  sexToIndex(sex) {
+    let index;
+    switch (sex) {
+      case 'male':
+        index = 0;
+        break;
+      case 'female':
+        index = 1;
+        break;
+    }
+    return index;
+  }
+  ageRangeToIndex(ageRange) {
+    let index;
+    switch (ageRange) {
+      case '7':
+        index = 0;
+        break;
+      case '11':
+        index = 1;
+        break;
+      case '15':
+        index = 2;
+        break;
+      case '19':
+        index = 3;
+        break;
+      case '65':
+        index = 4;
+        break;
+      case '75':
+        index = 5;
+        break;
+    }
+    return index;
+  }
+  get(nutrient, sex, ageRange) {
+    const y = this.sexToIndex(sex);
+    const x = this.ageRangeToIndex(ageRange);
+    const operator = this.advice[nutrient].operator;
+    const grams = this.advice[nutrient].grams[y][x];
+    return {
+      nutrient,
+      operator,
+      grams
+    };
+  }
+}
+
+/***/ }),
+
 /***/ "./front/src/App.tsx":
 /*!***************************!*\
   !*** ./front/src/App.tsx ***!
@@ -4716,9 +4787,29 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   delay: () => (/* binding */ delay)
+/* harmony export */   delay: () => (/* binding */ delay),
+/* harmony export */   fat: () => (/* binding */ fat),
+/* harmony export */   nutrients: () => (/* binding */ nutrients)
 /* harmony export */ });
 const delay = 100;
+const nutrients = ['fat'];
+
+// y axis
+// [0] array is male
+// [1] array is female
+
+// x axis
+// [0] = 7-10
+// [1] = 11-14
+// [2] = 15-18
+// [3] = 19-64
+// [4] = 65-74
+// [5] = 75
+
+const fat = {
+  operator: 'at most',
+  grams: [[71, 97, 97, 97, 91, 89], [66, 78, 78, 78, 74, 74]]
+};
 
 /***/ }),
 
@@ -5319,15 +5410,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./front/src/constants.ts");
+/* harmony import */ var _Advisor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Advisor */ "./front/src/Advisor.tsx");
+
 
 
 class Store {
   constructor() {
+    this.advisor = new _Advisor__WEBPACK_IMPORTED_MODULE_1__["default"]();
     this.list = [];
     this.sex = 'female';
     this.ageRange = '19';
+  }
+  getAdvice() {
+    let data = [];
+    _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+      data.push(this.advisor.get(nutrient, this.sex, this.ageRange));
+    });
+    return data;
+  }
+  getTotals() {
+    // for given nutrient, get total from list
+  }
+  getTopContributors(nutrient) {
+    // for given nutrient, gives ordered list of top contributors with respective grams
   }
   getIndexById(id) {
     return this.list.findIndex(entry => entry.id === id);
@@ -5335,7 +5442,7 @@ class Store {
   async add(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_1__.nanoid)().slice(0, 7);
+        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_2__.nanoid)().slice(0, 7);
         const name = data.name;
         const num = data.num;
 
