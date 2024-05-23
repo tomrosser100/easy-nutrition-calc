@@ -4378,77 +4378,6 @@ function persistAppliedTransitions(_window, transitions) {
 
 /***/ }),
 
-/***/ "./front/src/Advisor.tsx":
-/*!*******************************!*\
-  !*** ./front/src/Advisor.tsx ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Advisor)
-/* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./front/src/constants.ts");
-
-class Advisor {
-  constructor() {
-    this.advice = {
-      fat: _constants__WEBPACK_IMPORTED_MODULE_0__.fat,
-      carbohydrate: _constants__WEBPACK_IMPORTED_MODULE_0__.fat,
-      sugar: _constants__WEBPACK_IMPORTED_MODULE_0__.fat
-    };
-  }
-  sexToIndex(sex) {
-    let index;
-    switch (sex) {
-      case 'male':
-        index = 0;
-        break;
-      case 'female':
-        index = 1;
-        break;
-    }
-    return index;
-  }
-  ageRangeToIndex(ageRange) {
-    let index;
-    switch (ageRange) {
-      case '7':
-        index = 0;
-        break;
-      case '11':
-        index = 1;
-        break;
-      case '15':
-        index = 2;
-        break;
-      case '19':
-        index = 3;
-        break;
-      case '65':
-        index = 4;
-        break;
-      case '75':
-        index = 5;
-        break;
-    }
-    return index;
-  }
-  get(nutrient, sex, ageRange) {
-    const y = this.sexToIndex(sex);
-    const x = this.ageRangeToIndex(ageRange);
-    const operator = this.advice[nutrient].operator;
-    const grams = this.advice[nutrient].grams[y][x];
-    return {
-      nutrient,
-      operator,
-      grams
-    };
-  }
-}
-
-/***/ }),
-
 /***/ "./front/src/App.tsx":
 /*!***************************!*\
   !*** ./front/src/App.tsx ***!
@@ -4478,43 +4407,17 @@ async function loader() {
       resolve(response);
     });
   });
+  console.log(response);
   return response;
 }
-const sum = (data, sex, ageRange) => {
-  let numbers = [];
-  console.log(data);
-  data.forEach(entry => numbers.push(Number(entry.num)));
-  let value = numbers.reduce((accumulator, current) => accumulator + current, 0);
-  if (ageRange === '7') value = value + 1;
-  if (ageRange === '11') value = value + 2;
-  if (ageRange === '15') value = value + 3;
-  if (ageRange === '19') value = value + 4;
-  if (ageRange === '65') value = value + 5;
-  if (ageRange === '75') value = value + 6;
-  if (sex === 'male') value = value * 100;
-  if (sex === 'female') value = value * 1000;
-  return value;
-};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-  const data = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
-  const displayData = [{
-    nutrient: 'Carbohydrate',
-    advice: {
-      operator: 'not more than',
-      grams: 30
-    },
-    user: {
-      grams: 16,
-      contributors: [{
-        name: 'mushroom',
-        grams: 0.7
-      }, {
-        name: 'spoonfork',
-        grams: 0.5
-      }]
-    }
-  }];
+  const {
+    sex,
+    ageRange,
+    list,
+    userReport
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     function fill(id, callback) {
       return callback(getListElementById(id));
@@ -4526,7 +4429,7 @@ const sum = (data, sex, ageRange) => {
   });
   const getListElementById = id => {
     let target = {};
-    data.list.forEach(entry => {
+    list.forEach(entry => {
       if (entry.id === id) {
         return target = entry;
       }
@@ -4555,14 +4458,16 @@ const sum = (data, sex, ageRange) => {
     className: "advice"
   }, "advice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "you"
-  }, "you")), displayData.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "you")), Object.keys(userReport).map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    key: i
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "nutrient"
-  }, entry.nutrient), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, nutrient), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "advice"
-  }, entry.advice.operator, entry.advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, userReport[nutrient].advice.operator, userReport[nutrient].advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "you"
-  }, entry.user.grams, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => navigate(entry.nutrient.toLowerCase())
+  }, userReport[nutrient].total, userReport[nutrient].orderedContributors.map(ele => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, ele.name, ele.grams)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate(nutrient.toLowerCase())
   }, "More")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4595,7 +4500,7 @@ const sum = (data, sex, ageRange) => {
     onClick: () => navigate('add')
   }, "add"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, data.list.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, list.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: i
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "name"
@@ -4787,12 +4692,14 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   carb: () => (/* binding */ carb),
 /* harmony export */   delay: () => (/* binding */ delay),
 /* harmony export */   fat: () => (/* binding */ fat),
+/* harmony export */   fibre: () => (/* binding */ fibre),
 /* harmony export */   nutrients: () => (/* binding */ nutrients)
 /* harmony export */ });
 const delay = 100;
-const nutrients = ['fat'];
+const nutrients = ['fat', 'carb', 'fibre'];
 
 // y axis
 // [0] array is male
@@ -4809,6 +4716,14 @@ const nutrients = ['fat'];
 const fat = {
   operator: 'at most',
   grams: [[71, 97, 97, 97, 91, 89], [66, 78, 78, 78, 74, 74]]
+};
+const carb = {
+  operator: 'at most',
+  grams: [[11, 22, 33, 44, 55, 66], [66, 55, 44, 33, 22, 11]]
+};
+const fibre = {
+  operator: 'at most',
+  grams: [[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12]]
 };
 
 /***/ }),
@@ -5003,11 +4918,21 @@ async function addAction(_ref) {
     disabled: buttonDisabled,
     type: "text",
     name: "name"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
-    name: "num"
+    name: "fat"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter carb:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "number",
+    min: "0",
+    name: "carb"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fibre:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "number",
+    min: "0",
+    name: "fibre"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     type: "submit"
@@ -5231,12 +5156,24 @@ async function editAction(_ref2) {
     type: "text",
     name: "name",
     defaultValue: listElement?.name
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
-    name: "num",
-    defaultValue: listElement?.num
+    name: "fat",
+    defaultValue: listElement?.fat
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter carb:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "number",
+    min: "0",
+    name: "carb",
+    defaultValue: listElement?.carb
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fibre:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "number",
+    min: "0",
+    name: "fibre",
+    defaultValue: listElement?.fibre
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     type: "submit"
@@ -5328,6 +5265,183 @@ eventEmitter.on('updateAgeRange', async (ageRange, callback) => {
 
 /***/ }),
 
+/***/ "./front/src/logic/Advisor.ts":
+/*!************************************!*\
+  !*** ./front/src/logic/Advisor.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Advisor)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./front/src/constants.ts");
+
+class Advisor {
+  constructor(sex, ageRange) {
+    ;
+    this.advice = {
+      fat: _constants__WEBPACK_IMPORTED_MODULE_0__.fat,
+      carb: _constants__WEBPACK_IMPORTED_MODULE_0__.carb,
+      fibre: _constants__WEBPACK_IMPORTED_MODULE_0__.fibre
+    }, this.sex = sex, this.ageRange = ageRange;
+  }
+  getSex() {
+    return this.sex;
+  }
+  getAgeRange() {
+    return this.ageRange;
+  }
+  updateSex(sex) {
+    this.sex = sex;
+  }
+  updateAgeRange(ageRange) {
+    this.ageRange = ageRange;
+  }
+  sexToIndex(sex) {
+    if (sex !== 'male' && sex !== 'female') throw new Error();
+    let index;
+    switch (sex) {
+      case 'male':
+        index = 0;
+        break;
+      case 'female':
+        index = 1;
+        break;
+    }
+    return index;
+  }
+  ageRangeToIndex(ageRange) {
+    let index;
+    switch (ageRange) {
+      case '7':
+        index = 0;
+        break;
+      case '11':
+        index = 1;
+        break;
+      case '15':
+        index = 2;
+        break;
+      case '19':
+        index = 3;
+        break;
+      case '65':
+        index = 4;
+        break;
+      case '75':
+        index = 5;
+        break;
+    }
+    return index;
+  }
+  get(nutrient) {
+    const y = this.sexToIndex(this.sex);
+    const x = this.ageRangeToIndex(this.ageRange);
+    const operator = this.advice[nutrient].operator;
+    const grams = this.advice[nutrient].grams[y][x];
+    return {
+      operator,
+      grams
+    };
+  }
+  report() {
+    const result = {};
+    _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+      result[nutrient] = this.get(nutrient);
+    });
+    return result;
+  }
+}
+
+/***/ }),
+
+/***/ "./front/src/logic/ListArranger.ts":
+/*!*****************************************!*\
+  !*** ./front/src/logic/ListArranger.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ListArranger)
+/* harmony export */ });
+class ListArranger {
+  constructor() {
+    this.fat = [];
+    this.carb = [];
+    this.fibre = [];
+  }
+  order(array) {
+    const sorted = array.sort((a, b) => b.grams - a.grams);
+    return sorted;
+  }
+  arrange(list) {
+    list.forEach(entry => {
+      if (entry.fat > 0) {
+        this.fat.push({
+          name: entry.name,
+          grams: entry.fat
+        });
+      }
+      if (entry.carb > 0) {
+        this.carb.push({
+          name: entry.name,
+          grams: entry.carb
+        });
+      }
+      if (entry.fibre > 0) {
+        this.fibre.push({
+          name: entry.name,
+          grams: entry.fibre
+        });
+      }
+    });
+    this.fat = this.order(this.fat);
+    this.carb = this.order(this.carb);
+    this.fibre = this.order(this.fibre);
+  }
+  report(list) {
+    this.arrange(list);
+    return {
+      fat: this.fat,
+      carb: this.carb,
+      fibre: this.fibre
+    };
+  }
+}
+
+/***/ }),
+
+/***/ "./front/src/logic/nutrientTotals.ts":
+/*!*******************************************!*\
+  !*** ./front/src/logic/nutrientTotals.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./front/src/constants.ts");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (list => {
+  const accumulator = {
+    fat: 0,
+    carb: 0,
+    fibre: 0
+  };
+  function reducer(accumulator, item) {
+    _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+      accumulator[nutrient] += Number(item[nutrient]);
+    });
+    return accumulator;
+  }
+  return list.reduce(reducer, accumulator);
+});
+
+/***/ }),
+
 /***/ "./front/src/routes.tsx":
 /*!******************************!*\
   !*** ./front/src/routes.tsx ***!
@@ -5408,33 +5522,69 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Store: () => (/* binding */ Store),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./front/src/constants.ts");
-/* harmony import */ var _Advisor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Advisor */ "./front/src/Advisor.tsx");
+/* harmony import */ var _logic_Advisor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logic/Advisor */ "./front/src/logic/Advisor.ts");
+/* harmony import */ var _logic_nutrientTotals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logic/nutrientTotals */ "./front/src/logic/nutrientTotals.ts");
+/* harmony import */ var _logic_ListArranger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./logic/ListArranger */ "./front/src/logic/ListArranger.ts");
+
+
 
 
 
 class Store {
   constructor() {
-    this.advisor = new _Advisor__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    this.advisor = new _logic_Advisor__WEBPACK_IMPORTED_MODULE_1__["default"]('female', '19');
     this.list = [];
-    this.sex = 'female';
-    this.ageRange = '19';
+    this.userReport = {
+      fat: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      },
+      carb: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      },
+      fibre: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      }
+    };
   }
-  getAdvice() {
-    let data = [];
+  update() {
+    this.updateAdvice();
+    this.updateTotals();
+    this.updateOrderedContributors();
+  }
+  updateAdvice() {
+    const advice = this.advisor.report();
     _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
-      data.push(this.advisor.get(nutrient, this.sex, this.ageRange));
+      const targetedAdvice = advice[nutrient];
+      this.userReport[nutrient].advice = targetedAdvice;
     });
-    return data;
   }
-  getTotals() {
-    // for given nutrient, get total from list
+  updateTotals() {
+    const totals = (0,_logic_nutrientTotals__WEBPACK_IMPORTED_MODULE_2__["default"])(this.list);
+    console.log(`totals from calc`, totals);
+    _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+      const total = totals[nutrient];
+      this.userReport[nutrient].total = total;
+      console.log(`total in report`, this.userReport[nutrient].total);
+    });
   }
-  getTopContributors(nutrient) {
-    // for given nutrient, gives ordered list of top contributors with respective grams
+  updateOrderedContributors() {
+    const listArranger = new _logic_ListArranger__WEBPACK_IMPORTED_MODULE_3__["default"]();
+    const orderedContributors = listArranger.report(this.list);
+    _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+      const orderedContribution = orderedContributors[nutrient];
+      this.userReport[nutrient].orderedContributors = orderedContribution;
+    });
   }
   getIndexById(id) {
     return this.list.findIndex(entry => entry.id === id);
@@ -5442,16 +5592,20 @@ class Store {
   async add(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_2__.nanoid)().slice(0, 7);
+        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_4__.nanoid)().slice(0, 7);
         const name = data.name;
-        const num = data.num;
+        const fat = data.fat;
+        const carb = data.carb;
+        const fibre = data.fibre;
 
         //if (this.list[id] !== undefined) resolve({ status: 'failed' })
 
         this.list.push({
           id,
           name,
-          num
+          fat,
+          carb,
+          fibre
         });
         resolve({
           status: 'ok'
@@ -5500,10 +5654,12 @@ class Store {
   async retrieve() {
     const response = await new Promise(resolve => {
       setTimeout(() => {
+        this.update();
         const storeData = {
-          sex: this.sex,
-          ageRange: this.ageRange,
-          list: this.list
+          sex: this.advisor.getSex(),
+          ageRange: this.advisor.getAgeRange(),
+          list: this.list,
+          userReport: this.userReport
         };
         resolve(storeData);
       }, _constants__WEBPACK_IMPORTED_MODULE_0__.delay);
@@ -5513,7 +5669,7 @@ class Store {
   async updateSex(sex) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        this.sex = sex;
+        this.advisor.updateSex(sex);
         resolve({
           status: 'ok'
         });
@@ -5524,7 +5680,7 @@ class Store {
   async updateAgeRange(ageRange) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        this.ageRange = ageRange;
+        this.advisor.updateAgeRange(ageRange);
         resolve({
           status: 'ok'
         });
@@ -5938,7 +6094,7 @@ li .you {
 }
 
 .list li {
-  height: 150px;
+  height: 90px;
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 1fr;
@@ -5965,7 +6121,7 @@ li .you {
   grid-area: 'delete';
   background-color: rgb(0, 0, 255, 0.1);
 }
-`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, 0.2);\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'table-grid';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.output-grid .table-grid li {\r\n  grid-area: 'table-grid';\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"nutrient advice you\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\nli .nutrient {\r\n  grid-area: 'nutrient';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .advice {\r\n  grid-area: 'advice';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .you {\r\n  grid-area: 'you';  \r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas:\r\n    'calibrate'\r\n    'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'sex' 'age' 'help';\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: 'top' 'list';\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'title whitespace clear add';\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 150px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'name whitespace edit delete';\r\n}\r\n\r\n.list li .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: 'edit';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, 0.2);\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'table-grid';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.output-grid .table-grid li {\r\n  grid-area: 'table-grid';\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"nutrient advice you\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\nli .nutrient {\r\n  grid-area: 'nutrient';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .advice {\r\n  grid-area: 'advice';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .you {\r\n  grid-area: 'you';  \r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 5fr;\r\n  grid-template-areas:\r\n    'calibrate'\r\n    'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 2fr 2fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'sex' 'age' 'help';\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: 'top' 'list';\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'title whitespace clear add';\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 90px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'name whitespace edit delete';\r\n}\r\n\r\n.list li .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: 'edit';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

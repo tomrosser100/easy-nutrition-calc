@@ -12,48 +12,13 @@ export async function loader() {
       resolve(response)
     })
   })) as StoreData
-
+  console.log(response)
   return response
-}
-
-const sum = (data: ListElement[], sex: Sex, ageRange: AgeRange) => {
-  let numbers = [] as number[]
-  console.log(data)
-  data.forEach((entry) => numbers.push(Number(entry.num)))
-  let value = numbers.reduce((accumulator, current) => accumulator + current, 0)
-
-  if (ageRange === '7') value = value + 1
-  if (ageRange === '11') value = value + 2
-  if (ageRange === '15') value = value + 3
-  if (ageRange === '19') value = value + 4
-  if (ageRange === '65') value = value + 5
-  if (ageRange === '75') value = value + 6
-
-  if (sex === 'male') value = value * 100
-  if (sex === 'female') value = value * 1000
-
-  return value
 }
 
 export default () => {
   const navigate = useNavigate()
-  const data = useLoaderData() as StoreData
-  const displayData = [
-    {
-      nutrient: 'Carbohydrate',
-      advice: {
-        operator: 'not more than',
-        grams: 30,
-      },
-      user: {
-        grams: 16,
-        contributors: [
-          { name: 'mushroom', grams: 0.7 },
-          { name: 'spoonfork', grams: 0.5 },
-        ],
-      },
-    },
-  ]
+  const { sex, ageRange, list, userReport } = useLoaderData() as StoreData
 
   useEffect(() => {
     function fill(id: string, callback: (response: ListElement) => void) {
@@ -69,7 +34,7 @@ export default () => {
 
   const getListElementById = (id: string) => {
     let target = {}
-    data.list.forEach((entry) => {
+    list.forEach((entry) => {
       if (entry.id === id) {
         return (target = entry)
       }
@@ -95,18 +60,19 @@ export default () => {
                   <div className='advice'>advice</div>
                   <div className='you'>you</div>
                 </li>
-                {displayData.map((entry, i) => (
-                  <li>
-                    <div className='nutrient'>{entry.nutrient}</div>
-                    <div className='advice'>
-                      {entry.advice.operator}
-                      {entry.advice.grams}
-                    </div>
-                    <div className='you'>
-                      {entry.user.grams}
-                      <button onClick={() => navigate(entry.nutrient.toLowerCase())}>More</button>
-                    </div>
-                  </li>
+                {Object.keys(userReport).map((nutrient, i) => (
+                  <li key={i}>
+                  <div className='nutrient'>{nutrient}</div>
+                  <div className='advice'>
+                    {userReport[nutrient].advice.operator}
+                    {userReport[nutrient].advice.grams}
+                  </div>
+                  <div className='you'>
+                    {userReport[nutrient].total}
+                    {userReport[nutrient].orderedContributors.map((ele) => (<div>{ele.name}{ele.grams}</div>))}
+                    <button onClick={() => navigate(nutrient.toLowerCase())}>More</button>
+                  </div>
+                </li>
                 ))}
               </ul>
             </div>
@@ -138,7 +104,7 @@ export default () => {
               </div>
               <div className='list'>
                 <ul>
-                  {data.list.map((entry, i) => (
+                  {list.map((entry, i) => (
                     <li key={i}>
                       <div className='name'>{entry.name}</div>
                       <div className='whitespace'></div>

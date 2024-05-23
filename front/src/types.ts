@@ -5,23 +5,35 @@ export type AgeRange = '7' | '11' | '15' | '19' | '65' | '75'
 export interface ListElement {
   id: string
   name: string
-  num: number
+  fat: number
+  carb: number
+  fibre: number
 }
 
 export interface StoreData {
   sex: Sex
   ageRange: AgeRange
   list: ListElement[]
+  userReport: UserReport
 }
 
-export type Nutrient = 'fat' | 'carbohydrate' | 'sugar'
+export type Nutrient = 'fat' | 'carb' | 'fibre'
+
+export type NutrientTotals = {
+  [key in Nutrient]: number
+}
+
+export type NutrientAdvice = {
+  [key in Nutrient]: TargetedAdvice
+}
+
+export type OrderedContribution = { name: string; grams: number }[]
 
 export interface GeneralAdvice {
   operator: Operator
   grams: number[][]
 }
 export interface TargetedAdvice {
-  nutrient: Nutrient
   operator: Operator
   grams: number
 }
@@ -46,3 +58,11 @@ export type DisplayData = {
     }[]
   }
 }[]
+
+export type UserReport = {
+  [key in Nutrient]: {
+    advice: TargetedAdvice | undefined
+    total: number | undefined
+    orderedContributors: OrderedContribution | undefined
+  }
+}

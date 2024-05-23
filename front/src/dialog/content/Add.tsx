@@ -43,8 +43,16 @@ export default ({
           <input disabled={buttonDisabled} type='text' name='name' />
         </label>
         <label>
-          Enter number:
-          <input disabled={buttonDisabled} type='number' min='0' name='num' />
+          Enter fat:
+          <input disabled={buttonDisabled} type='number' min='0' name='fat' />
+        </label>
+        <label>
+          Enter carb:
+          <input disabled={buttonDisabled} type='number' min='0' name='carb' />
+        </label>
+        <label>
+          Enter fibre:
+          <input disabled={buttonDisabled} type='number' min='0' name='fibre' />
         </label>
         <button disabled={buttonDisabled} type='submit'>
           Add
