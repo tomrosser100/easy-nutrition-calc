@@ -4,6 +4,7 @@ import ErrorPage from './ErrorPage'
 import Dialog from './dialog/Dialog'
 import { addAction } from './dialog/content/Add'
 import { loader as editLoader, editAction } from './dialog/content/Edit'
+import { loader as moreLoader } from './dialog/content/More'
 import { clearAction } from './dialog/content/Clear'
 import { deleteAction } from './dialog/content/Delete'
 
@@ -24,6 +25,11 @@ export default [
         element: <Dialog type='edit' />,
         loader: editLoader,
         action: editAction,
+      },
+      {
+        path: 'more/:nutrient',
+        element: <Dialog type='more' />,
+        loader: moreLoader,
       },
       {
         path: 'clear',

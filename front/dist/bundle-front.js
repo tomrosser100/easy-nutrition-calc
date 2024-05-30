@@ -4419,12 +4419,17 @@ async function loader() {
     userReport
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    function fill(id, callback) {
+    function fillEdit(id, callback) {
       return callback(getListElementById(id));
     }
-    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].on('fill', fill);
+    function fillMore(nutrient, callback) {
+      return callback(userReport[nutrient].orderedContributors);
+    }
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].on('fillEdit', fillEdit);
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].on('fillMore', fillMore);
     return () => {
-      _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].off('fill', fill);
+      _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].off('fillEdit', fillEdit);
+      _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].off('fillMore', fillMore);
     };
   });
   const getListElementById = id => {
@@ -4466,8 +4471,8 @@ async function loader() {
     className: "advice"
   }, userReport[nutrient].advice.operator, userReport[nutrient].advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "you"
-  }, userReport[nutrient].total, userReport[nutrient].orderedContributors.map(ele => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, ele.name, ele.grams)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => navigate(nutrient.toLowerCase())
+  }, userReport[nutrient].total, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('more/' + nutrient.toLowerCase())
   }, "More")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4741,7 +4746,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _content_Add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content/Add */ "./front/src/dialog/content/Add.tsx");
@@ -4750,7 +4755,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _content_Delete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./content/Delete */ "./front/src/dialog/content/Delete.tsx");
 /* harmony import */ var _content_About__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./content/About */ "./front/src/dialog/content/About.tsx");
 /* harmony import */ var _content_Info__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./content/Info */ "./front/src/dialog/content/Info.tsx");
+/* harmony import */ var _content_More__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./content/More */ "./front/src/dialog/content/More.tsx");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 
 
 
@@ -4779,21 +4786,21 @@ const emitter = new (events__WEBPACK_IMPORTED_MODULE_1___default())();
   const {
     refs,
     context
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useFloating)({
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useFloating)({
     open: true
   });
-  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useClick)(context);
-  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useRole)(context);
+  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useClick)(context);
+  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useRole)(context);
   const {
     getReferenceProps,
     getFloatingProps
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useInteractions)([click, role]);
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useInteractions)([click, role]);
   const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.FloatingOverlay, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.FloatingOverlay, {
     className: "Dialog-overlay",
     lockScroll: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.FloatingFocusManager, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.FloatingFocusManager, {
     context: context
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
     className: "Dialog",
@@ -4820,6 +4827,9 @@ const emitter = new (events__WEBPACK_IMPORTED_MODULE_1___default())();
     labelId: labelId,
     descriptionId: descriptionId
   }), type === 'info' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Info__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    labelId: labelId,
+    descriptionId: descriptionId
+  }), type === 'more' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_More__WEBPACK_IMPORTED_MODULE_8__["default"], {
     labelId: labelId,
     descriptionId: descriptionId
   })))));
@@ -4908,17 +4918,33 @@ async function addAction(_ref) {
   } = _ref2;
   const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "add-edit-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     id: labelId
   }, "Heading element: ADD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     id: descriptionId
-  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
+  }, "Description element")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
     method: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "calibrate"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "text",
     name: "name"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "How much you will eat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "text",
+    name: "name"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Reference portion size:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: buttonDisabled,
+    type: "text",
+    name: "name"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "nutrient-inputs"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
@@ -4933,13 +4959,15 @@ async function addAction(_ref) {
     type: "number",
     min: "0",
     name: "fibre"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     type: "submit"
-  }, "Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     onClick: () => navigate('/')
-  }, "Cancel"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
+  }, "Cancel"))), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
 });
 
 /***/ }),
@@ -5107,7 +5135,7 @@ async function loader(_ref) {
   console.log('add loader fired');
   const response = await new Promise(resolve => {
     if (!params.id) throw new Error();
-    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('fill', params.id, response => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('fillEdit', params.id, response => {
       resolve(response);
     });
   });
@@ -5213,6 +5241,62 @@ __webpack_require__.r(__webpack_exports__);
   }, "Here's where I got the reference data from"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => navigate('/')
   }, "Return"));
+});
+
+/***/ }),
+
+/***/ "./front/src/dialog/content/More.tsx":
+/*!*******************************************!*\
+  !*** ./front/src/dialog/content/More.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   loader: () => (/* binding */ loader)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
+
+
+
+async function loader(_ref) {
+  let {
+    params
+  } = _ref;
+  console.log('more loader fired');
+  const response = await new Promise(resolve => {
+    if (!params.nutrient) throw new Error();
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('fillMore', params.nutrient, response => {
+      resolve(response);
+    });
+  });
+  console.log('loading', response);
+  return response;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref2 => {
+  let {
+    labelId,
+    descriptionId
+  } = _ref2;
+  const {
+    nutrient
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useActionData)();
+  const orderedContribution = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLoaderData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    id: labelId
+  }, "Your top ", nutrient, " contributors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    id: descriptionId
+  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, orderedContribution.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    key: i
+  }, entry.name, ", ", entry.grams, " grams"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('/')
+  }, "Back"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
 });
 
 /***/ }),
@@ -5459,8 +5543,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Dialog */ "./front/src/dialog/Dialog.tsx");
 /* harmony import */ var _dialog_content_Add__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialog/content/Add */ "./front/src/dialog/content/Add.tsx");
 /* harmony import */ var _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialog/content/Edit */ "./front/src/dialog/content/Edit.tsx");
-/* harmony import */ var _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialog/content/Clear */ "./front/src/dialog/content/Clear.tsx");
-/* harmony import */ var _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialog/content/Delete */ "./front/src/dialog/content/Delete.tsx");
+/* harmony import */ var _dialog_content_More__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialog/content/More */ "./front/src/dialog/content/More.tsx");
+/* harmony import */ var _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialog/content/Clear */ "./front/src/dialog/content/Clear.tsx");
+/* harmony import */ var _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialog/content/Delete */ "./front/src/dialog/content/Delete.tsx");
+
 
 
 
@@ -5488,17 +5574,23 @@ __webpack_require__.r(__webpack_exports__);
     loader: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__.loader,
     action: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__.editAction
   }, {
+    path: 'more/:nutrient',
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      type: "more"
+    }),
+    loader: _dialog_content_More__WEBPACK_IMPORTED_MODULE_6__.loader
+  }, {
     path: 'clear',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
       type: "clear"
     }),
-    action: _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_6__.clearAction
+    action: _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_7__.clearAction
   }, {
     path: 'delete/:id',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
       type: "delete"
     }),
-    action: _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__.deleteAction
+    action: _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_8__.deleteAction
   }, {
     path: 'about',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -5764,6 +5856,37 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.Dialog-overlay {
   background-color: rgb(0, 0, 255, 0.1);
 }
 
+.add-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 3fr 1fr;
+  grid-template-areas: "header" "calibrate" "nutrient-inputs" "buttons";
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-edit-grid .header {
+  grid-area: 'header';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-edit-grid .calibrate {
+  grid-area: 'calibrate';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-edit-grid .nutrient-inputs {
+  grid-area: 'nutrient-inputs';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+.add-edit-grid .buttons {
+  grid-area: 'buttons';
+  background-color: rgb(0, 0, 255, 0.1);
+}
+
+
+/*
+
 .add-grid {
   min-height: 500px;
   min-width: 340px;
@@ -5851,7 +5974,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.Dialog-overlay {
   grid-area: 'finish';
   background-color: rgb(0, 0, 255, 0.1);
 }
-`, "",{"version":3,"sources":["webpack://./front/src/dialog-styles.css"],"names":[],"mappings":"AAAA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,oCAAoC;EACpC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,iBAAiB;EACjB,gBAAgB;EAChB,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,qDAAqD;EACrD,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,qCAAqC;EACrC,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,oCAAoC;AACtC;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,kCAAkC;AACpC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;EACrC,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,kCAAkC;AACpC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;EACrC,aAAa;EACb,0BAA0B;EAC1B,kCAAkC;EAClC,0FAA0F;AAC5F;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC","sourcesContent":[".Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  min-width: 335px;\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'header' 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: 'header';\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: 'buttons';\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'delete cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid {\r\n  min-height: 500px;\r\n  min-width: 340px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 4fr 1fr;\r\n  grid-template-areas: 'title' 'step1' 'step2' 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 {\r\n  width: 100%;\r\n  height: 100%;\r\n  grid-area: 'step1';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'name' 'amount';\r\n}\r\n\r\n.add-grid .step1 .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .name .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .name .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount {\r\n  grid-area: 'amount';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .amount .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 {\r\n  grid-area: 'step2';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(9, 1fr);\r\n  grid-template-areas: 'per' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro';\r\n}\r\n\r\n.add-grid .step2 .per {\r\n  grid-area: \"per\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 .macro {\r\n  grid-area: \"macro\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .finish {\r\n  grid-area: 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
+
+*/`, "",{"version":3,"sources":["webpack://./front/src/dialog-styles.css"],"names":[],"mappings":"AAAA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,oCAAoC;EACpC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,qEAAqE;EACrE,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,sBAAsB;EACtB,qCAAqC;AACvC;;AAEA;EACE,4BAA4B;EAC5B,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,qCAAqC;AACvC;;;AAGA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CA0FC","sourcesContent":[".Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  min-width: 335px;\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'header' 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: 'header';\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: 'buttons';\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'delete cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 3fr 1fr;\r\n  grid-template-areas: \"header\" \"calibrate\" \"nutrient-inputs\" \"buttons\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .header {\r\n  grid-area: 'header';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .calibrate {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .nutrient-inputs {\r\n  grid-area: 'nutrient-inputs';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .buttons {\r\n  grid-area: 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n\r\n/*\r\n\r\n.add-grid {\r\n  min-height: 500px;\r\n  min-width: 340px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 4fr 1fr;\r\n  grid-template-areas: 'title' 'step1' 'step2' 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 {\r\n  width: 100%;\r\n  height: 100%;\r\n  grid-area: 'step1';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'name' 'amount';\r\n}\r\n\r\n.add-grid .step1 .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .name .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .name .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount {\r\n  grid-area: 'amount';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .amount .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 {\r\n  grid-area: 'step2';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(9, 1fr);\r\n  grid-template-areas: 'per' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro';\r\n}\r\n\r\n.add-grid .step2 .per {\r\n  grid-area: \"per\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 .macro {\r\n  grid-area: \"macro\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .finish {\r\n  grid-area: 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n*/"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

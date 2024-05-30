@@ -34,33 +34,59 @@ export default ({
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h2 id={labelId}>Heading element: ADD</h2>
-      <p id={descriptionId}>Description element</p>
+    <div className='add-edit-grid'>
+      <div className='header'>
+        <h2 id={labelId}>Heading element: ADD</h2>
+        <p id={descriptionId}>Description element</p>
+      </div>
       <Form method='post'>
-        <label>
-          Enter name:
-          <input disabled={buttonDisabled} type='text' name='name' />
-        </label>
-        <label>
-          Enter fat:
-          <input disabled={buttonDisabled} type='number' min='0' name='fat' />
-        </label>
-        <label>
-          Enter carb:
-          <input disabled={buttonDisabled} type='number' min='0' name='carb' />
-        </label>
-        <label>
-          Enter fibre:
-          <input disabled={buttonDisabled} type='number' min='0' name='fibre' />
-        </label>
-        <button disabled={buttonDisabled} type='submit'>
-          Add
-        </button>
+        <div className='calibrate'>
+          <label>
+            Enter name:
+            <input disabled={buttonDisabled} type='text' name='name' />
+          </label>
+          <label>
+            How much you will eat:
+            <input disabled={buttonDisabled} type='text' name='name' />
+          </label>
+          <label>
+            Reference portion size:
+            <input disabled={buttonDisabled} type='text' name='name' />
+          </label>
+        </div>
+        <div className='nutrient-inputs'>
+          <label>
+            Enter fat:
+            <input disabled={buttonDisabled} type='number' min='0' name='fat' />
+          </label>
+          <label>
+            Enter carb:
+            <input
+              disabled={buttonDisabled}
+              type='number'
+              min='0'
+              name='carb'
+            />
+          </label>
+          <label>
+            Enter fibre:
+            <input
+              disabled={buttonDisabled}
+              type='number'
+              min='0'
+              name='fibre'
+            />
+          </label>
+        </div>
+        <div className='buttons'>
+          <button disabled={buttonDisabled} type='submit'>
+            Add
+          </button>
+          <button disabled={buttonDisabled} onClick={() => navigate('/')}>
+            Cancel
+          </button>
+        </div>
       </Form>
-      <button disabled={buttonDisabled} onClick={() => navigate('/')}>
-        Cancel
-      </button>
       {error?.status && <p>Something went wrong...</p>}
     </div>
   )

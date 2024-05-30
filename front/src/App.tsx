@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import eventEmitter from './eventEmitter'
-import type { AgeRange, ListElement, Sex, StoreData } from './types'
+import type {
+  AgeRange,
+  ListElement,
+  Nutrient,
+  OrderedContribution,
+  Sex,
+  StoreData,
+} from './types'
 import SelectAgeRange from './components/SelectAgeRange'
 import SelectSex from './components/SelectSex'
 
@@ -21,14 +28,23 @@ export default () => {
   const { sex, ageRange, list, userReport } = useLoaderData() as StoreData
 
   useEffect(() => {
-    function fill(id: string, callback: (response: ListElement) => void) {
+    function fillEdit(id: string, callback: (response: ListElement) => void) {
       return callback(getListElementById(id))
     }
 
-    eventEmitter.on('fill', fill)
+    function fillMore(
+      nutrient: Nutrient,
+      callback: (response: OrderedContribution) => void
+    ) {
+      return callback(userReport[nutrient].orderedContributors as OrderedContribution)
+    }
+
+    eventEmitter.on('fillEdit', fillEdit)
+    eventEmitter.on('fillMore', fillMore)
 
     return () => {
-      eventEmitter.off('fill', fill)
+      eventEmitter.off('fillEdit', fillEdit)
+      eventEmitter.off('fillMore', fillMore)
     }
   })
 
@@ -62,17 +78,18 @@ export default () => {
                 </li>
                 {Object.keys(userReport).map((nutrient, i) => (
                   <li key={i}>
-                  <div className='nutrient'>{nutrient}</div>
-                  <div className='advice'>
-                    {userReport[nutrient].advice.operator}
-                    {userReport[nutrient].advice.grams}
-                  </div>
-                  <div className='you'>
-                    {userReport[nutrient].total}
-                    {userReport[nutrient].orderedContributors.map((ele) => (<div>{ele.name}{ele.grams}</div>))}
-                    <button onClick={() => navigate(nutrient.toLowerCase())}>More</button>
-                  </div>
-                </li>
+                    <div className='nutrient'>{nutrient}</div>
+                    <div className='advice'>
+                      {userReport[nutrient].advice.operator}
+                      {userReport[nutrient].advice.grams}
+                    </div>
+                    <div className='you'>
+                      {userReport[nutrient].total}
+                      <button onClick={() => navigate('more/' + nutrient.toLowerCase())}>
+                        More
+                      </button>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>

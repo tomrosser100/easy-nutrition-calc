@@ -10,7 +10,7 @@ export async function loader({ params }: { params: { id?: string } }) {
   const response = await new Promise((resolve) => {
     if (!params.id) throw new Error()
 
-    eventEmitter.emit('fill', params.id, (response) => {
+    eventEmitter.emit('fillEdit', params.id, (response) => {
       resolve(response)
     })
   })

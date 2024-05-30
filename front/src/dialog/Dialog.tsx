@@ -16,6 +16,7 @@ import Edit from './content/Edit'
 import Delete from './content/Delete'
 import About from './content/About'
 import Info from './content/Info'
+import More from './content/More'
 
 type Events = {
   buttonDisabled: (bool: boolean) => void
@@ -25,7 +26,7 @@ export const emitter = new EventEmitter() as TypedEventEmitter<Events>
 export default ({
   type,
 }: {
-  type: 'add' | 'edit' | 'clear' | 'delete' | 'about' | 'info'
+  type: 'add' | 'edit' | 'clear' | 'delete' | 'about' | 'info' | 'more'
 }) => {
   const [buttonDisabled, setbuttonDisabled] = useState(false)
 
@@ -96,6 +97,9 @@ export default ({
             )}
             {type === 'info' && (
               <Info labelId={labelId} descriptionId={descriptionId} />
+            )}
+            {type === 'more' && (
+              <More labelId={labelId} descriptionId={descriptionId} />
             )}
           </div>
         </FloatingFocusManager>

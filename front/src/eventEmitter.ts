@@ -1,6 +1,6 @@
 import EventEmitter from 'events'
 import type TypedEmitter from 'typed-emitter'
-import type { AgeRange, ListElement, Sex, StoreData } from './types'
+import type { AgeRange, ListElement, Nutrient, OrderedContribution, Sex, StoreData } from './types'
 import store from './store'
 
 type Events = {
@@ -18,7 +18,8 @@ type Events = {
     callback: (response: { status: 'ok' | 'failed' }) => void
   ) => void
   retrieve: (callback: (response: StoreData) => void) => void
-  fill: (id: string, callback: (response: ListElement) => void) => void
+  fillEdit: (id: string, callback: (response: ListElement) => void) => void
+  fillMore: (nutrient: Nutrient, callback: (response: OrderedContribution) => void) => void
   updateSex: (
     sex: Sex,
     callback: (response: { status: 'ok' | 'failed' }) => void
