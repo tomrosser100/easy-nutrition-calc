@@ -7,7 +7,7 @@ import type {
   StoreData,
   UserReport,
 } from './types'
-import { delay, nutrients } from './constants'
+import { delay, nutrients, saturatedFat } from './constants'
 import Advisor from './logic/Advisor'
 import nutrientTotals from './logic/nutrientTotals'
 import ListArranger from './logic/ListArranger'
@@ -24,17 +24,42 @@ export class Store {
       fat: {
         advice: undefined,
         total: undefined,
-        orderedContributors: undefined
+        orderedContributors: undefined,
       },
       carb: {
         advice: undefined,
         total: undefined,
-        orderedContributors: undefined
+        orderedContributors: undefined,
       },
       fibre: {
         advice: undefined,
         total: undefined,
-        orderedContributors: undefined
+        orderedContributors: undefined,
+      },
+      protein: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined,
+      },
+      saturatedFat: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined,
+      },
+      sugar: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined,
+      },
+      salt: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined,
+      },
+      calories: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined,
       },
     }
   }
@@ -57,15 +82,12 @@ export class Store {
 
   updateTotals() {
     const totals = nutrientTotals(this.list)
-    console.log(`totals from calc`, totals)
 
     nutrients.forEach((nutrient) => {
       const total = totals[nutrient]
 
       this.userReport[nutrient].total = total
-      console.log(`total in report`, this.userReport[nutrient].total)
     })
-
   }
 
   updateOrderedContributors() {
@@ -86,7 +108,9 @@ export class Store {
   async add(data: ListElement) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        const id = nanoid().slice(0, 7)
+        // run calculation here
+
+        const id = data.id
         const name = data.name
         const fat = data.fat
         const carb = data.carb
@@ -94,7 +118,7 @@ export class Store {
 
         //if (this.list[id] !== undefined) resolve({ status: 'failed' })
 
-        this.list.push({ id, name, fat, carb, fibre })
+        this.list.push(data)
 
         resolve({ status: 'ok' })
       }, delay)
@@ -107,6 +131,8 @@ export class Store {
   async edit(data: ListElement) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
+        // run calculation here
+
         this.list[this.getIndexById(data.id)] = data
 
         resolve({ status: 'ok' })
@@ -152,7 +178,7 @@ export class Store {
           sex: this.advisor.getSex(),
           ageRange: this.advisor.getAgeRange(),
           list: this.list,
-          userReport: this.userReport
+          userReport: this.userReport,
         }
 
         resolve(storeData)
@@ -165,7 +191,6 @@ export class Store {
   async updateSex(sex: Sex) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-
         this.advisor.updateSex(sex)
 
         resolve({ status: 'ok' })
@@ -178,7 +203,6 @@ export class Store {
   async updateAgeRange(ageRange: AgeRange) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-
         this.advisor.updateAgeRange(ageRange)
 
         resolve({ status: 'ok' })

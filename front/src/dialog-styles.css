@@ -51,33 +51,47 @@
 }
 
 .add-edit-grid {
+  height: 500px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 3fr 1fr;
-  grid-template-areas: "header" "calibrate" "nutrient-inputs" "buttons";
+  grid-template-areas: 'header' 'calibrate' 'nutrient-inputs' 'buttons';
   background-color: rgb(0, 0, 255, 0.1);
 }
 
 .add-edit-grid .header {
   grid-area: 'header';
   background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .add-edit-grid .calibrate {
   grid-area: 'calibrate';
   background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .add-edit-grid .nutrient-inputs {
   grid-area: 'nutrient-inputs';
   background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
+
+
+/*
+
+
 
 .add-edit-grid .buttons {
   grid-area: 'buttons';
   background-color: rgb(0, 0, 255, 0.1);
 }
 
+*/
 
 /*
 

@@ -1,11 +1,20 @@
-import React from 'react'
-import { Form, redirect, useActionData, useLoaderData, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import {
+  Form,
+  redirect,
+  useActionData,
+  useLoaderData,
+  useNavigate,
+  useParams,
+} from 'react-router-dom'
 import eventEmitter from '../../eventEmitter'
 import type { ListElement } from '../../types'
 import { emitter } from '../Dialog'
+import { nanoid } from 'nanoid'
+import { nutrients } from '../../constants'
 
 export async function loader({ params }: { params: { id?: string } }) {
-  console.log('add loader fired')
+  console.log('edit loader fired, filling...')
 
   const response = await new Promise((resolve) => {
     if (!params.id) throw new Error()
@@ -18,6 +27,23 @@ export async function loader({ params }: { params: { id?: string } }) {
   return response
 }
 
+export async function addAction({ request }: { request: any }) {
+  emitter.emit('buttonDisabled', true)
+  const data = Object.fromEntries(await request.formData()) as ListElement
+  console.log('add action fired')
+  console.log(data)
+  const response = (await new Promise((resolve) => {
+    eventEmitter.emit('add', data, (response) => {
+      resolve(response)
+    })
+  })) as { status: 'ok' | 'failed' }
+  if (response.status === 'failed') {
+    emitter.emit('buttonDisabled', false)
+    return response
+  }
+  return redirect('/')
+}
+
 export async function editAction({
   params,
   request,
@@ -26,10 +52,10 @@ export async function editAction({
   request: any
 }) {
   emitter.emit('buttonDisabled', true)
-  
+
   const data = {
     id: params.id,
-    ...Object.fromEntries(await request.formData())
+    ...Object.fromEntries(await request.formData()),
   } as ListElement
 
   const response = (await new Promise((resolve) => {
@@ -54,37 +80,85 @@ export default ({
   descriptionId: string
   buttonDisabled: boolean
 }) => {
+  const idExists = (typeof useParams().id === 'string')
+
   const error = useActionData() as { status: 'failed' }
   const listElement = useLoaderData() as ListElement
   const navigate = useNavigate()
 
+  useEffect(() => {
+
+    console.log(idExists)
+
+  }, [])
+
   return (
-    <div>
-      <h2 id={labelId}>Heading element: EDIT</h2>
-      <p id={descriptionId}>Description element</p>
+    <div className='add-edit-grid'>
+      <div className='header'>
+        <div className='title' id={labelId}>
+          Heading element: {listElement === undefined ? 'Add' : 'Edit'}
+        </div>
+        <div className='description' id={descriptionId}>
+          Description element
+        </div>
+      </div>
       <Form method='post'>
-        <label>
-          Enter name:
-          <input disabled={buttonDisabled} type='text' name='name' defaultValue={listElement?.name} />
-        </label>
-        <label>
-          Enter fat:
-          <input disabled={buttonDisabled} type='number' min='0' name='fat' defaultValue={listElement?.fat} />
-        </label>
-        <label>
-          Enter carb:
-          <input disabled={buttonDisabled} type='number' min='0' name='carb' defaultValue={listElement?.carb} />
-        </label>
-        <label>
-          Enter fibre:
-          <input disabled={buttonDisabled} type='number' min='0' name='fibre' defaultValue={listElement?.fibre} />
-        </label>
-        <button disabled={buttonDisabled} type='submit'>
-          Save
-        </button>
+        {!idExists && (<input type='hidden' name='id' value={nanoid().slice(0, 7)} />)}
+        <div className='calibrate'>
+          <label className='name'>
+            Enter name:
+            <input
+              disabled={buttonDisabled}
+              type='text'
+              name='name'
+              defaultValue={listElement?.name}
+            />
+          </label>
+          <label className='amount'>
+            Amount:
+            <input
+              disabled={buttonDisabled}
+              type='number'
+              min='0'
+              name='userAmount'
+              defaultValue={listElement ? listElement?.userAmount : 0}
+            />
+          </label>
+          <label className='reference'>
+            Reference portion size:
+            <input
+              disabled={buttonDisabled}
+              type='number'
+              min='0'
+              name='refPortion'
+              defaultValue={listElement ? listElement?.refPortion : 0}
+            />
+          </label>
+        </div>
+        <div className='nutrient-inputs'>
+          {nutrients.map((nutrient, i) => (
+            <label>
+              Enter {nutrient}
+              <input
+                disabled={buttonDisabled}
+                type='number'
+                min='0'
+                name={nutrient}
+                defaultValue={listElement ? listElement?.[nutrient] : 0}
+                />
+            </label>
+          ))}
+        </div>
+        <div className='buttons'>
+          <button disabled={buttonDisabled} type='submit'>
+            {listElement === undefined ? 'Add' : 'Save'}
+          </button>
+          <button disabled={buttonDisabled} onClick={() => navigate('/')}>
+            Cancel
+          </button>
+        </div>
       </Form>
-      <button disabled={buttonDisabled} onClick={() => navigate('/')}>Cancel</button>
-        {error?.status && <p>Something went wrong...</p>}
+      {error?.status && <p>Something went wrong...</p>}
     </div>
   )
 }

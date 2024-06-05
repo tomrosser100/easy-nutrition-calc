@@ -1,14 +1,26 @@
+import { nutrients } from '../constants'
 import type { ListElement, Nutrient, OrderedContribution } from '../types'
+import referenceSizeCalc from './referenceSizeCalc'
 
 export default class ListArranger {
   fat: OrderedContribution
   carb: OrderedContribution
   fibre: OrderedContribution
+  protein: OrderedContribution
+  saturatedFat: OrderedContribution
+  sugar: OrderedContribution
+  salt: OrderedContribution
+  calories: OrderedContribution
 
   constructor() {
     this.fat = []
     this.carb = []
     this.fibre = []
+    this.protein = []
+    this.saturatedFat = []
+    this.sugar = []
+    this.salt = []
+    this.calories = []
   }
 
   order(array: { name: string; grams: number }[]) {
@@ -18,20 +30,23 @@ export default class ListArranger {
 
   arrange(list: ListElement[]) {
     list.forEach((entry) => {
-      if (entry.fat > 0) {
-        this.fat.push({ name: entry.name, grams: entry.fat })
-      }
-      if (entry.carb > 0) {
-        this.carb.push({ name: entry.name, grams: entry.carb })
-      }
-      if (entry.fibre > 0) {
-        this.fibre.push({ name: entry.name, grams: entry.fibre })
-      }
-    })
+      nutrients.forEach((nutrient) => {
+        if (entry[nutrient] > 0) {
+          this[nutrient].push({
+            name: entry.name,
+            grams: referenceSizeCalc(
+              entry[nutrient],
+              entry.refPortion,
+              entry.userAmount
+            ),
+          })
+        }
+      })
 
-    this.fat = this.order(this.fat)
-    this.carb = this.order(this.carb)
-    this.fibre = this.order(this.fibre)
+      nutrients.forEach((nutrient) => {
+        this[nutrient] = this.order(this[nutrient])
+      })
+    })
   }
 
   report(list: ListElement[]) {
@@ -41,6 +56,11 @@ export default class ListArranger {
       fat: this.fat,
       carb: this.carb,
       fibre: this.fibre,
+      protein: this.protein,
+      saturatedFat: this.saturatedFat,
+      sugar: this.sugar,
+      salt: this.salt,
+      calories: this.calories,
     } as {
       [key in Nutrient]: OrderedContribution
     }

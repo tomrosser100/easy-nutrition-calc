@@ -10,7 +10,6 @@ import {
 import EventEmitter from 'events'
 import { useState, useEffect, useId, Component } from 'react'
 import type TypedEventEmitter from 'typed-emitter'
-import Add from './content/Add'
 import Clear from './content/Clear'
 import Edit from './content/Edit'
 import Delete from './content/Delete'
@@ -26,7 +25,7 @@ export const emitter = new EventEmitter() as TypedEventEmitter<Events>
 export default ({
   type,
 }: {
-  type: 'add' | 'edit' | 'clear' | 'delete' | 'about' | 'info' | 'more'
+  type: 'edit' | 'clear' | 'delete' | 'about' | 'info' | 'more'
 }) => {
   const [buttonDisabled, setbuttonDisabled] = useState(false)
 
@@ -64,13 +63,6 @@ export default ({
             aria-labelledby={labelId}
             aria-describedby={descriptionId}
             {...getFloatingProps()}>
-            {type === 'add' && (
-              <Add
-                labelId={labelId}
-                descriptionId={descriptionId}
-                buttonDisabled={buttonDisabled}
-              />
-            )}
             {type === 'edit' && (
               <Edit
                 labelId={labelId}

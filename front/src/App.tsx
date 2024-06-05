@@ -85,7 +85,7 @@ export default () => {
                     </div>
                     <div className='you'>
                       {userReport[nutrient].total}
-                      <button onClick={() => navigate('more/' + nutrient.toLowerCase())}>
+                      <button onClick={() => navigate('more/' + nutrient)}>
                         More
                       </button>
                     </div>

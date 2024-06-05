@@ -1,4 +1,14 @@
-import { fat, carb, fibre, nutrients } from '../constants'
+import {
+  fat,
+  carb,
+  fibre,
+  nutrients,
+  protein,
+  salt,
+  sugar,
+  calories,
+  saturatedFat,
+} from '../constants'
 import type {
   AgeRange,
   GeneralAdvice,
@@ -15,13 +25,18 @@ export default class Advisor {
   private ageRange: AgeRange
 
   constructor(sex: Sex, ageRange: AgeRange) {
-    ;(this.advice = {
+    this.advice = {
       fat,
       carb,
       fibre,
-    }),
-      (this.sex = sex),
-      (this.ageRange = ageRange)
+      sugar,
+      protein,
+      salt,
+      calories,
+      saturatedFat,
+    },
+    this.sex = sex,
+    this.ageRange = ageRange
   }
 
   getSex() {

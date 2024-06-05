@@ -2,8 +2,7 @@ import React from 'react'
 import App, { loader as appLoader } from './App'
 import ErrorPage from './ErrorPage'
 import Dialog from './dialog/Dialog'
-import { addAction } from './dialog/content/Add'
-import { loader as editLoader, editAction } from './dialog/content/Edit'
+import { loader as editLoader, editAction, addAction } from './dialog/content/Edit'
 import { loader as moreLoader } from './dialog/content/More'
 import { clearAction } from './dialog/content/Clear'
 import { deleteAction } from './dialog/content/Delete'
@@ -17,7 +16,7 @@ export default [
     children: [
       {
         path: 'add',
-        element: <Dialog type='add' />,
+        element: <Dialog type='edit' />,
         action: addAction,
       },
       {

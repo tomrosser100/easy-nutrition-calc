@@ -1,3 +1,4 @@
+import { saturatedFat } from "../constants"
 import Advisor from "./Advisor"
 
 describe('Advisor', () => {
@@ -30,13 +31,34 @@ describe('Advisor', () => {
           grams: 97
         },
         carb: {
-          operator: 'at most',
-          grams: 97
+          operator: 'at least',
+          grams: 333
         },
         fibre: {
+          operator: 'around',
+          grams: 25
+        },
+        calories: {
+          operator: 'around',
+          grams: 2500
+        },
+        protein: {
+          operator: 'around',
+          grams: 42.1
+        },
+        salt: {
           operator: 'at most',
-          grams: 97
+          grams: 6
+        },
+        saturatedFat: {
+          operator: 'at most',
+          grams: 31
+        },
+        sugar: {
+          operator: 'at most',
+          grams: 33
         }
+
       }
 
       const result = advisor.report()

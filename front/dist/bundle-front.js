@@ -4472,7 +4472,7 @@ async function loader() {
   }, userReport[nutrient].advice.operator, userReport[nutrient].advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "you"
   }, userReport[nutrient].total, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => navigate('more/' + nutrient.toLowerCase())
+    onClick: () => navigate('more/' + nutrient)
   }, "More")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4697,14 +4697,19 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   calories: () => (/* binding */ calories),
 /* harmony export */   carb: () => (/* binding */ carb),
 /* harmony export */   delay: () => (/* binding */ delay),
 /* harmony export */   fat: () => (/* binding */ fat),
 /* harmony export */   fibre: () => (/* binding */ fibre),
-/* harmony export */   nutrients: () => (/* binding */ nutrients)
+/* harmony export */   nutrients: () => (/* binding */ nutrients),
+/* harmony export */   protein: () => (/* binding */ protein),
+/* harmony export */   salt: () => (/* binding */ salt),
+/* harmony export */   saturatedFat: () => (/* binding */ saturatedFat),
+/* harmony export */   sugar: () => (/* binding */ sugar)
 /* harmony export */ });
 const delay = 100;
-const nutrients = ['fat', 'carb', 'fibre'];
+const nutrients = ['fat', 'carb', 'fibre', 'protein', 'saturatedFat', 'sugar', 'salt', 'calories'];
 
 // y axis
 // [0] array is male
@@ -4723,12 +4728,32 @@ const fat = {
   grams: [[71, 97, 97, 97, 91, 89], [66, 78, 78, 78, 74, 74]]
 };
 const carb = {
-  operator: 'at most',
-  grams: [[11, 22, 33, 44, 55, 66], [66, 55, 44, 33, 22, 11]]
+  operator: 'at least',
+  grams: [[242, 333, 333, 333, 312, 306], [227, 267, 267, 267, 255, 245]]
 };
 const fibre = {
+  operator: 'around',
+  grams: [[20, 25, 30, 30, 30, 30], [20, 25, 30, 30, 30, 30]]
+};
+const protein = {
+  operator: 'around',
+  grams: [[28.3, 42.1, 55.2, 55.5, 53.3, 53.3], [28.3, 41.2, 45.0, 45.0, 46.5, 46.5]]
+};
+const saturatedFat = {
   operator: 'at most',
-  grams: [[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12]]
+  grams: [[22, 31, 31, 31, 29, 28], [21, 24, 24, 24, 23, 23]]
+};
+const calories = {
+  operator: 'around',
+  grams: [[1817, 2500, 2500, 2500, 2342, 2294], [1703, 2000, 2000, 2000, 1912, 1840]]
+};
+const sugar = {
+  operator: 'at most',
+  grams: [[24, 33, 33, 33, 31, 31], [23, 27, 27, 27, 26, 25]]
+};
+const salt = {
+  operator: 'at most',
+  grams: [[5, 6, 6, 6, 6, 6], [5, 6, 6, 6, 6, 6]]
 };
 
 /***/ }),
@@ -4746,18 +4771,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _content_Add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content/Add */ "./front/src/dialog/content/Add.tsx");
-/* harmony import */ var _content_Clear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./content/Clear */ "./front/src/dialog/content/Clear.tsx");
-/* harmony import */ var _content_Edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./content/Edit */ "./front/src/dialog/content/Edit.tsx");
-/* harmony import */ var _content_Delete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./content/Delete */ "./front/src/dialog/content/Delete.tsx");
-/* harmony import */ var _content_About__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./content/About */ "./front/src/dialog/content/About.tsx");
-/* harmony import */ var _content_Info__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./content/Info */ "./front/src/dialog/content/Info.tsx");
-/* harmony import */ var _content_More__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./content/More */ "./front/src/dialog/content/More.tsx");
+/* harmony import */ var _content_Clear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content/Clear */ "./front/src/dialog/content/Clear.tsx");
+/* harmony import */ var _content_Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./content/Edit */ "./front/src/dialog/content/Edit.tsx");
+/* harmony import */ var _content_Delete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./content/Delete */ "./front/src/dialog/content/Delete.tsx");
+/* harmony import */ var _content_About__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./content/About */ "./front/src/dialog/content/About.tsx");
+/* harmony import */ var _content_Info__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./content/Info */ "./front/src/dialog/content/Info.tsx");
+/* harmony import */ var _content_More__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./content/More */ "./front/src/dialog/content/More.tsx");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 
 
 
@@ -4786,50 +4809,46 @@ const emitter = new (events__WEBPACK_IMPORTED_MODULE_1___default())();
   const {
     refs,
     context
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useFloating)({
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useFloating)({
     open: true
   });
-  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useClick)(context);
-  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useRole)(context);
+  const click = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useClick)(context);
+  const role = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useRole)(context);
   const {
     getReferenceProps,
     getFloatingProps
-  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.useInteractions)([click, role]);
+  } = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.useInteractions)([click, role]);
   const labelId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   const descriptionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.FloatingOverlay, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.FloatingOverlay, {
     className: "Dialog-overlay",
     lockScroll: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_9__.FloatingFocusManager, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_floating_ui_react__WEBPACK_IMPORTED_MODULE_8__.FloatingFocusManager, {
     context: context
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _extends({
     className: "Dialog",
     ref: refs.setFloating,
     "aria-labelledby": labelId,
     "aria-describedby": descriptionId
-  }, getFloatingProps()), type === 'add' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Add__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, getFloatingProps()), type === 'edit' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Edit__WEBPACK_IMPORTED_MODULE_3__["default"], {
     labelId: labelId,
     descriptionId: descriptionId,
     buttonDisabled: buttonDisabled
-  }), type === 'edit' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Edit__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), type === 'clear' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Clear__WEBPACK_IMPORTED_MODULE_2__["default"], {
     labelId: labelId,
     descriptionId: descriptionId,
     buttonDisabled: buttonDisabled
-  }), type === 'clear' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Clear__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), type === 'delete' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Delete__WEBPACK_IMPORTED_MODULE_4__["default"], {
     labelId: labelId,
     descriptionId: descriptionId,
     buttonDisabled: buttonDisabled
-  }), type === 'delete' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Delete__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    labelId: labelId,
-    descriptionId: descriptionId,
-    buttonDisabled: buttonDisabled
-  }), type === 'about' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_About__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), type === 'about' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_About__WEBPACK_IMPORTED_MODULE_5__["default"], {
     labelId: labelId,
     descriptionId: descriptionId
-  }), type === 'info' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Info__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), type === 'info' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_Info__WEBPACK_IMPORTED_MODULE_6__["default"], {
     labelId: labelId,
     descriptionId: descriptionId
-  }), type === 'more' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_More__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), type === 'more' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_content_More__WEBPACK_IMPORTED_MODULE_7__["default"], {
     labelId: labelId,
     descriptionId: descriptionId
   })))));
@@ -4865,109 +4884,6 @@ __webpack_require__.r(__webpack_exports__);
   }, "Hi and welcome to my app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => navigate('/')
   }, "Return"));
-});
-
-/***/ }),
-
-/***/ "./front/src/dialog/content/Add.tsx":
-/*!******************************************!*\
-  !*** ./front/src/dialog/content/Add.tsx ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addAction: () => (/* binding */ addAction),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
-/* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Dialog */ "./front/src/dialog/Dialog.tsx");
-
-
-
-
-async function addAction(_ref) {
-  let {
-    request
-  } = _ref;
-  _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
-  const data = Object.fromEntries(await request.formData());
-  console.log('add action fired');
-  console.log(data);
-  const response = await new Promise(resolve => {
-    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('add', data, response => {
-      resolve(response);
-    });
-  });
-  if (response.status === 'failed') {
-    _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
-    return response;
-  }
-  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref2 => {
-  let {
-    labelId,
-    descriptionId,
-    buttonDisabled
-  } = _ref2;
-  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "add-edit-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
-    id: labelId
-  }, "Heading element: ADD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    id: descriptionId
-  }, "Description element")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
-    method: "post"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "calibrate"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    disabled: buttonDisabled,
-    type: "text",
-    name: "name"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "How much you will eat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    disabled: buttonDisabled,
-    type: "text",
-    name: "name"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Reference portion size:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    disabled: buttonDisabled,
-    type: "text",
-    name: "name"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "nutrient-inputs"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    disabled: buttonDisabled,
-    type: "number",
-    min: "0",
-    name: "fat"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter carb:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    disabled: buttonDisabled,
-    type: "number",
-    min: "0",
-    name: "carb"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fibre:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    disabled: buttonDisabled,
-    type: "number",
-    min: "0",
-    name: "fibre"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    disabled: buttonDisabled,
-    type: "submit"
-  }, "Add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    disabled: buttonDisabled,
-    onClick: () => navigate('/')
-  }, "Cancel"))), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
 });
 
 /***/ }),
@@ -5113,17 +5029,22 @@ async function deleteAction(_ref) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addAction: () => (/* binding */ addAction),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   editAction: () => (/* binding */ editAction),
 /* harmony export */   loader: () => (/* binding */ loader)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/@remix-run/router/dist/router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../eventEmitter */ "./front/src/eventEmitter.ts");
 /* harmony import */ var _Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Dialog */ "./front/src/dialog/Dialog.tsx");
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants */ "./front/src/constants.ts");
+
+
 
 
 
@@ -5132,7 +5053,7 @@ async function loader(_ref) {
   let {
     params
   } = _ref;
-  console.log('add loader fired');
+  console.log('edit loader fired, filling...');
   const response = await new Promise(resolve => {
     if (!params.id) throw new Error();
     _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('fillEdit', params.id, response => {
@@ -5142,11 +5063,30 @@ async function loader(_ref) {
   console.log('loading', response);
   return response;
 }
-async function editAction(_ref2) {
+async function addAction(_ref2) {
+  let {
+    request
+  } = _ref2;
+  _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
+  const data = Object.fromEntries(await request.formData());
+  console.log('add action fired');
+  console.log(data);
+  const response = await new Promise(resolve => {
+    _eventEmitter__WEBPACK_IMPORTED_MODULE_1__["default"].emit('add', data, response => {
+      resolve(response);
+    });
+  });
+  if (response.status === 'failed') {
+    _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
+    return response;
+  }
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.redirect)('/');
+}
+async function editAction(_ref3) {
   let {
     params,
     request
-  } = _ref2;
+  } = _ref3;
   _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', true);
   const data = {
     id: params.id,
@@ -5162,53 +5102,79 @@ async function editAction(_ref2) {
     _Dialog__WEBPACK_IMPORTED_MODULE_2__.emitter.emit('buttonDisabled', false);
     return response;
   }
-  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.redirect)('/');
+  return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.redirect)('/');
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref3 => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref4 => {
   let {
     labelId,
     descriptionId,
     buttonDisabled
-  } = _ref3;
-  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useActionData)();
-  const listElement = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLoaderData)();
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  } = _ref4;
+  const idExists = typeof (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)().id === 'string';
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useActionData)();
+  const listElement = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLoaderData)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    console.log(idExists);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "add-edit-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "title",
     id: labelId
-  }, "Heading element: EDIT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, "Heading element: ", listElement === undefined ? 'Add' : 'Edit'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "description",
     id: descriptionId
-  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Form, {
+  }, "Description element")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Form, {
     method: "post"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, !idExists && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "hidden",
+    name: "id",
+    value: (0,nanoid__WEBPACK_IMPORTED_MODULE_7__.nanoid)().slice(0, 7)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "calibrate"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "name"
+  }, "Enter name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "text",
     name: "name",
     defaultValue: listElement?.name
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fat:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "amount"
+  }, "Amount:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
-    name: "fat",
-    defaultValue: listElement?.fat
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter carb:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "userAmount",
+    defaultValue: listElement ? listElement?.userAmount : 0
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "reference"
+  }, "Reference portion size:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
-    name: "carb",
-    defaultValue: listElement?.carb
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter fibre:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "refPortion",
+    defaultValue: listElement ? listElement?.refPortion : 0
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "nutrient-inputs"
+  }, _constants__WEBPACK_IMPORTED_MODULE_3__.nutrients.map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Enter ", nutrient, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
-    name: "fibre",
-    defaultValue: listElement?.fibre
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    name: nutrient,
+    defaultValue: listElement ? listElement?.[nutrient] : 0
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     type: "submit"
-  }, "Save")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, listElement === undefined ? 'Add' : 'Save'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     disabled: buttonDisabled,
     onClick: () => navigate('/')
-  }, "Cancel"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
+  }, "Cancel"))), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
 });
 
 /***/ }),
@@ -5292,9 +5258,9 @@ async function loader(_ref) {
     id: labelId
   }, "Your top ", nutrient, " contributors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     id: descriptionId
-  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, orderedContribution.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, orderedContribution.length >= 1 ? orderedContribution.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: i
-  }, entry.name, ", ", entry.grams, " grams"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, entry.name, ", ", entry.grams, " grams")) : 'You have no contributors listed for this nutrient!'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => navigate('/')
   }, "Back"), error?.status && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong..."));
 });
@@ -5363,11 +5329,15 @@ __webpack_require__.r(__webpack_exports__);
 
 class Advisor {
   constructor(sex, ageRange) {
-    ;
     this.advice = {
       fat: _constants__WEBPACK_IMPORTED_MODULE_0__.fat,
       carb: _constants__WEBPACK_IMPORTED_MODULE_0__.carb,
-      fibre: _constants__WEBPACK_IMPORTED_MODULE_0__.fibre
+      fibre: _constants__WEBPACK_IMPORTED_MODULE_0__.fibre,
+      sugar: _constants__WEBPACK_IMPORTED_MODULE_0__.sugar,
+      protein: _constants__WEBPACK_IMPORTED_MODULE_0__.protein,
+      salt: _constants__WEBPACK_IMPORTED_MODULE_0__.salt,
+      calories: _constants__WEBPACK_IMPORTED_MODULE_0__.calories,
+      saturatedFat: _constants__WEBPACK_IMPORTED_MODULE_0__.saturatedFat
     }, this.sex = sex, this.ageRange = ageRange;
   }
   getSex() {
@@ -5450,11 +5420,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ListArranger)
 /* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./front/src/constants.ts");
+/* harmony import */ var _referenceSizeCalc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./referenceSizeCalc */ "./front/src/logic/referenceSizeCalc.ts");
+
+
 class ListArranger {
   constructor() {
     this.fat = [];
     this.carb = [];
     this.fibre = [];
+    this.protein = [];
+    this.saturatedFat = [];
+    this.sugar = [];
+    this.salt = [];
+    this.calories = [];
   }
   order(array) {
     const sorted = array.sort((a, b) => b.grams - a.grams);
@@ -5462,35 +5441,30 @@ class ListArranger {
   }
   arrange(list) {
     list.forEach(entry => {
-      if (entry.fat > 0) {
-        this.fat.push({
-          name: entry.name,
-          grams: entry.fat
-        });
-      }
-      if (entry.carb > 0) {
-        this.carb.push({
-          name: entry.name,
-          grams: entry.carb
-        });
-      }
-      if (entry.fibre > 0) {
-        this.fibre.push({
-          name: entry.name,
-          grams: entry.fibre
-        });
-      }
+      _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+        if (entry[nutrient] > 0) {
+          this[nutrient].push({
+            name: entry.name,
+            grams: (0,_referenceSizeCalc__WEBPACK_IMPORTED_MODULE_1__["default"])(entry[nutrient], entry.refPortion, entry.userAmount)
+          });
+        }
+      });
+      _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
+        this[nutrient] = this.order(this[nutrient]);
+      });
     });
-    this.fat = this.order(this.fat);
-    this.carb = this.order(this.carb);
-    this.fibre = this.order(this.fibre);
   }
   report(list) {
     this.arrange(list);
     return {
       fat: this.fat,
       carb: this.carb,
-      fibre: this.fibre
+      fibre: this.fibre,
+      protein: this.protein,
+      saturatedFat: this.saturatedFat,
+      sugar: this.sugar,
+      salt: this.salt,
+      calories: this.calories
     };
   }
 }
@@ -5508,20 +5482,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./front/src/constants.ts");
+/* harmony import */ var _referenceSizeCalc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./referenceSizeCalc */ "./front/src/logic/referenceSizeCalc.ts");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (list => {
   const accumulator = {
     fat: 0,
     carb: 0,
-    fibre: 0
+    fibre: 0,
+    protein: 0,
+    saturatedFat: 0,
+    sugar: 0,
+    salt: 0,
+    calories: 0
   };
   function reducer(accumulator, item) {
     _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
-      accumulator[nutrient] += Number(item[nutrient]);
+      const trueTotal = (0,_referenceSizeCalc__WEBPACK_IMPORTED_MODULE_1__["default"])(Number(item[nutrient]), Number(item.refPortion), Number(item.userAmount));
+      accumulator[nutrient] = Math.round((accumulator[nutrient] + trueTotal) * 10) / 10;
     });
     return accumulator;
   }
   return list.reduce(reducer, accumulator);
+});
+
+/***/ }),
+
+/***/ "./front/src/logic/referenceSizeCalc.ts":
+/*!**********************************************!*\
+  !*** ./front/src/logic/referenceSizeCalc.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((nutrientInRef, totalRefPortion, userAmount) => {
+  const value = nutrientInRef / totalRefPortion * userAmount;
+  return Math.round(value * 10) / 10;
 });
 
 /***/ }),
@@ -5541,12 +5540,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./front/src/App.tsx");
 /* harmony import */ var _ErrorPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorPage */ "./front/src/ErrorPage.tsx");
 /* harmony import */ var _dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog/Dialog */ "./front/src/dialog/Dialog.tsx");
-/* harmony import */ var _dialog_content_Add__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialog/content/Add */ "./front/src/dialog/content/Add.tsx");
-/* harmony import */ var _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialog/content/Edit */ "./front/src/dialog/content/Edit.tsx");
-/* harmony import */ var _dialog_content_More__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialog/content/More */ "./front/src/dialog/content/More.tsx");
-/* harmony import */ var _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialog/content/Clear */ "./front/src/dialog/content/Clear.tsx");
-/* harmony import */ var _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialog/content/Delete */ "./front/src/dialog/content/Delete.tsx");
-
+/* harmony import */ var _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialog/content/Edit */ "./front/src/dialog/content/Edit.tsx");
+/* harmony import */ var _dialog_content_More__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialog/content/More */ "./front/src/dialog/content/More.tsx");
+/* harmony import */ var _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialog/content/Clear */ "./front/src/dialog/content/Clear.tsx");
+/* harmony import */ var _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialog/content/Delete */ "./front/src/dialog/content/Delete.tsx");
 
 
 
@@ -5563,34 +5560,34 @@ __webpack_require__.r(__webpack_exports__);
   children: [{
     path: 'add',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      type: "add"
+      type: "edit"
     }),
-    action: _dialog_content_Add__WEBPACK_IMPORTED_MODULE_4__.addAction
+    action: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_4__.addAction
   }, {
     path: 'edit/:id',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
       type: "edit"
     }),
-    loader: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__.loader,
-    action: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_5__.editAction
+    loader: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_4__.loader,
+    action: _dialog_content_Edit__WEBPACK_IMPORTED_MODULE_4__.editAction
   }, {
     path: 'more/:nutrient',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
       type: "more"
     }),
-    loader: _dialog_content_More__WEBPACK_IMPORTED_MODULE_6__.loader
+    loader: _dialog_content_More__WEBPACK_IMPORTED_MODULE_5__.loader
   }, {
     path: 'clear',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
       type: "clear"
     }),
-    action: _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_7__.clearAction
+    action: _dialog_content_Clear__WEBPACK_IMPORTED_MODULE_6__.clearAction
   }, {
     path: 'delete/:id',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
       type: "delete"
     }),
-    action: _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_8__.deleteAction
+    action: _dialog_content_Delete__WEBPACK_IMPORTED_MODULE_7__.deleteAction
   }, {
     path: 'about',
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dialog_Dialog__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -5617,12 +5614,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Store: () => (/* binding */ Store),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! nanoid */ "./node_modules/nanoid/index.browser.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./front/src/constants.ts");
 /* harmony import */ var _logic_Advisor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logic/Advisor */ "./front/src/logic/Advisor.ts");
 /* harmony import */ var _logic_nutrientTotals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logic/nutrientTotals */ "./front/src/logic/nutrientTotals.ts");
 /* harmony import */ var _logic_ListArranger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./logic/ListArranger */ "./front/src/logic/ListArranger.ts");
-
 
 
 
@@ -5646,6 +5641,31 @@ class Store {
         advice: undefined,
         total: undefined,
         orderedContributors: undefined
+      },
+      protein: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      },
+      saturatedFat: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      },
+      sugar: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      },
+      salt: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
+      },
+      calories: {
+        advice: undefined,
+        total: undefined,
+        orderedContributors: undefined
       }
     };
   }
@@ -5663,11 +5683,9 @@ class Store {
   }
   updateTotals() {
     const totals = (0,_logic_nutrientTotals__WEBPACK_IMPORTED_MODULE_2__["default"])(this.list);
-    console.log(`totals from calc`, totals);
     _constants__WEBPACK_IMPORTED_MODULE_0__.nutrients.forEach(nutrient => {
       const total = totals[nutrient];
       this.userReport[nutrient].total = total;
-      console.log(`total in report`, this.userReport[nutrient].total);
     });
   }
   updateOrderedContributors() {
@@ -5684,7 +5702,9 @@ class Store {
   async add(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
-        const id = (0,nanoid__WEBPACK_IMPORTED_MODULE_4__.nanoid)().slice(0, 7);
+        // run calculation here
+
+        const id = data.id;
         const name = data.name;
         const fat = data.fat;
         const carb = data.carb;
@@ -5692,13 +5712,7 @@ class Store {
 
         //if (this.list[id] !== undefined) resolve({ status: 'failed' })
 
-        this.list.push({
-          id,
-          name,
-          fat,
-          carb,
-          fibre
-        });
+        this.list.push(data);
         resolve({
           status: 'ok'
         });
@@ -5710,6 +5724,8 @@ class Store {
   async edit(data) {
     const response = await new Promise(resolve => {
       setTimeout(() => {
+        // run calculation here
+
         this.list[this.getIndexById(data.id)] = data;
         resolve({
           status: 'ok'
@@ -5857,33 +5873,47 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.Dialog-overlay {
 }
 
 .add-edit-grid {
+  height: 500px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 3fr 1fr;
-  grid-template-areas: "header" "calibrate" "nutrient-inputs" "buttons";
+  grid-template-areas: 'header' 'calibrate' 'nutrient-inputs' 'buttons';
   background-color: rgb(0, 0, 255, 0.1);
 }
 
 .add-edit-grid .header {
   grid-area: 'header';
   background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .add-edit-grid .calibrate {
   grid-area: 'calibrate';
   background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .add-edit-grid .nutrient-inputs {
   grid-area: 'nutrient-inputs';
   background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
+
+
+/*
+
+
 
 .add-edit-grid .buttons {
   grid-area: 'buttons';
   background-color: rgb(0, 0, 255, 0.1);
 }
 
+*/
 
 /*
 
@@ -5975,7 +6005,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.Dialog-overlay {
   background-color: rgb(0, 0, 255, 0.1);
 }
 
-*/`, "",{"version":3,"sources":["webpack://./front/src/dialog-styles.css"],"names":[],"mappings":"AAAA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,oCAAoC;EACpC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,qEAAqE;EACrE,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,sBAAsB;EACtB,qCAAqC;AACvC;;AAEA;EACE,4BAA4B;EAC5B,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,qCAAqC;AACvC;;;AAGA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CA0FC","sourcesContent":[".Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  min-width: 335px;\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'header' 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: 'header';\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: 'buttons';\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'delete cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 3fr 1fr;\r\n  grid-template-areas: \"header\" \"calibrate\" \"nutrient-inputs\" \"buttons\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .header {\r\n  grid-area: 'header';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .calibrate {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .nutrient-inputs {\r\n  grid-area: 'nutrient-inputs';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .buttons {\r\n  grid-area: 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n\r\n/*\r\n\r\n.add-grid {\r\n  min-height: 500px;\r\n  min-width: 340px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 4fr 1fr;\r\n  grid-template-areas: 'title' 'step1' 'step2' 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 {\r\n  width: 100%;\r\n  height: 100%;\r\n  grid-area: 'step1';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'name' 'amount';\r\n}\r\n\r\n.add-grid .step1 .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .name .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .name .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount {\r\n  grid-area: 'amount';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .amount .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 {\r\n  grid-area: 'step2';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(9, 1fr);\r\n  grid-template-areas: 'per' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro';\r\n}\r\n\r\n.add-grid .step2 .per {\r\n  grid-area: \"per\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 .macro {\r\n  grid-area: \"macro\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .finish {\r\n  grid-area: 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n*/"],"sourceRoot":""}]);
+*/
+`, "",{"version":3,"sources":["webpack://./front/src/dialog-styles.css"],"names":[],"mappings":"AAAA;EACE,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,uBAAuB;EACvB,aAAa;EACb,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,qCAAqC;AACvC;;AAEA;EACE,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,uBAAuB;EACvB,oCAAoC;EACpC,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC;;AAEA;EACE,aAAa;EACb,WAAW;EACX,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,qEAAqE;EACrE,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;EACrC,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,sBAAsB;EACtB,qCAAqC;EACrC,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,4BAA4B;EAC5B,qCAAqC;EACrC,aAAa;EACb,sBAAsB;AACxB;;;AAGA;;;;;;;;;CASC;;AAED;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CA0FC","sourcesContent":[".Dialog-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: grid;\r\n  place-items: center;\r\n}\r\n\r\n.Dialog {\r\n  min-width: 335px;\r\n  margin: 15px;\r\n  background-color: white;\r\n  padding: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.confirm-grid {\r\n  height: 100px;\r\n  width: 300px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'header' 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .header {\r\n  grid-area: 'header';\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons {\r\n  grid-area: 'buttons';\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'delete cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.confirm-grid .buttons .cancel {\r\n  grid-area: 'cancel';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid {\r\n  height: 500px;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 3fr 1fr;\r\n  grid-template-areas: 'header' 'calibrate' 'nutrient-inputs' 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-edit-grid .header {\r\n  grid-area: 'header';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.add-edit-grid .calibrate {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.add-edit-grid .nutrient-inputs {\r\n  grid-area: 'nutrient-inputs';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n\r\n/*\r\n\r\n\r\n\r\n.add-edit-grid .buttons {\r\n  grid-area: 'buttons';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n*/\r\n\r\n/*\r\n\r\n.add-grid {\r\n  min-height: 500px;\r\n  min-width: 340px;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 2fr 4fr 1fr;\r\n  grid-template-areas: 'title' 'step1' 'step2' 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 {\r\n  width: 100%;\r\n  height: 100%;\r\n  grid-area: 'step1';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr;\r\n  grid-template-areas: 'name' 'amount';\r\n}\r\n\r\n.add-grid .step1 .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .name .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .name .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount {\r\n  grid-area: 'amount';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'label input';\r\n}\r\n\r\n.add-grid .step1 .amount .label {\r\n  grid-area: 'label';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step1 .amount .input {\r\n  grid-area: 'input';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 {\r\n  grid-area: 'step2';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(9, 1fr);\r\n  grid-template-areas: 'per' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro' 'macro';\r\n}\r\n\r\n.add-grid .step2 .per {\r\n  grid-area: \"per\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .step2 .macro {\r\n  grid-area: \"macro\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.add-grid .finish {\r\n  grid-area: 'finish';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n*/\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

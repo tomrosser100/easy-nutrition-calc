@@ -1,9 +1,16 @@
-import type { GeneralAdvice, Nutrient, } from './types'
+import type { GeneralAdvice, Nutrient } from './types'
 
 export const delay = 100
 
 export const nutrients = [
-  'fat', 'carb', 'fibre'
+  'fat',
+  'carb',
+  'fibre',
+  'protein',
+  'saturatedFat',
+  'sugar',
+  'salt',
+  'calories',
 ] as Nutrient[]
 
 // y axis
@@ -27,17 +34,57 @@ export const fat = {
 } as GeneralAdvice
 
 export const carb = {
-  operator: 'at most',
+  operator: 'at least',
   grams: [
-    [11, 22, 33, 44, 55, 66],
-    [66, 55, 44, 33, 22, 11],
+    [242, 333, 333, 333, 312, 306],
+    [227, 267, 267, 267, 255, 245],
   ],
 } as GeneralAdvice
 
 export const fibre = {
+  operator: 'around',
+  grams: [
+    [20, 25, 30, 30, 30, 30],
+    [20, 25, 30, 30, 30, 30],
+  ],
+} as GeneralAdvice
+
+export const protein = {
+  operator: 'around',
+  grams: [
+    [28.3, 42.1, 55.2, 55.5, 53.3, 53.3],
+    [28.3, 41.2, 45.0, 45.0, 46.5, 46.5],
+  ],
+} as GeneralAdvice
+
+export const saturatedFat = {
   operator: 'at most',
   grams: [
-    [1, 2, 3, 4, 5, 6],
-    [7, 8, 9, 10, 11, 12],
+    [22, 31, 31, 31, 29, 28],
+    [21, 24, 24, 24, 23, 23],
+  ],
+} as GeneralAdvice
+
+export const calories = {
+  operator: 'around',
+  grams: [
+    [1817, 2500, 2500, 2500, 2342, 2294],
+    [1703, 2000, 2000, 2000, 1912, 1840],
+  ],
+} as GeneralAdvice
+
+export const sugar = {
+  operator: 'at most',
+  grams: [
+    [24, 33, 33, 33, 31, 31],
+    [23, 27, 27, 27, 26, 25],
+  ],
+} as GeneralAdvice
+
+export const salt = {
+  operator: 'at most',
+  grams: [
+    [5, 6, 6, 6, 6, 6],
+    [5, 6, 6, 6, 6, 6],
   ],
 } as GeneralAdvice

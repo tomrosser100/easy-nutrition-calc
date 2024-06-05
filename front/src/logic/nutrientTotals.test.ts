@@ -1,23 +1,24 @@
-import nutrientTotals from "./nutrientTotals"
+import { testList } from '../testConstants'
+import nutrientTotals from './nutrientTotals'
 
 describe('totals', () => {
-
   describe('nutrientTotals', () => {
     it('given array of obj w/ grams prop, returns total grams', () => {
-      const list = [
-        { id: 'test1', name: 'testName1', fat: 10, carb: 5, fibre: 9 },
-        { id: 'test2', name: 'testName2', fat: 20, carb: 7, fibre: 100 },
-      ]
+      const list = testList
       const expectation = {
-        fat: 30,
+        fat: 141.5,
         carb: 12,
-        fibre: 109
+        fibre: 81,
+        calories: 2505.5,
+        protein: 7,
+        salt: 11.5,
+        saturatedFat: 8.5,
+        sugar: 10,
       }
-  
+
       const result = nutrientTotals(list)
 
       expect(result).toStrictEqual(expectation)
     })
   })
-
 })

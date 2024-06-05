@@ -1,5 +1,7 @@
 import { describe, it } from '@jest/globals'
 import ListArranger from './ListArranger'
+import { testEmptyListElement, testList, testListElement } from '../testConstants'
+import type { ListElement } from '../types'
 
 describe('ListArranger', () => {
   describe('sort', () => {
@@ -17,7 +19,7 @@ describe('ListArranger', () => {
       ]
 
       const result = listArranger.order(list)
-      
+
       expect(result).toStrictEqual(expectation)
     })
   })
@@ -25,12 +27,11 @@ describe('ListArranger', () => {
   describe('arrange', () => {
     it('given list element, transfers data to props', () => {
       const listArranger = new ListArranger()
-      const list = [
-        { id: 'test', name: 'testName', fat: 35, carb: 10, fibre: 15 },
-      ]
-      const fatExpectation = [{ name: 'testName', grams: 35 }]
-      const carbExpectation = [{ name: 'testName', grams: 10 }]
-      const fibreExpectation = [{ name: 'testName', grams: 15 }]
+      const list = [testListElement]
+
+      const fatExpectation = [{ name: 'testName', grams: 17.5 }]
+      const carbExpectation = [{ name: 'testName', grams: 5 }]
+      const fibreExpectation = [{ name: 'testName', grams: 7.5 }]
 
       listArranger.arrange(list)
 
@@ -41,24 +42,34 @@ describe('ListArranger', () => {
 
     it('given multiple entries of one nutrient, lists in order of gram size', () => {
       const listArranger = new ListArranger()
-      const list = [
-        { id: 'test1', name: 'testName1', fat: 10, carb: 0, fibre: 0 },
-        { id: 'test2', name: 'testName2', fat: 20, carb: 0, fibre: 0 },
-      ]
+      const list = [testList[0], testList[1]] as ListElement[]
+
       const expectation = [
         {
           name: 'testName2',
-          grams: 20,
+          grams: 2.5,
         },
         {
           name: 'testName1',
-          grams: 10,
+          grams: 0.5,
         },
       ]
 
       listArranger.arrange(list)
 
-      expect(listArranger.fat).toStrictEqual(expectation)
+      expect(listArranger.protein).toStrictEqual(expectation)
+    })
+
+    it('returns empty array if 0 grams of nutrient', () => {
+      const listArranger = new ListArranger()
+      const list = [
+        testEmptyListElement
+      ]
+      const expectation = [] as []
+
+      listArranger.arrange(list)
+
+      expect(listArranger.saturatedFat).toStrictEqual(expectation)
     })
   })
 })
