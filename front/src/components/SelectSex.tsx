@@ -2,6 +2,10 @@ import React, { useState, type ChangeEvent } from 'react'
 import { useNavigate } from 'react-router'
 import eventEmitter from '../eventEmitter'
 import type { Sex } from '../types'
+import { StyledInput, StyledLabel, theme } from '../styledComponents'
+
+
+
 
 export default () => {
   const [radioDisabled, setRadioDisabled] = useState(false)
@@ -25,9 +29,9 @@ export default () => {
   }
 
   return (
-    <div>
-      <label htmlFor='male'>male</label>
-      <input
+    <div className='inner'>
+      <StyledLabel htmlFor='male'>male</StyledLabel>
+      <StyledInput
         disabled={radioDisabled}
         type='radio'
         id='male'
@@ -35,8 +39,8 @@ export default () => {
         value='male'
         onChange={handleChange}
       />
-      <label htmlFor='female'>female</label>
-      <input
+      <StyledLabel htmlFor='female'>female</StyledLabel>
+      <StyledInput
         disabled={radioDisabled}
         type='radio'
         id='female'

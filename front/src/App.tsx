@@ -11,6 +11,8 @@ import type {
 } from './types'
 import SelectAgeRange from './components/SelectAgeRange'
 import SelectSex from './components/SelectSex'
+import { ThemeProvider } from 'styled-components'
+import { StyledButton, StyledCalibrateSection, theme } from './styledComponents'
 
 export async function loader() {
   console.log('app loader fired')
@@ -59,6 +61,7 @@ export default () => {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <div id='app'>
       <Outlet />
       <div className='nav-flex'>
@@ -97,7 +100,7 @@ export default () => {
         </div>
         <div className='flex-item'>
           <div className='input-grid'>
-            <div className='calibrate-grid'>
+            <StyledCalibrateSection className='calibrate-grid'>
               <div className='sex'>
                 <SelectSex />
               </div>
@@ -105,9 +108,9 @@ export default () => {
                 <SelectAgeRange />
               </div>
               <div className='help'>
-                <button onClick={() => navigate('info')}>?</button>
+                <StyledButton onClick={() => navigate('info')}>?</StyledButton>
               </div>
-            </div>
+            </StyledCalibrateSection>
             <div className='foods-grid'>
               <div className='top'>
                 <div className='title'>Title</div>
@@ -163,6 +166,7 @@ export default () => {
       </div>
       <div className='bot-flex'></div>
     </div>
+    </ThemeProvider>
   )
 }
 

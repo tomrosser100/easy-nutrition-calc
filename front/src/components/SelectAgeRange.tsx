@@ -2,6 +2,7 @@ import React, { useState, type ChangeEvent } from 'react'
 import { useNavigate } from 'react-router'
 import eventEmitter from '../eventEmitter'
 import type { AgeRange } from '../types'
+import { StyledLabel, StyledSelect } from '../styledComponents'
 
 export default () => {
   const [selectDisabled, setSelectDisabled] = useState(false)
@@ -24,16 +25,16 @@ export default () => {
   }
 
   return (
-    <div>
-      <label htmlFor='ageRange'>age range</label>
-      <select disabled={selectDisabled} name='ageRange' id='ageRange' defaultValue='19' onChange={handleChange}>
+    <div className='inner'>
+      <StyledLabel htmlFor='ageRange'>age range</StyledLabel>
+      <StyledSelect disabled={selectDisabled} name='ageRange' id='ageRange' defaultValue='19' onChange={handleChange}>
         <option value='7'>7-10</option>
         <option value='11'>11-14</option>
         <option value='15'>15-18</option>
         <option value='19'>19-64</option>
         <option value='65'>65-74</option>
         <option value='75'>75+</option>
-      </select>
+      </StyledSelect>
     </div>
   )
 }
