@@ -3,10 +3,17 @@ import { useNavigate } from 'react-router'
 import eventEmitter from '../eventEmitter'
 import type { Sex } from '../types'
 import { StyledInput, StyledLabel, theme } from '../styledComponents'
+import styled from 'styled-components'
 
-
-
-
+const StyledSex = styled.div`
+  grid-area: 'sex';
+  background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+`
 export default () => {
   const [radioDisabled, setRadioDisabled] = useState(false)
   const navigate = useNavigate()
@@ -29,7 +36,7 @@ export default () => {
   }
 
   return (
-    <div className='inner'>
+    <StyledSex>
       <StyledLabel htmlFor='male'>male</StyledLabel>
       <StyledInput
         disabled={radioDisabled}
@@ -49,6 +56,6 @@ export default () => {
         onChange={handleChange}
         defaultChecked
       />
-    </div>
+    </StyledSex>
   )
 }

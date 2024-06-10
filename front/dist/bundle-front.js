@@ -4513,12 +4513,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventEmitter */ "./front/src/eventEmitter.ts");
-/* harmony import */ var _components_SelectAgeRange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SelectAgeRange */ "./front/src/components/SelectAgeRange.tsx");
-/* harmony import */ var _components_SelectSex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SelectSex */ "./front/src/components/SelectSex.tsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _styledComponents__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styledComponents */ "./front/src/styledComponents.ts");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _styledComponents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styledComponents */ "./front/src/styledComponents.ts");
+/* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Nav */ "./front/src/components/Nav.tsx");
+/* harmony import */ var _components_Main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Main */ "./front/src/components/Main.tsx");
+/* harmony import */ var _components_Bot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Bot */ "./front/src/components/Bot.tsx");
+
 
 
 
@@ -4537,13 +4539,12 @@ async function loader() {
   return response;
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   const {
     sex,
     ageRange,
     list,
     userReport
-  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLoaderData)();
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLoaderData)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     function fillEdit(id, callback) {
       return callback(getListElementById(id));
@@ -4567,57 +4568,139 @@ async function loader() {
     });
     return target;
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(styled_components__WEBPACK_IMPORTED_MODULE_6__.ThemeProvider, {
-    theme: _styledComponents__WEBPACK_IMPORTED_MODULE_4__.theme
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(styled_components__WEBPACK_IMPORTED_MODULE_7__.ThemeProvider, {
+    theme: _styledComponents__WEBPACK_IMPORTED_MODULE_2__.theme
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "app"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "nav-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "about"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => navigate('about')
-  }, "about"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "flex-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "flex-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "output-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "table-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "nutrient"
-  }, "nutrient"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "advice"
-  }, "advice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "you"
-  }, "you")), Object.keys(userReport).map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-    key: i
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "nutrient"
-  }, nutrient), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "advice"
-  }, userReport[nutrient].advice.operator, userReport[nutrient].advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "you"
-  }, userReport[nutrient].total, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => navigate('more/' + nutrient)
-  }, "More")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "flex-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "input-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_4__.StyledCalibrateSection, {
-    className: "calibrate-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "sex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_SelectSex__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "age"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_SelectAgeRange__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "help"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_4__.StyledButton, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Outlet, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    userReport: userReport,
+    list: list
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Bot__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+});
+
+/***/ }),
+
+/***/ "./front/src/ErrorPage.tsx":
+/*!*********************************!*\
+  !*** ./front/src/ErrorPage.tsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ErrorPage)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+
+
+function ErrorPage() {
+  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useRouteError)();
+  console.error(error);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Oops"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, error.statusText || error.message));
+}
+
+/***/ }),
+
+/***/ "./front/src/components/Bot.tsx":
+/*!**************************************!*\
+  !*** ./front/src/components/Bot.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+const StyledBot = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Bot__StyledBot",
+  componentId: "sc-1qn7usr-0"
+})(["margin:auto;min-width:350px;max-width:1000px;width:100%;height:60px;background-color:rgb(0,128,0,0.5);"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledBot, {
+    className: "bot-flex"
+  });
+});
+
+/***/ }),
+
+/***/ "./front/src/components/Calibrate.tsx":
+/*!********************************************!*\
+  !*** ./front/src/components/Calibrate.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _styledComponents__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styledComponents */ "./front/src/styledComponents.ts");
+/* harmony import */ var _SelectAgeRange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectAgeRange */ "./front/src/components/SelectAgeRange.tsx");
+/* harmony import */ var _SelectSex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectSex */ "./front/src/components/SelectSex.tsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+
+
+
+
+
+
+const StyledCalibrate = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
+  displayName: "Calibrate__StyledCalibrate",
+  componentId: "sc-m8wh2f-0"
+})(["grid-area:'calibrate';background-color:rgb(0,0,255,0.1);height:100%;width:100%;display:grid;min-width:0px;min-height:0px;grid-template-columns:3fr 3fr 1fr;grid-template-rows:1fr;grid-template-areas:'sex' 'age' 'help';"]);
+const StyledHelp = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
+  displayName: "Calibrate__StyledHelp",
+  componentId: "sc-m8wh2f-1"
+})(["grid-area:'help';background-color:rgb(0,0,255,0.1);display:flex;align-items:center;flex-direction:row;flex-wrap:nowrap;"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledCalibrate, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SelectSex__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SelectAgeRange__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledHelp, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledButton, {
     onClick: () => navigate('info')
-  }, "?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "foods-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "?")));
+});
+
+/***/ }),
+
+/***/ "./front/src/components/Foods.tsx":
+/*!****************************************!*\
+  !*** ./front/src/components/Foods.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+const StyledFoods = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Foods__StyledFoods",
+  componentId: "sc-12vc56b-0"
+})(["grid-area:'foods';background-color:rgb(0,0,255,0.1);height:100%;width:100%;place-self:center;display:grid;min-width:0px;min-height:0px;grid-template-columns:1fr;grid-template-rows:1fr 4fr;grid-template-areas:'top' 'list';"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    list
+  } = _ref;
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledFoods, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "title"
@@ -4647,62 +4730,182 @@ async function loader() {
     className: "delete"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => navigate('delete/' + entry.id)
-  }, "del")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "name"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "whitespace"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "edit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "delete"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "name"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "whitespace"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "edit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "delete"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "name"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "whitespace"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "edit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "delete"
-  })))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "bot-flex"
-  })));
+  }, "del")))))));
 });
-
-/*
-
-*/
 
 /***/ }),
 
-/***/ "./front/src/ErrorPage.tsx":
-/*!*********************************!*\
-  !*** ./front/src/ErrorPage.tsx ***!
-  \*********************************/
+/***/ "./front/src/components/Inputs.tsx":
+/*!*****************************************!*\
+  !*** ./front/src/components/Inputs.tsx ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ErrorPage)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _Calibrate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Calibrate */ "./front/src/components/Calibrate.tsx");
+/* harmony import */ var _Foods__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Foods */ "./front/src/components/Foods.tsx");
 
 
-function ErrorPage() {
-  const error = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useRouteError)();
-  console.error(error);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Oops"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, error.statusText || error.message));
-}
+
+
+
+const StyledInputs = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "Inputs__StyledInputs",
+  componentId: "sc-1jebx89-0"
+})(["height:100%;width:100%;display:grid;grid-template-columns:1fr;grid-template-rows:2fr 8fr;grid-template-areas:'calibrate' 'foods';background-color:rgb(0,0,255,0.1);"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    list
+  } = _ref;
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledInputs, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Calibrate__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Foods__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    list: list
+  }));
+});
+
+/***/ }),
+
+/***/ "./front/src/components/Main.tsx":
+/*!***************************************!*\
+  !*** ./front/src/components/Main.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _Results__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Results */ "./front/src/components/Results.tsx");
+/* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Inputs */ "./front/src/components/Inputs.tsx");
+
+
+
+
+
+const StyledMainContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "Main__StyledMainContainer",
+  componentId: "sc-92e889-0"
+})(["margin:auto;display:flex;flex-wrap:wrap;justify-content:center;max-width:1000px;min-width:350px;height:100%;align-items:center;background-color:rgb(0,0,255,0.2);"]);
+const StyledMainItem = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "Main__StyledMainItem",
+  componentId: "sc-92e889-1"
+})(["min-width:350px;min-height:450px;max-height:500px;flex:1 1 0px;display:flex;align-self:stretch;background-color:rgb(0,0,255,0.1);"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    userReport,
+    list
+  } = _ref;
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledMainContainer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledMainItem, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Results__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    userReport: userReport
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledMainItem, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Inputs__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    list: list
+  })));
+});
+
+/***/ }),
+
+/***/ "./front/src/components/Nav.tsx":
+/*!**************************************!*\
+  !*** ./front/src/components/Nav.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+const StyledNavLayout = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Nav__StyledNavLayout",
+  componentId: "sc-ik1x8j-0"
+})(["margin:auto;max-width:1000px;min-width:350px;height:60px;background-color:rgb(0,128,0,0.5);display:flex;justify-content:flex-end;"]);
+const StyledAbout = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Nav__StyledAbout",
+  componentId: "sc-ik1x8j-1"
+})(["width:125px;background-color:rgb(0,0,255,0.1);"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNavLayout, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAbout, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('about')
+  }, "about")));
+});
+
+/***/ }),
+
+/***/ "./front/src/components/Results.tsx":
+/*!******************************************!*\
+  !*** ./front/src/components/Results.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+
+
+
+const StyledResultsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Results__StyledResultsContainer",
+  componentId: "sc-1yuc5ym-0"
+})(["height:100%;width:100%;display:flex;justify-content:center;align-items:center;background-color:rgb(0,0,255,0.1);"]);
+const StyledUnorderedList = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].ul.withConfig({
+  displayName: "Results__StyledUnorderedList",
+  componentId: "sc-1yuc5ym-1"
+})(["list-style:none;padding:0px;margin:0px;display:flex;flex-direction:column;height:100%;width:100%;"]);
+const StyledListElement = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].li.withConfig({
+  displayName: "Results__StyledListElement",
+  componentId: "sc-1yuc5ym-2"
+})(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr;grid-template-areas:'nutrient advice you';background-color:rgb(0,0,255,0.1);height:100%;width:100%;"]);
+const StyledNutrient = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Results__StyledNutrient",
+  componentId: "sc-1yuc5ym-3"
+})(["grid-area:'nutrient';"]);
+const StyledAdvice = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Results__StyledAdvice",
+  componentId: "sc-1yuc5ym-4"
+})(["grid-area:'advice';"]);
+const StyledYou = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "Results__StyledYou",
+  componentId: "sc-1yuc5ym-5"
+})(["grid-area:'you';"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
+  let {
+    userReport
+  } = _ref;
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledResultsContainer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledUnorderedList, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledListElement, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrient, null, "nutrient"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAdvice, null, "advice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledYou, null, "you")), Object.keys(userReport).map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledListElement, {
+    key: i
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrient, null, nutrient), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAdvice, null, userReport[nutrient].advice.operator, userReport[nutrient].advice.grams), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledYou, null, userReport[nutrient].total, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => navigate('more/' + nutrient)
+  }, "More"))))));
+});
 
 /***/ }),
 
@@ -4719,16 +4922,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../eventEmitter */ "./front/src/eventEmitter.ts");
 /* harmony import */ var _styledComponents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styledComponents */ "./front/src/styledComponents.ts");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
 
 
+
+const StyledAge = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "SelectAgeRange__StyledAge",
+  componentId: "sc-72vhcp-0"
+})(["grid-area:'age';background-color:rgb(0,0,255,0.1);display:flex;align-items:center;flex-direction:row;flex-wrap:nowrap;justify-content:space-evenly;"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const [selectDisabled, setSelectDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   const handleChange = async e => {
     setSelectDisabled(true);
     const ageRange = e.target.value;
@@ -4740,9 +4949,7 @@ __webpack_require__.r(__webpack_exports__);
     setSelectDisabled(false);
     return navigate('/');
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "inner"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledLabel, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAge, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledLabel, {
     htmlFor: "ageRange"
   }, "age range"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledSelect, {
     disabled: selectDisabled,
@@ -4780,16 +4987,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _eventEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../eventEmitter */ "./front/src/eventEmitter.ts");
 /* harmony import */ var _styledComponents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styledComponents */ "./front/src/styledComponents.ts");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
 
 
+
+const StyledSex = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "SelectSex__StyledSex",
+  componentId: "sc-19nyd8b-0"
+})(["grid-area:'sex';background-color:rgb(0,0,255,0.1);display:flex;align-items:center;flex-direction:row;flex-wrap:nowrap;justify-content:space-evenly;"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const [radioDisabled, setRadioDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   const handleChange = async e => {
     setRadioDisabled(true);
     const sex = e.target.value;
@@ -4802,9 +5015,7 @@ __webpack_require__.r(__webpack_exports__);
     setRadioDisabled(false);
     return navigate('/');
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "inner"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledLabel, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledSex, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledLabel, {
     htmlFor: "male"
   }, "male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledInput, {
     disabled: radioDisabled,
@@ -6235,7 +6446,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `* {
   box-sizing: border-box;
-  border: 0px solid black;
+  border: 1px solid black;
 }
 
 html {
@@ -6250,135 +6461,6 @@ body {
   padding: 0px;
 }
 
-.nav-flex {
-  margin: auto;
-  max-width: 1000px;
-  min-width: 350px;
-  height: 60px;
-  background-color: rgb(0, 128, 0, 0.5);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.about {
-  width: 125px;
-  background-color: rgb(0, 0, 255, 0.1);
-}
-
-.bot-flex {
-  margin: auto;
-  min-width: 350px;
-  max-width: 1000px;
-  width: 100%;
-  height: 60px;
-  background-color: rgb(0, 128, 0, 0.5);
-}
-
-.flex-container {
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1000px;
-  min-width: 350px;
-  height: 100%;
-  align-items: center;
-  background-color: rgb(0, 0, 255, 0.2);
-}
-
-.flex-item {
-  min-width: 350px;
-  min-height: 450px;
-  max-height: 500px;
-  flex: 1 1 0px;
-  align-self: stretch;
-  background-color: rgb(0, 0, 255, 0.1);
-}
-
-.output-grid {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'table-grid';
-  background-color: rgb(0, 0, 255, 0.1);
-}
-
-.output-grid ul {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.output-grid .table-grid {
-  grid-area: 'table-grid';
-  height: 100%;
-  width: 98%;
-  place-self: center;
-  border-radius: 25px;
-}
-
-.output-grid .table-grid li {
-  grid-area: 'table-grid';
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "nutrient advice you";
-  background-color: rgb(0, 0, 255, 0.1);
-  height: 100%;
-  width: 100%;
-}
-
-li .nutrient {
-  grid-area: 'nutrient';
-  background-color: rgb(0, 0, 255, 0.1);
-
-}
-
-li .advice {
-  grid-area: 'advice';
-  background-color: rgb(0, 0, 255, 0.1);
-
-}
-
-li .you {
-  grid-area: 'you';  
-  background-color: rgb(0, 0, 255, 0.1);
-
-}
-
-.input-grid {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 2fr 8fr;
-  grid-template-areas:
-    'calibrate'
-    'foods';
-  background-color: rgb(0, 0, 255, 0.1);
-}
-
-.calibrate-grid {
-  grid-area: 'calibrate';
-  background-color: rgb(0, 0, 255, 0.1);
-  height: 90%;
-  width: 98%;
-  place-self: center;
-  border-radius: 25px;
-  display: grid;
-  min-width: 0px;
-  min-height: 0px;
-  grid-template-columns: 3fr 3fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'sex' 'age' 'help';
-}
-
 .sex {
   grid-area: 'sex';
   background-color: rgb(0, 0, 255, 0.1);
@@ -6386,16 +6468,6 @@ li .you {
   width: 100%;
 }
 
-.sex .inner {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  background-color: rgb(0, 0, 255, 0.1);
-  height: 100%;
-  width: 100%;
-}
 
 .age {
   grid-area: 'age';
@@ -6431,7 +6503,7 @@ li .you {
   grid-area: 'foods';
   background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
-  width: 98%;
+  width: 100%;
   place-self: center;
   display: grid;
   min-width: 0px;
@@ -6515,7 +6587,7 @@ li .you {
   grid-area: 'delete';
   background-color: rgb(0, 0, 255, 0.1);
 }
-`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 0px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.nav-flex {\r\n  margin: auto;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.about {\r\n  width: 125px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.bot-flex {\r\n  margin: auto;\r\n  min-width: 350px;\r\n  max-width: 1000px;\r\n  width: 100%;\r\n  height: 60px;\r\n  background-color: rgb(0, 128, 0, 0.5);\r\n}\r\n\r\n.flex-container {\r\n  margin: auto;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  max-width: 1000px;\r\n  min-width: 350px;\r\n  height: 100%;\r\n  align-items: center;\r\n  background-color: rgb(0, 0, 255, 0.2);\r\n}\r\n\r\n.flex-item {\r\n  min-width: 350px;\r\n  min-height: 450px;\r\n  max-height: 500px;\r\n  flex: 1 1 0px;\r\n  align-self: stretch;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'table-grid';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.output-grid ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.output-grid .table-grid {\r\n  grid-area: 'table-grid';\r\n  height: 100%;\r\n  width: 98%;\r\n  place-self: center;\r\n  border-radius: 25px;\r\n}\r\n\r\n.output-grid .table-grid li {\r\n  grid-area: 'table-grid';\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: \"nutrient advice you\";\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\nli .nutrient {\r\n  grid-area: 'nutrient';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .advice {\r\n  grid-area: 'advice';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\nli .you {\r\n  grid-area: 'you';  \r\n  background-color: rgb(0, 0, 255, 0.1);\r\n\r\n}\r\n\r\n.input-grid {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 2fr 8fr;\r\n  grid-template-areas:\r\n    'calibrate'\r\n    'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.calibrate-grid {\r\n  grid-area: 'calibrate';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 90%;\r\n  width: 98%;\r\n  place-self: center;\r\n  border-radius: 25px;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 3fr 3fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'sex' 'age' 'help';\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.sex .inner {\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: row;\r\n  flex-wrap: nowrap;\r\n  justify-content: space-evenly;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age .inner {\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: row;\r\n  flex-wrap: nowrap;\r\n  justify-content: space-evenly;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: row;\r\n  flex-wrap: nowrap;\r\n  justify-content: space-evenly;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 98%;\r\n  place-self: center;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: 'top' 'list';\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'title whitespace clear add';\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 90px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'name whitespace edit delete';\r\n}\r\n\r\n.list li .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: 'edit';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;;AAGA;EACE,gBAAgB;EAChB,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,iBAAiB;EACjB,6BAA6B;EAC7B,qCAAqC;EACrC,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,iBAAiB;EACjB,6BAA6B;AAC/B;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,2BAA2B;EAC3B,iCAAiC;AACnC;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,uBAAuB;EACvB,qCAAqC;AACvC;;AAEA;EACE,kBAAkB;EAClB,qCAAqC;AACvC;;AAEA;EACE,gBAAgB;EAChB,qCAAqC;AACvC;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,YAAY;EACZ,qCAAqC;EACrC,aAAa;EACb,sCAAsC;EACtC,uBAAuB;EACvB,kDAAkD;AACpD;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;AACvC;;AAEA;EACE,uBAAuB;EACvB,qCAAqC;AACvC;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;AACvC;;AAEA;EACE,mBAAmB;EACnB,qCAAqC;AACvC","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\n.sex {\r\n  grid-area: 'sex';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n\r\n.age {\r\n  grid-area: 'age';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.age .inner {\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: row;\r\n  flex-wrap: nowrap;\r\n  justify-content: space-evenly;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.help {\r\n  grid-area: 'help';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: row;\r\n  flex-wrap: nowrap;\r\n  justify-content: space-evenly;\r\n}\r\n\r\n.foods-grid {\r\n  grid-area: 'foods';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  place-self: center;\r\n  display: grid;\r\n  min-width: 0px;\r\n  min-height: 0px;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 4fr;\r\n  grid-template-areas: 'top' 'list';\r\n}\r\n\r\n.top {\r\n  grid-area: 'top';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'title whitespace clear add';\r\n}\r\n\r\n.top .title {\r\n  grid-area: 'title';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .clear {\r\n  grid-area: 'clear';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.top .add {\r\n  grid-area: 'add';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list {\r\n  grid-area: 'list';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow-x: hidden;\r\n  overflow-y: scroll;\r\n}\r\n\r\n.list ul {\r\n  list-style: none;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.list li {\r\n  height: 90px;\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n  display: grid;\r\n  grid-template-columns: 2fr 3fr 1fr 1fr;\r\n  grid-template-rows: 1fr;\r\n  grid-template-areas: 'name whitespace edit delete';\r\n}\r\n\r\n.list li .name {\r\n  grid-area: 'name';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .whitespace {\r\n  grid-area: 'whitespace';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .edit {\r\n  grid-area: 'edit';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n\r\n.list li .delete {\r\n  grid-area: 'delete';\r\n  background-color: rgb(0, 0, 255, 0.1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

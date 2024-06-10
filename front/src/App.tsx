@@ -13,6 +13,9 @@ import SelectAgeRange from './components/SelectAgeRange'
 import SelectSex from './components/SelectSex'
 import { ThemeProvider } from 'styled-components'
 import { StyledButton, StyledCalibrateSection, theme } from './styledComponents'
+import Nav from './components/Nav'
+import Main from './components/Main'
+import Bot from './components/Bot'
 
 export async function loader() {
   console.log('app loader fired')
@@ -26,7 +29,6 @@ export async function loader() {
 }
 
 export default () => {
-  const navigate = useNavigate()
   const { sex, ageRange, list, userReport } = useLoaderData() as StoreData
 
   useEffect(() => {
@@ -38,7 +40,9 @@ export default () => {
       nutrient: Nutrient,
       callback: (response: OrderedContribution) => void
     ) {
-      return callback(userReport[nutrient].orderedContributors as OrderedContribution)
+      return callback(
+        userReport[nutrient].orderedContributors as OrderedContribution
+      )
     }
 
     eventEmitter.on('fillEdit', fillEdit)
@@ -62,114 +66,12 @@ export default () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <div id='app'>
-      <Outlet />
-      <div className='nav-flex'>
-        <div className='about'>
-          <button onClick={() => navigate('about')}>about</button>
-        </div>
+      <div id='app'>
+        <Outlet />
+        <Nav />
+        <Main userReport={userReport} list={list} />
+        <Bot />
       </div>
-      <div className='flex-container'>
-        <div className='flex-item'>
-          <div className='output-grid'>
-            <div className='table-grid'>
-              <ul>
-                <li>
-                  <div className='nutrient'>nutrient</div>
-                  <div className='advice'>advice</div>
-                  <div className='you'>you</div>
-                </li>
-                {Object.keys(userReport).map((nutrient, i) => (
-                  <li key={i}>
-                    <div className='nutrient'>{nutrient}</div>
-                    <div className='advice'>
-                      {userReport[nutrient].advice.operator}
-                      {userReport[nutrient].advice.grams}
-                    </div>
-                    <div className='you'>
-                      {userReport[nutrient].total}
-                      <button onClick={() => navigate('more/' + nutrient)}>
-                        More
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className='flex-item'>
-          <div className='input-grid'>
-            <StyledCalibrateSection className='calibrate-grid'>
-              <div className='sex'>
-                <SelectSex />
-              </div>
-              <div className='age'>
-                <SelectAgeRange />
-              </div>
-              <div className='help'>
-                <StyledButton onClick={() => navigate('info')}>?</StyledButton>
-              </div>
-            </StyledCalibrateSection>
-            <div className='foods-grid'>
-              <div className='top'>
-                <div className='title'>Title</div>
-                <div className='whitespace'></div>
-                <div className='clear'>
-                  <button onClick={() => navigate('clear')}>clear</button>
-                </div>
-                <div className='add'>
-                  <button onClick={() => navigate('add')}>add</button>
-                </div>
-              </div>
-              <div className='list'>
-                <ul>
-                  {list.map((entry, i) => (
-                    <li key={i}>
-                      <div className='name'>{entry.name}</div>
-                      <div className='whitespace'></div>
-                      <div className='edit'>
-                        <button onClick={() => navigate(`edit/` + entry.id)}>
-                          edit
-                        </button>
-                      </div>
-                      <div className='delete'>
-                        <button onClick={() => navigate('delete/' + entry.id)}>
-                          del
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                  <li>
-                    <div className='name'></div>
-                    <div className='whitespace'></div>
-                    <div className='edit'></div>
-                    <div className='delete'>{/*<Confirm />*/}</div>
-                  </li>
-                  <li>
-                    <div className='name'></div>
-                    <div className='whitespace'></div>
-                    <div className='edit'></div>
-                    <div className='delete'></div>
-                  </li>
-                  <li>
-                    <div className='name'></div>
-                    <div className='whitespace'></div>
-                    <div className='edit'></div>
-                    <div className='delete'></div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='bot-flex'></div>
-    </div>
     </ThemeProvider>
   )
 }
-
-/*
-
-*/

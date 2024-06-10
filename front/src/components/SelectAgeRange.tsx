@@ -3,7 +3,17 @@ import { useNavigate } from 'react-router'
 import eventEmitter from '../eventEmitter'
 import type { AgeRange } from '../types'
 import { StyledLabel, StyledSelect } from '../styledComponents'
+import styled from 'styled-components'
 
+const StyledAge = styled.div`
+  grid-area: 'age';
+  background-color: rgb(0, 0, 255, 0.1);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+`
 export default () => {
   const [selectDisabled, setSelectDisabled] = useState(false)
   const navigate = useNavigate()
@@ -25,7 +35,7 @@ export default () => {
   }
 
   return (
-    <div className='inner'>
+    <StyledAge>
       <StyledLabel htmlFor='ageRange'>age range</StyledLabel>
       <StyledSelect disabled={selectDisabled} name='ageRange' id='ageRange' defaultValue='19' onChange={handleChange}>
         <option value='7'>7-10</option>
@@ -35,6 +45,6 @@ export default () => {
         <option value='65'>65-74</option>
         <option value='75'>75+</option>
       </StyledSelect>
-    </div>
+    </StyledAge>
   )
 }
