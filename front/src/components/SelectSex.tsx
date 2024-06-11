@@ -2,17 +2,17 @@ import React, { useState, type ChangeEvent } from 'react'
 import { useNavigate } from 'react-router'
 import eventEmitter from '../eventEmitter'
 import type { Sex } from '../types'
-import { StyledInput, StyledLabel, theme } from '../styledComponents'
+import {
+  StyledCentralised,
+  StyledInput,
+  StyledLabel,
+  theme,
+} from '../styledComponents'
 import styled from 'styled-components'
 
-const StyledSex = styled.div`
+const StyledSex = styled(StyledCentralised)`
   grid-area: 'sex';
   background-color: rgb(0, 0, 255, 0.1);
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
 `
 export default () => {
   const [radioDisabled, setRadioDisabled] = useState(false)
@@ -24,11 +24,11 @@ export default () => {
     const sex = e.target.value as Sex
     if (sex !== 'male' && sex !== 'female') throw new Error()
 
-    const response = await new Promise((resolve) => {
+    const response = (await new Promise((resolve) => {
       eventEmitter.emit('updateSex', sex, (response) => {
         resolve(response)
       })
-    }) as { status: 'ok' | 'failed' }
+    })) as { status: 'ok' | 'failed' }
 
     setRadioDisabled(false)
 

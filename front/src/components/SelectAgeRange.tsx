@@ -2,17 +2,12 @@ import React, { useState, type ChangeEvent } from 'react'
 import { useNavigate } from 'react-router'
 import eventEmitter from '../eventEmitter'
 import type { AgeRange } from '../types'
-import { StyledLabel, StyledSelect } from '../styledComponents'
+import { StyledCentralised, StyledLabel, StyledSelect } from '../styledComponents'
 import styled from 'styled-components'
 
-const StyledAge = styled.div`
+const StyledAge = styled(StyledCentralised)`
   grid-area: 'age';
   background-color: rgb(0, 0, 255, 0.1);
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
 `
 export default () => {
   const [selectDisabled, setSelectDisabled] = useState(false)

@@ -5,24 +5,18 @@ export const theme = {
   borderRadius: '10px',
 }
 
-export const StyledCalibrateSection = styled.div`
-  background-color: cyan;
-  border: 0px;
-`
-
 export const StyledButton = styled.button`
-  color: ${props => props.theme.main};
+  color: ${(props) => props.theme.main};
   border: 2px solid ${(props) => props.theme.main};
-  height: 30px;
-  width: 30px;
-  border-radius: ${props => props.theme.borderRadius};
+  padding: 5px;
+  border-radius: ${(props) => props.theme.borderRadius};
 `
 
 export const StyledSelect = styled.select`
   color: ${(props) => props.theme.main};
   border: 2px solid ${(props) => props.theme.main};
   padding: 5px;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${(props) => props.theme.borderRadius};
 `
 
 export const StyledInput = styled.input`
@@ -30,12 +24,26 @@ export const StyledInput = styled.input`
   height: 20px;
   width: 20px;
   vertical-align: middle;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${(props) => props.theme.borderRadius};
 `
 
 export const StyledLabel = styled.label`
   color: ${(props) => props.theme.main};
-  border: 0px solid ${(props) => props.theme.main};
+  border: 1px solid ${(props) => props.theme.main};
   padding: 5px;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${(props) => props.theme.borderRadius};
 `
+
+export const StyledHeader = styled.div`
+  color: ${(props) => props.theme.main};
+  font-weight: bold;
+`
+
+export const StyledCentralised = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+`
+

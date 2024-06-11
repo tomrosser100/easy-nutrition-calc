@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import type { UserReport } from '../types'
 import { useNavigate } from 'react-router-dom'
+import { StyledButton, StyledCentralised, StyledHeader } from '../styledComponents'
 
 const StyledResultsContainer = styled.div`
   height: 100%;
@@ -31,13 +32,29 @@ const StyledListElement = styled.li`
   width: 100%;
 `
 
-const StyledNutrient = styled.div`
+const StyledNutrient = styled.div<{ $header?: boolean }>`
   grid-area: 'nutrient';
+  display: grid;
+
+  ${(props) => {
+    switch (props.$header) {
+      case true:
+        return css`
+          place-items: center;
+        `
+      default:
+        return css`
+          justify-items: left;
+          align-items: center;
+          padding-left: 5px;
+        `
+    }
+  }}
 `
-const StyledAdvice = styled.div`
+const StyledAdvice = styled(StyledCentralised)`
   grid-area: 'advice';
 `
-const StyledYou = styled.div`
+const StyledYou = styled(StyledCentralised)`
   grid-area: 'you';
 `
 
@@ -48,20 +65,28 @@ export default ({ userReport }: { userReport: UserReport }) => {
     <StyledResultsContainer>
       <StyledUnorderedList>
         <StyledListElement>
-          <StyledNutrient>nutrient</StyledNutrient>
-          <StyledAdvice>advice</StyledAdvice>
-          <StyledYou>you</StyledYou>
+          <StyledNutrient $header={true}>
+            <StyledHeader>Nutrient</StyledHeader>
+          </StyledNutrient>
+          <StyledAdvice>
+            <StyledHeader>Advice</StyledHeader>
+          </StyledAdvice>
+          <StyledYou>
+            <StyledHeader>You</StyledHeader>
+          </StyledYou>
         </StyledListElement>
         {Object.keys(userReport).map((nutrient, i) => (
           <StyledListElement key={i}>
-            <StyledNutrient>{nutrient}</StyledNutrient>
+            <StyledNutrient>
+              <div>{nutrient}</div>
+            </StyledNutrient>
             <StyledAdvice>
-              {userReport[nutrient].advice.operator}
-              {userReport[nutrient].advice.grams}
+              <div>{userReport[nutrient].advice.operator}</div>
+              <div>{userReport[nutrient].advice.grams}</div>
             </StyledAdvice>
             <StyledYou>
-              {userReport[nutrient].total}
-              <button onClick={() => navigate('more/' + nutrient)}>More</button>
+              <div>{userReport[nutrient].total}</div>
+              <StyledButton onClick={() => navigate('more/' + nutrient)}>More</StyledButton>
             </StyledYou>
           </StyledListElement>
         ))}

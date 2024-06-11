@@ -7,6 +7,13 @@ import {
 } from 'react-router-dom'
 import eventEmitter from '../../eventEmitter'
 import type { Nutrient, OrderedContribution } from '../../types'
+import {
+  StyledInfo,
+  StyledInfoBody,
+  StyledInfoFoot,
+  StyledInfoHead,
+} from './About'
+import { StyledButton } from '../../styledComponents'
 
 export async function loader({ params }: { params: { nutrient?: Nutrient } }) {
   console.log('more loader fired')
@@ -34,25 +41,29 @@ export default ({
   descriptionId: string
 }) => {
   const { nutrient } = useParams()
-  const error = useActionData() as { status: 'failed' }
   const orderedContribution = useLoaderData() as OrderedContribution
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h2 id={labelId}>Your top {nutrient} contributors</h2>
-      <p id={descriptionId}>Description element</p>
-      <ol>
-        {orderedContribution.length >= 1
-          ? orderedContribution.map((entry, i) => (
-              <li key={i}>
-                {entry.name}, {entry.grams} grams
-              </li>
-            ))
-          : 'You have no contributors listed for this nutrient!'}
-      </ol>
-      <button onClick={() => navigate('/')}>Back</button>
-      {error?.status && <p>Something went wrong...</p>}
-    </div>
+    <StyledInfo>
+      <StyledInfoHead id={labelId}>
+        <div>Your top {nutrient} contributors</div>
+      </StyledInfoHead>
+      <StyledInfoBody id={descriptionId}>
+        <div>Description element</div>
+        <ol>
+          {orderedContribution.length >= 1
+            ? orderedContribution.map((entry, i) => (
+                <li key={i}>
+                  {entry.name}, {entry.grams} grams
+                </li>
+              ))
+            : 'You have no contributors listed for this nutrient!'}
+        </ol>
+      </StyledInfoBody>
+      <StyledInfoFoot>
+        <StyledButton onClick={() => navigate('/')}>Back</StyledButton>
+      </StyledInfoFoot>
+    </StyledInfo>
   )
 }

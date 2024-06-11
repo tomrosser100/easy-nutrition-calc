@@ -1,5 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import {
+  StyledInfo,
+  StyledInfoBody,
+  StyledInfoFoot,
+  StyledInfoHead,
+} from './About'
+import { StyledButton } from '../../styledComponents'
 
 export default ({
   labelId,
@@ -11,12 +18,16 @@ export default ({
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h2 id={labelId}>Heading element: Where did I get this data?</h2>
-      <p id={descriptionId}>Here's where I got the reference data from</p>
-      <button onClick={() => navigate('/')}>
-        Return
-      </button>
-    </div>
+    <StyledInfo>
+      <StyledInfoHead id={labelId}>
+        <div>Where does this data come from?</div>
+      </StyledInfoHead>
+      <StyledInfoBody id={descriptionId}>
+        <div>Great question! Here's where I got the reference data from</div>
+      </StyledInfoBody>
+      <StyledInfoFoot>
+        <StyledButton onClick={() => navigate('/')}>Return</StyledButton>
+      </StyledInfoFoot>
+    </StyledInfo>
   )
 }

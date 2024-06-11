@@ -13,7 +13,7 @@ const StyledInputs = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 8fr;
+  grid-template-rows: 1fr 8fr;
   grid-template-areas:
     'calibrate'
     'foods';

@@ -16,11 +16,27 @@ import Delete from './content/Delete'
 import About from './content/About'
 import Info from './content/Info'
 import More from './content/More'
+import styled from 'styled-components'
 
 type Events = {
   buttonDisabled: (bool: boolean) => void
 }
 export const emitter = new EventEmitter() as TypedEventEmitter<Events>
+
+const StyledFloatingOverlay = styled(FloatingOverlay)`
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  place-items: center;
+`
+const StyledDialog = styled.div`
+  min-width: 335px;
+  margin: 15px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 4px;
+  display: grid;
+  place-items: stretch;
+`
 
 export default ({
   type,
@@ -55,9 +71,9 @@ export default ({
 
   return (
     <div>
-      <FloatingOverlay className='Dialog-overlay' lockScroll>
+      <StyledFloatingOverlay lockScroll>
         <FloatingFocusManager context={context}>
-          <div
+          <StyledDialog
             className='Dialog'
             ref={refs.setFloating}
             aria-labelledby={labelId}
@@ -93,9 +109,9 @@ export default ({
             {type === 'more' && (
               <More labelId={labelId} descriptionId={descriptionId} />
             )}
-          </div>
+          </StyledDialog>
         </FloatingFocusManager>
-      </FloatingOverlay>
+      </StyledFloatingOverlay>
     </div>
   )
 }

@@ -1,17 +1,3 @@
-.Dialog-overlay {
-  background: rgba(0, 0, 0, 0.8);
-  display: grid;
-  place-items: center;
-}
-
-.Dialog {
-  min-width: 335px;
-  margin: 15px;
-  background-color: white;
-  padding: 15px;
-  border-radius: 4px;
-}
-
 .confirm-grid {
   height: 100px;
   width: 300px;

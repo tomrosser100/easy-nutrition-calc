@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { StyledButton } from '../styledComponents'
 
 const StyledNavLayout = styled.div`
   margin: auto;
@@ -15,6 +16,8 @@ const StyledNavLayout = styled.div`
 const StyledAbout = styled.div`
     width: 125px;
     background-color: rgb(0, 0, 255, 0.1);
+    display: grid;
+    place-items: center;
 `
 
 export default () => {
@@ -23,7 +26,7 @@ export default () => {
   return (
     <StyledNavLayout>
       <StyledAbout>
-        <button onClick={() => navigate('about')}>about</button>
+        <StyledButton onClick={() => navigate('about')}>about</StyledButton>
       </StyledAbout>
     </StyledNavLayout>
   )
