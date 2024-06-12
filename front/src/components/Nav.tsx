@@ -2,11 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { StyledButton } from '../styledComponents'
+import { appMaxWidth, appMinWidth } from '../constants'
 
 const StyledNavLayout = styled.div`
   margin: auto;
-  max-width: 1000px;
-  min-width: 350px;
+  max-width: ${appMaxWidth};
+  min-width: ${appMinWidth};
   height: 60px;
   background-color: rgb(0, 128, 0, 0.5);
   display: flex;

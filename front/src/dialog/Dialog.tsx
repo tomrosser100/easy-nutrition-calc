@@ -17,6 +17,7 @@ import About from './content/About'
 import Info from './content/Info'
 import More from './content/More'
 import styled from 'styled-components'
+import { appMaxWidth, appMinWidth } from '../constants'
 
 type Events = {
   buttonDisabled: (bool: boolean) => void
@@ -29,6 +30,7 @@ const StyledFloatingOverlay = styled(FloatingOverlay)`
   place-items: center;
 `
 const StyledDialog = styled.div`
+  max-width: 500px;
   min-width: 335px;
   margin: 15px;
   background-color: white;

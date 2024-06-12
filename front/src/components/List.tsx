@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { StyledButton, StyledCentralised } from '../styledComponents'
 
 const StyledList = styled.div`
-  grid-area: 'list';
   background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
@@ -25,10 +24,8 @@ const StyledListElement = styled.li`
   display: grid;
   grid-template-columns: 5fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: 'name edit delete';
 `
 const StyledListName = styled.div`
-  grid-area: 'name';
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   justify-items: left;
@@ -37,14 +34,12 @@ const StyledListName = styled.div`
 `
 
 const StyledListEdit = styled.div`
-  grid-area: 'edit';
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
 `
 
 const StyledListDelete = styled.div`
-  grid-area: 'delete';
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;

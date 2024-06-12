@@ -6,7 +6,6 @@ import Head from './Head'
 import List from './List'
 
 const StyledFoods = styled.div`
-  grid-area: 'foods';
   background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
@@ -16,7 +15,6 @@ const StyledFoods = styled.div`
   min-height: 0px;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
-  grid-template-areas: 'head' 'list';
 `
 
 export default ({ list }: { list: ListElement[] }) => {

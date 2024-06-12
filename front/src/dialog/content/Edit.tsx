@@ -12,6 +12,11 @@ import type { ListElement } from '../../types'
 import { emitter } from '../Dialog'
 import { nanoid } from 'nanoid'
 import { nutrients } from '../../constants'
+import styled from 'styled-components'
+import EditHeader from './EditHeader'
+import EditCalibrate from './EditCalibrate'
+import EditNutrientInputs from './EditNutrientInputs'
+import EditButtons from './EditButtons'
 
 export async function loader({ params }: { params: { id?: string } }) {
   console.log('edit loader fired, filling...')
@@ -71,6 +76,15 @@ export async function editAction({
   return redirect('/')
 }
 
+const StyledEdit = styled.div`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 10fr 1fr;
+  background-color: rgb(0, 0, 255, 0.1);
+`
+
 export default ({
   labelId,
   descriptionId,
@@ -80,85 +94,34 @@ export default ({
   descriptionId: string
   buttonDisabled: boolean
 }) => {
-  const idExists = (typeof useParams().id === 'string')
-
   const error = useActionData() as { status: 'failed' }
   const listElement = useLoaderData() as ListElement
   const navigate = useNavigate()
 
-  useEffect(() => {
-
-    console.log(idExists)
-
-  }, [])
+  useEffect(() => {}, [])
 
   return (
-    <div className='add-edit-grid'>
-      <div className='header'>
-        <div className='title' id={labelId}>
-          Heading element: {listElement === undefined ? 'Add' : 'Edit'}
-        </div>
-        <div className='description' id={descriptionId}>
-          Description element
-        </div>
-      </div>
-      <Form method='post'>
-        {!idExists && (<input type='hidden' name='id' value={nanoid().slice(0, 7)} />)}
-        <div className='calibrate'>
-          <label className='name'>
-            Enter name:
-            <input
-              disabled={buttonDisabled}
-              type='text'
-              name='name'
-              defaultValue={listElement?.name}
-            />
-          </label>
-          <label className='amount'>
-            Amount:
-            <input
-              disabled={buttonDisabled}
-              type='number'
-              min='0'
-              name='userAmount'
-              defaultValue={listElement ? listElement?.userAmount : 0}
-            />
-          </label>
-          <label className='reference'>
-            Reference portion size:
-            <input
-              disabled={buttonDisabled}
-              type='number'
-              min='0'
-              name='refPortion'
-              defaultValue={listElement ? listElement?.refPortion : 0}
-            />
-          </label>
-        </div>
-        <div className='nutrient-inputs'>
-          {nutrients.map((nutrient, i) => (
-            <label>
-              Enter {nutrient}
-              <input
-                disabled={buttonDisabled}
-                type='number'
-                min='0'
-                name={nutrient}
-                defaultValue={listElement ? listElement?.[nutrient] : 0}
-                />
-            </label>
-          ))}
-        </div>
-        <div className='buttons'>
-          <button disabled={buttonDisabled} type='submit'>
-            {listElement === undefined ? 'Add' : 'Save'}
-          </button>
-          <button disabled={buttonDisabled} onClick={() => navigate('/')}>
-            Cancel
-          </button>
-        </div>
-      </Form>
-      {error?.status && <p>Something went wrong...</p>}
-    </div>
+    <Form method='post'>
+      <StyledEdit>
+        <EditHeader
+          labelId={labelId}
+          descriptionId={descriptionId}
+          listElement={listElement}
+        />
+        <EditCalibrate
+          buttonDisabled={buttonDisabled}
+          listElement={listElement}
+        />
+        <EditNutrientInputs
+          buttonDisabled={buttonDisabled}
+          listElement={listElement}
+        />
+        <EditButtons
+          buttonDisabled={buttonDisabled}
+          listElement={listElement}
+        />
+        {error?.status && <p>Something went wrong...</p>}
+      </StyledEdit>
+    </Form>
   )
 }

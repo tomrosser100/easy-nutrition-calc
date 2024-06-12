@@ -7,6 +7,7 @@ import {
   StyledInfoHead,
 } from './About'
 import { StyledButton } from '../../styledComponents'
+import { loremIpsum } from '../../constants'
 
 export default ({
   labelId,
@@ -23,7 +24,7 @@ export default ({
         <div>Where does this data come from?</div>
       </StyledInfoHead>
       <StyledInfoBody id={descriptionId}>
-        <div>Great question! Here's where I got the reference data from</div>
+        <div>Great question! Here's where I got the reference data from {loremIpsum}</div>
       </StyledInfoBody>
       <StyledInfoFoot>
         <StyledButton onClick={() => navigate('/')}>Return</StyledButton>

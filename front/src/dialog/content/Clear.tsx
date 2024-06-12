@@ -2,6 +2,9 @@ import React from 'react'
 import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
 import eventEmitter from '../../eventEmitter'
 import { emitter } from '../Dialog'
+import styled from 'styled-components'
+import { StyledButtons } from './EditButtons'
+import { StyledButton } from '../../styledComponents'
 
 export async function clearAction({ request }: { request: any }) {
   emitter.emit('buttonDisabled', true)
@@ -17,6 +20,14 @@ export async function clearAction({ request }: { request: any }) {
   return redirect('/')
 }
 
+export const StyledClear = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  background-color: rgb(0, 0, 255, 0.1);
+`
+
+
 export default ({
   labelId,
   descriptionId,
@@ -30,23 +41,24 @@ export default ({
   const navigate = useNavigate()
 
   return (
-    <div>
-      <Form method='post'>
-        <div className='confirm-grid'>
-          <div className='header' id={labelId}>
-            Are you sure you want to clear all and start again?
+    <Form method='post'>
+        <StyledClear>
+          <div id={labelId}>
+            Clear All
           </div>
-          <div className='buttons'>
-            <button disabled={buttonDisabled} type='submit'>
+          <div id={descriptionId}>
+            Careful! Are you sure you want to clear all and start again?
+          </div>
+          <StyledButtons>
+            <StyledButton disabled={buttonDisabled} type='submit'>
               Clear
-            </button>
-            <button disabled={buttonDisabled} onClick={() => navigate('/')}>
+            </StyledButton>
+            <StyledButton disabled={buttonDisabled} onClick={() => navigate('/')}>
               Cancel
-            </button>
-          </div>
-        </div>
-      </Form>
+            </StyledButton>
+          </StyledButtons>
+        </StyledClear>
       {error?.status && <p>Something went wrong...</p>}
-    </div>
+    </Form>
   )
 }

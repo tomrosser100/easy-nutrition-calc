@@ -1,21 +1,17 @@
 import React, { useEffect } from 'react'
-import { Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { Outlet, useLoaderData } from 'react-router-dom'
 import eventEmitter from './eventEmitter'
 import type {
-  AgeRange,
   ListElement,
   Nutrient,
   OrderedContribution,
-  Sex,
   StoreData,
 } from './types'
-import SelectAgeRange from './components/SelectAgeRange'
-import SelectSex from './components/SelectSex'
 import { ThemeProvider } from 'styled-components'
-import { StyledButton, StyledCalibrateSection, theme } from './styledComponents'
 import Nav from './components/Nav'
 import Main from './components/Main'
 import Bot from './components/Bot'
+import { theme } from './styledComponents'
 
 export async function loader() {
   console.log('app loader fired')

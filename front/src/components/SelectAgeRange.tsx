@@ -6,7 +6,6 @@ import { StyledCentralised, StyledLabel, StyledSelect } from '../styledComponent
 import styled from 'styled-components'
 
 const StyledAge = styled(StyledCentralised)`
-  grid-area: 'age';
   background-color: rgb(0, 0, 255, 0.1);
 `
 export default () => {

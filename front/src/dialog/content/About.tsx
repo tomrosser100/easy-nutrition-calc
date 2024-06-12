@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router'
 import styled from 'styled-components'
 import { StyledButton } from '../../styledComponents'
+import { loremIpsum } from '../../constants'
 
 export const StyledInfo = styled.div`
   height: 100%;
@@ -9,23 +10,19 @@ export const StyledInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr 1fr;
-  grid-template-areas: 'head' 'body' 'foot';
 `
 
 export const StyledInfoHead = styled.div`
-  grid-area: 'head';
   display: grid;
   place-items: center;
 `
 
 export const StyledInfoBody = styled.div`
-  grid-area: 'body';
   display: grid;
   place-items: center;
 `
 
 export const StyledInfoFoot = styled.div`
-  grid-area: 'foot';
   display: grid;
   place-items: center;
 `
@@ -45,7 +42,7 @@ export default ({
         <div>Heading element: About my app</div>
       </StyledInfoHead>
       <StyledInfoBody id={descriptionId}>
-        <div>Hi and welcome to my app</div>
+        <div>Hi and welcome to my app {loremIpsum}</div>
       </StyledInfoBody>
       <StyledInfoFoot>
         <StyledButton onClick={() => navigate('/')}>Return</StyledButton>

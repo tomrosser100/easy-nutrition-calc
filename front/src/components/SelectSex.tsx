@@ -11,7 +11,6 @@ import {
 import styled from 'styled-components'
 
 const StyledSex = styled(StyledCentralised)`
-  grid-area: 'sex';
   background-color: rgb(0, 0, 255, 0.1);
 `
 export default () => {

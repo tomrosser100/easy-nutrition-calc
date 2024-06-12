@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Results from './Results'
 import Inputs from './Inputs'
+import { appMaxWidth, appMinWidth } from '../constants'
 
 const StyledMainContainer = styled.div`
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1000px;
-  min-width: 350px;
+  max-width: ${appMaxWidth};
+  min-width: ${appMinWidth};
   height: 100%;
   align-items: center;
   background-color: rgb(0, 0, 255, 0.2);
