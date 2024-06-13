@@ -10,12 +10,15 @@ const StyledList = styled.div`
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+  padding: 10px;
 `
 
 const StyledUnorderedList = styled.ul`
   list-style: none;
   padding: 0px;
   margin: 0px;
+  //border: 1px solid ${props => props.theme.borderColour};
+  //border-radius: ${props => props.theme.borderRadius}px;
 `
 
 const StyledListElement = styled.li`
@@ -24,13 +27,17 @@ const StyledListElement = styled.li`
   display: grid;
   grid-template-columns: 5fr 1fr 1fr;
   grid-template-rows: 1fr;
+  margin: 10px;
+  border-radius: ${props => props.theme.borderRadius}px;
+  padding: ${props => props.theme.majorSpacing}px;
+  border: 1px solid ${props => props.theme.borderColour};
 `
+
 const StyledListName = styled.div`
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   justify-items: left;
   align-items: center;
-  padding-left: 5px;
 `
 
 const StyledListEdit = styled.div`

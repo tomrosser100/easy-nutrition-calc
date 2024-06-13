@@ -47,18 +47,19 @@ export default ({
   return (
     <StyledInfo>
       <StyledInfoHead id={labelId}>
-        <div>Your top {nutrient} contributors</div>
+        <div>{nutrient} contributors</div>
       </StyledInfoHead>
       <StyledInfoBody id={descriptionId}>
-        <div>Description element</div>
+        {orderedContribution.length === 0 && (
+          <div>You have no contributors listed for this nutrient</div>
+          )}
         <ol>
-          {orderedContribution.length >= 1
-            ? orderedContribution.map((entry, i) => (
-                <li key={i}>
-                  {entry.name}, {entry.grams} grams
-                </li>
-              ))
-            : 'You have no contributors listed for this nutrient!'}
+          {orderedContribution.length >= 1 &&
+            orderedContribution.map((entry, i) => (
+              <li key={i}>
+                {entry.name}, {entry.grams}g
+              </li>
+            ))}
         </ol>
       </StyledInfoBody>
       <StyledInfoFoot>

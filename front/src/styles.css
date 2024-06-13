@@ -1,6 +1,13 @@
+/*
+  green: rgb(192, 202, 116);
+  frost: rgb(203, 209, 195);
+  gulstream: rgb(17, 130, 144);
+*/
+
 * {
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 0px solid black;
+
 }
 
 html {
@@ -12,5 +19,5 @@ html {
 body {
   min-width: 350px;
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
 }

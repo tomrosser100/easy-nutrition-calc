@@ -2,7 +2,14 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import type { UserReport } from '../types'
 import { useNavigate } from 'react-router-dom'
-import { StyledButton, StyledCentralised, StyledHeader } from '../styledComponents'
+import {
+  StyledButton,
+  StyledCentralised,
+  StyledDenominatedBox,
+  StyledDenominatedDiv,
+  StyledDenomination,
+  StyledHeader,
+} from '../styledComponents'
 
 const StyledResultsContainer = styled.div`
   height: 100%;
@@ -22,17 +29,32 @@ const StyledUnorderedList = styled.ul`
   width: 100%;
 `
 
-const StyledListElement = styled.li`
+const StyledListElement = styled.li<{ $top?: boolean }>`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
+
+  ${(props) => {
+    switch (props.$top) {
+      case true:
+        return css`
+          border-top: none;
+        `
+      default:
+        return css`
+          border-top: 0.5px solid ${(props) => props.theme.borderColour};
+        `
+    }
+  }}
 `
 
 const StyledNutrient = styled.div<{ $header?: boolean }>`
   display: grid;
+  border-right: 0.5px solid ${(props) => props.theme.borderColour};
+  padding: ${(props) => props.theme.minorSpacing}px;
 
   ${(props) => {
     switch (props.$header) {
@@ -41,17 +63,57 @@ const StyledNutrient = styled.div<{ $header?: boolean }>`
           place-items: center;
         `
       default:
+        return css``
+    }
+  }}
+`
+const StyledAdvice = styled.div<{ $header?: boolean }>`
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  border-right: 0.5px solid ${(props) => props.theme.borderColour};
+  padding: ${(props) => props.theme.minorSpacing}px;
+
+  ${(props) => {
+    switch (props.$header) {
+      case true:
         return css`
-          justify-items: left;
-          align-items: center;
-          padding-left: 5px;
+          grid-template-columns: 1fr;
+        `
+      default:
+        return css`
+          grid-template-columns: 1fr 1fr;
         `
     }
   }}
 `
-const StyledAdvice = styled(StyledCentralised)`
+const StyledYou = styled(StyledCentralised)<{ $header?: boolean }>`
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  padding: ${(props) => props.theme.minorSpacing}px;
+
+  ${(props) => {
+    switch (props.$header) {
+      case true:
+        return css`
+          grid-template-columns: 1fr;
+        `
+      default:
+        return css`
+          grid-template-columns: 1fr 1fr;
+        `
+    }
+  }}
 `
-const StyledYou = styled(StyledCentralised)`
+
+const StyledNutrientText = styled.div`
+  background-color: rgb(0, 0, 255, 0.1);
+  width: 100%;
+  height: 100%;
+  border: 0.5px solid ${(props) => props.theme.borderColour};
+  display: grid;
+  place-items: center;
 `
 
 export default ({ userReport }: { userReport: UserReport }) => {
@@ -60,29 +122,57 @@ export default ({ userReport }: { userReport: UserReport }) => {
   return (
     <StyledResultsContainer>
       <StyledUnorderedList>
-        <StyledListElement>
+        <StyledListElement $top={true}>
           <StyledNutrient $header={true}>
             <StyledHeader>Nutrient</StyledHeader>
           </StyledNutrient>
-          <StyledAdvice>
+          <StyledAdvice $header={true}>
             <StyledHeader>Advice</StyledHeader>
           </StyledAdvice>
-          <StyledYou>
+          <StyledYou $header={true}>
             <StyledHeader>You</StyledHeader>
           </StyledYou>
         </StyledListElement>
         {Object.keys(userReport).map((nutrient, i) => (
           <StyledListElement key={i}>
             <StyledNutrient>
-              <div>{nutrient}</div>
+              <StyledNutrientText>
+                <div>{nutrient}</div>
+              </StyledNutrientText>
             </StyledNutrient>
             <StyledAdvice>
-              <div>{userReport[nutrient].advice.operator}</div>
-              <div>{userReport[nutrient].advice.grams}</div>
+              <StyledNutrientText>
+                <div>{userReport[nutrient].advice.operator}</div>
+              </StyledNutrientText>
+              <StyledDenominatedBox>
+                <StyledDenominatedDiv>
+                  <div>{userReport[nutrient].advice.grams}</div>
+                </StyledDenominatedDiv>
+                {nutrient !== 'calories' ? (
+                  <StyledDenomination>
+                    <div>g</div>
+                  </StyledDenomination>
+                ) : (
+                  <div></div>
+                )}
+              </StyledDenominatedBox>
             </StyledAdvice>
             <StyledYou>
-              <div>{userReport[nutrient].total}</div>
-              <StyledButton onClick={() => navigate('more/' + nutrient)}>More</StyledButton>
+              <StyledDenominatedBox>
+                <StyledDenominatedDiv>
+                  <div>{userReport[nutrient].total}</div>
+                </StyledDenominatedDiv>
+                {nutrient !== 'calories' ? (
+                  <StyledDenomination>
+                    <div>g</div>
+                  </StyledDenomination>
+                ) : (
+                  <div></div>
+                )}
+              </StyledDenominatedBox>
+              <StyledButton onClick={() => navigate('more/' + nutrient)}>
+                More
+              </StyledButton>
             </StyledYou>
           </StyledListElement>
         ))}

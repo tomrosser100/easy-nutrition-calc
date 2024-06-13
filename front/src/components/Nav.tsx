@@ -6,12 +6,14 @@ import { appMaxWidth, appMinWidth } from '../constants'
 
 const StyledNavLayout = styled.div`
   margin: auto;
-  max-width: ${appMaxWidth};
-  min-width: ${appMinWidth};
+  max-width: ${appMaxWidth}px;
+  min-width: ${appMinWidth}px;
   height: 60px;
   background-color: rgb(0, 128, 0, 0.5);
   display: flex;
   justify-content: flex-end;
+  margin-bottom: ${(props) => props.theme.majorSpacing}px;
+  border-radius: ${(props) => props.theme.borderRadius}px;
 `
 
 const StyledAbout = styled.div`

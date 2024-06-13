@@ -5,8 +5,10 @@ import type { ListElement } from '../../types'
 const StyledHeader = styled.div`
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  border-radius: ${props => props.theme.borderRadius}px;
+  border: 1px solid ${props => props.theme.borderColour};
+  padding: ${props => props.theme.minorSpacing}px;
+
 `
 
 const StyledTitle = styled.div`

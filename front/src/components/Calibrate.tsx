@@ -14,6 +14,8 @@ const StyledCalibrate = styled.div`
   min-height: 0px;
   grid-template-columns: 3fr 3fr 1fr;
   grid-template-rows: 1fr;
+  border-bottom: 1px solid ${props => props.theme.borderColour};
+  //padding: ${props => props.theme.minorSpacing}px;
 `
 
 const StyledHelp = styled.div`

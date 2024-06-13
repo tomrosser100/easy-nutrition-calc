@@ -1,8 +1,8 @@
 import type { GeneralAdvice, Nutrient } from './types'
 
-export const appMaxWidth = '1000px'
+export const appMaxWidth = 1000
 
-export const appMinWidth = '350px'
+export const appMinWidth = 350
 
 export const delay = 100
 

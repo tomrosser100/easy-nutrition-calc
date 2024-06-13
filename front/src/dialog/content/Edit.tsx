@@ -81,8 +81,12 @@ const StyledEdit = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 10fr 1fr;
+  grid-template-rows: auto;
   background-color: rgb(0, 0, 255, 0.1);
+  gap: ${(props) => props.theme.majorSpacing}px;
+  padding: ${props => props.theme.majorSpacing}px;
+  border-radius: ${props => props.theme.borderRadius}px;
+  border: 2px solid ${props => props.theme.borderColour};
 `
 
 export default ({

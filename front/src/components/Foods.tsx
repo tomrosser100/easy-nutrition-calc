@@ -14,7 +14,7 @@ const StyledFoods = styled.div`
   min-width: 0px;
   min-height: 0px;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 1fr 7fr;
 `
 
 export default ({ list }: { list: ListElement[] }) => {

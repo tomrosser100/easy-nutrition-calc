@@ -2,21 +2,25 @@ import React, { useState } from 'react'
 import { nutrients } from '../../constants'
 import type { ListElement } from '../../types'
 import styled, { css } from 'styled-components'
-import { StyledCentralised } from '../../styledComponents'
+import {
+  StyledDenominatedBox,
+  StyledDenominatedInput,
+  StyledDenomination,
+} from '../../styledComponents'
 
 const StyledNutrientInputs = styled.div`
   background-color: rgb(0, 0, 255, 0.1);
   display: flex;
   flex-direction: column;
+  border: 1px solid ${(props) => props.theme.borderColour};
+  border-radius: ${(props) => props.theme.borderRadius}px;
 `
 const StyledNutrientElement = styled.div<{ $reference?: boolean }>`
   display: grid;
-  grid-template-rows: 1fr;
   height: 100%;
   width: 100%;
-  padding: 10px;
+  padding: ${(props) => props.theme.minorSpacing}px;
   background-color: rgb(0, 0, 255, 0.1);
-
 
   ${(props) => {
     switch (props.$reference) {
@@ -33,39 +37,27 @@ const StyledNutrientElement = styled.div<{ $reference?: boolean }>`
 `
 const StyledReferenceLabel = styled.label`
   display: grid;
-  padding: 5px;
+  place-items: center end;
   height: 100%;
   width: 100%;
-  text-align: right;
-`
-
-const StyledReferenceInput = styled.input`
-  width: 40px;
-  display: grid;
-  place-self: center;
-  text-align: center;
+  background-color: rgb(0, 0, 255, 0.1);
+  padding-right: 5px;
 `
 
 const StyledNutrientLabel = styled.label`
-  padding-left: 5px;
   display: grid;
-  align-self: center;
-`
-
-export const StyledDenominatedInputBox = styled(StyledCentralised)`
-  justify-content: center;
-`
-
-const StyledNutrientInput = styled.input`
-  width: 40px;
-  text-align: center;
+  place-items: center start;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 255, 0.1);
 `
 
 const StyledNutrientReference = styled.div`
-  text-align: right;
-  padding-right: 5px;
   display: grid;
-  align-self: center;
+  place-items: center end;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 255, 0.1);
 `
 
 export default ({
@@ -82,9 +74,11 @@ export default ({
   return (
     <StyledNutrientInputs>
       <StyledNutrientElement $reference={true}>
-        <StyledReferenceLabel>Reference portion size:</StyledReferenceLabel>
-        <StyledDenominatedInputBox>
-          <StyledReferenceInput
+        <StyledReferenceLabel>
+          <div>Reference portion size:</div>
+        </StyledReferenceLabel>
+        <StyledDenominatedBox>
+          <StyledDenominatedInput
             disabled={buttonDisabled}
             type='number'
             min='0'
@@ -93,16 +87,18 @@ export default ({
             defaultValue={listElement && listElement?.refPortion}
             placeholder='0'
           />
-          <div>g</div>
-        </StyledDenominatedInputBox>
+          <StyledDenomination>
+            <div>g</div>
+          </StyledDenomination>
+        </StyledDenominatedBox>
       </StyledNutrientElement>
       {nutrients.map((nutrient, i) => (
         <StyledNutrientElement>
           <StyledNutrientLabel>
             <div>{nutrient}</div>
           </StyledNutrientLabel>
-          <StyledDenominatedInputBox>
-            <StyledNutrientInput
+          <StyledDenominatedBox>
+            <StyledDenominatedInput
               disabled={buttonDisabled}
               type='number'
               min='0'
@@ -110,11 +106,16 @@ export default ({
               placeholder='0'
               defaultValue={listElement && listElement?.[nutrient]}
             />
-            <div>g</div>
-          </StyledDenominatedInputBox>
-
+            {nutrient !== 'calories' ? (
+              <StyledDenomination>
+                <div>g</div>
+              </StyledDenomination>
+            ) : (
+              <div></div>
+            )}
+          </StyledDenominatedBox>
           <StyledNutrientReference>
-            per {refPortion ? refPortion : '0'}g
+            <div>per {refPortion ? refPortion : '0'}g</div>
           </StyledNutrientReference>
         </StyledNutrientElement>
       ))}

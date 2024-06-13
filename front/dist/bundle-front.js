@@ -4625,7 +4625,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledBot = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "Bot__StyledBot",
   componentId: "sc-1qn7usr-0"
-})(["margin:auto;min-width:", ";max-width:", ";width:100%;height:60px;background-color:rgb(0,128,0,0.5);"], _constants__WEBPACK_IMPORTED_MODULE_1__.appMinWidth, _constants__WEBPACK_IMPORTED_MODULE_1__.appMaxWidth);
+})(["margin:auto;min-width:", "px;max-width:", "px;width:100%;height:60px;background-color:rgb(0,128,0,0.5);margin-top:", "px;border-radius:", "px;"], _constants__WEBPACK_IMPORTED_MODULE_1__.appMinWidth, _constants__WEBPACK_IMPORTED_MODULE_1__.appMaxWidth, props => props.theme.majorSpacing, props => props.theme.borderRadius);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledBot, {
     className: "bot-flex"
@@ -4661,7 +4661,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledCalibrate = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
   displayName: "Calibrate__StyledCalibrate",
   componentId: "sc-m8wh2f-0"
-})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;display:grid;min-width:0px;min-height:0px;grid-template-columns:3fr 3fr 1fr;grid-template-rows:1fr;"]);
+})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;display:grid;min-width:0px;min-height:0px;grid-template-columns:3fr 3fr 1fr;grid-template-rows:1fr;border-bottom:1px solid ", ";"], props => props.theme.borderColour);
 const StyledHelp = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
   displayName: "Calibrate__StyledHelp",
   componentId: "sc-m8wh2f-1"
@@ -4698,7 +4698,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledFoods = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "Foods__StyledFoods",
   componentId: "sc-12vc56b-0"
-})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;place-self:center;display:grid;min-width:0px;min-height:0px;grid-template-columns:1fr;grid-template-rows:1fr 4fr;"]);
+})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;place-self:center;display:grid;min-width:0px;min-height:0px;grid-template-columns:1fr;grid-template-rows:1fr 7fr;"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     list
@@ -4770,11 +4770,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _Calibrate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Calibrate */ "./front/src/components/Calibrate.tsx");
 /* harmony import */ var _Foods__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Foods */ "./front/src/components/Foods.tsx");
-
 
 
 
@@ -4787,7 +4785,6 @@ const StyledInputs = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].d
   let {
     list
   } = _ref;
-  const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledInputs, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Calibrate__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Foods__WEBPACK_IMPORTED_MODULE_2__["default"], {
     list: list
   }));
@@ -4818,7 +4815,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledList = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "List__StyledList",
   componentId: "sc-r4j41o-0"
-})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;overflow-x:hidden;overflow-y:scroll;"]);
+})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;overflow-x:hidden;overflow-y:scroll;padding:10px;"]);
 const StyledUnorderedList = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].ul.withConfig({
   displayName: "List__StyledUnorderedList",
   componentId: "sc-r4j41o-1"
@@ -4826,11 +4823,11 @@ const StyledUnorderedList = styled_components__WEBPACK_IMPORTED_MODULE_2__["defa
 const StyledListElement = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].li.withConfig({
   displayName: "List__StyledListElement",
   componentId: "sc-r4j41o-2"
-})(["height:60px;background-color:rgb(0,0,255,0.1);display:grid;grid-template-columns:5fr 1fr 1fr;grid-template-rows:1fr;"]);
+})(["height:60px;background-color:rgb(0,0,255,0.1);display:grid;grid-template-columns:5fr 1fr 1fr;grid-template-rows:1fr;margin:10px;border-radius:", "px;padding:", "px;border:1px solid ", ";"], props => props.theme.borderRadius, props => props.theme.majorSpacing, props => props.theme.borderColour);
 const StyledListName = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "List__StyledListName",
   componentId: "sc-r4j41o-3"
-})(["background-color:rgb(0,0,255,0.1);display:grid;justify-items:left;align-items:center;padding-left:5px;"]);
+})(["background-color:rgb(0,0,255,0.1);display:grid;justify-items:left;align-items:center;"]);
 const StyledListEdit = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "List__StyledListEdit",
   componentId: "sc-r4j41o-4"
@@ -4882,11 +4879,11 @@ __webpack_require__.r(__webpack_exports__);
 const StyledMainContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
   displayName: "Main__StyledMainContainer",
   componentId: "sc-92e889-0"
-})(["margin:auto;display:flex;flex-wrap:wrap;justify-content:center;max-width:", ";min-width:", ";height:100%;align-items:center;background-color:rgb(0,0,255,0.2);"], _constants__WEBPACK_IMPORTED_MODULE_3__.appMaxWidth, _constants__WEBPACK_IMPORTED_MODULE_3__.appMinWidth);
+})(["margin:auto;display:flex;flex-wrap:wrap;justify-content:center;max-width:", "px;min-width:", "px;height:100%;align-items:center;background-color:rgb(0,0,255,0.2);gap:", "px;"], _constants__WEBPACK_IMPORTED_MODULE_3__.appMaxWidth, _constants__WEBPACK_IMPORTED_MODULE_3__.appMinWidth, props => props.theme.majorSpacing);
 const StyledMainItem = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
   displayName: "Main__StyledMainItem",
   componentId: "sc-92e889-1"
-})(["min-width:350px;min-height:450px;max-height:500px;flex:1 1 0px;display:flex;align-self:stretch;background-color:rgb(0,0,255,0.1);"]);
+})(["min-width:300px;min-height:450px;max-height:500px;flex:1 1 0px;display:flex;align-self:stretch;background-color:rgb(0,0,255,0.1);border-radius:", "px;border:2px solid ", ";"], props => props.theme.borderRadius, props => props.theme.borderColour);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     userReport,
@@ -4927,7 +4924,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledNavLayout = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "Nav__StyledNavLayout",
   componentId: "sc-ik1x8j-0"
-})(["margin:auto;max-width:", ";min-width:", ";height:60px;background-color:rgb(0,128,0,0.5);display:flex;justify-content:flex-end;"], _constants__WEBPACK_IMPORTED_MODULE_2__.appMaxWidth, _constants__WEBPACK_IMPORTED_MODULE_2__.appMinWidth);
+})(["margin:auto;max-width:", "px;min-width:", "px;height:60px;background-color:rgb(0,128,0,0.5);display:flex;justify-content:flex-end;margin-bottom:", "px;border-radius:", "px;"], _constants__WEBPACK_IMPORTED_MODULE_2__.appMaxWidth, _constants__WEBPACK_IMPORTED_MODULE_2__.appMinWidth, props => props.theme.majorSpacing, props => props.theme.borderRadius);
 const StyledAbout = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "Nav__StyledAbout",
   componentId: "sc-ik1x8j-1"
@@ -4972,36 +4969,67 @@ const StyledUnorderedList = styled_components__WEBPACK_IMPORTED_MODULE_2__["defa
 const StyledListElement = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].li.withConfig({
   displayName: "Results__StyledListElement",
   componentId: "sc-1yuc5ym-2"
-})(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr;background-color:rgb(0,0,255,0.1);height:100%;width:100%;"]);
+})(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr;background-color:rgb(0,0,255,0.1);height:100%;width:100%;", ""], props => {
+  switch (props.$top) {
+    case true:
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["border-top:none;"]);
+    default:
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["border-top:0.5px solid ", ";"], props => props.theme.borderColour);
+  }
+});
 const StyledNutrient = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "Results__StyledNutrient",
   componentId: "sc-1yuc5ym-3"
-})(["display:grid;", ""], props => {
+})(["display:grid;border-right:0.5px solid ", ";padding:", "px;", ""], props => props.theme.borderColour, props => props.theme.minorSpacing, props => {
   switch (props.$header) {
     case true:
       return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["place-items:center;"]);
     default:
-      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["justify-items:left;align-items:center;padding-left:5px;"]);
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)([""]);
   }
 });
-const StyledAdvice = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledCentralised).withConfig({
+const StyledAdvice = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "Results__StyledAdvice",
   componentId: "sc-1yuc5ym-4"
-})([""]);
+})(["display:grid;place-items:center;gap:5px;border-right:0.5px solid ", ";padding:", "px;", ""], props => props.theme.borderColour, props => props.theme.minorSpacing, props => {
+  switch (props.$header) {
+    case true:
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["grid-template-columns:1fr;"]);
+    default:
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["grid-template-columns:1fr 1fr;"]);
+  }
+});
 const StyledYou = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledCentralised).withConfig({
   displayName: "Results__StyledYou",
   componentId: "sc-1yuc5ym-5"
-})([""]);
+})(["display:grid;place-items:center;gap:5px;padding:", "px;", ""], props => props.theme.minorSpacing, props => {
+  switch (props.$header) {
+    case true:
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["grid-template-columns:1fr;"]);
+    default:
+      return (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.css)(["grid-template-columns:1fr 1fr;"]);
+  }
+});
+const StyledNutrientText = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
+  displayName: "Results__StyledNutrientText",
+  componentId: "sc-1yuc5ym-6"
+})(["background-color:rgb(0,0,255,0.1);width:100%;height:100%;border:0.5px solid ", ";display:grid;place-items:center;"], props => props.theme.borderColour);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     userReport
   } = _ref;
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledResultsContainer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledUnorderedList, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledListElement, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrient, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledResultsContainer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledUnorderedList, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledListElement, {
+    $top: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrient, {
     $header: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledHeader, null, "Nutrient")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAdvice, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledHeader, null, "Advice")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledYou, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledHeader, null, "You"))), Object.keys(userReport).map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledListElement, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledHeader, null, "Nutrient")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAdvice, {
+    $header: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledHeader, null, "Advice")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledYou, {
+    $header: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledHeader, null, "You"))), Object.keys(userReport).map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledListElement, {
     key: i
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrient, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, nutrient)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAdvice, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, userReport[nutrient].advice.operator), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, userReport[nutrient].advice.grams)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledYou, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, userReport[nutrient].total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledButton, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrient, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientText, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, nutrient))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAdvice, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientText, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, userReport[nutrient].advice.operator)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, userReport[nutrient].advice.grams)), nutrient !== 'calories' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenomination, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledYou, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, userReport[nutrient].total)), nutrient !== 'calories' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenomination, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledButton, {
     onClick: () => navigate('more/' + nutrient)
   }, "More"))))));
 });
@@ -5033,7 +5061,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledAge = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledCentralised).withConfig({
   displayName: "SelectAgeRange__StyledAge",
   componentId: "sc-72vhcp-0"
-})(["background-color:rgb(0,0,255,0.1);"]);
+})(["background-color:rgb(0,0,255,0.1);border-right:0.5px solid ", ";"], props => props.theme.borderColour);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const [selectDisabled, setSelectDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
@@ -5098,7 +5126,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledSex = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledCentralised).withConfig({
   displayName: "SelectSex__StyledSex",
   componentId: "sc-19nyd8b-0"
-})(["background-color:rgb(0,0,255,0.1);"]);
+})(["background-color:rgb(0,0,255,0.1);border-right:0.5px solid ", ";"], props => props.theme.borderColour);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
   const [radioDisabled, setRadioDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
@@ -5116,7 +5144,7 @@ const StyledSex = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledSex, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledLabel, {
     htmlFor: "male"
-  }, "male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledInput, {
+  }, "male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledRadio, {
     disabled: radioDisabled,
     type: "radio",
     id: "male",
@@ -5125,7 +5153,7 @@ const StyledSex = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(
     onChange: handleChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledLabel, {
     htmlFor: "female"
-  }, "female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledInput, {
+  }, "female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledRadio, {
     disabled: radioDisabled,
     type: "radio",
     id: "female",
@@ -5161,8 +5189,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   saturatedFat: () => (/* binding */ saturatedFat),
 /* harmony export */   sugar: () => (/* binding */ sugar)
 /* harmony export */ });
-const appMaxWidth = '1000px';
-const appMinWidth = '350px';
+const appMaxWidth = 1000;
+const appMinWidth = 350;
 const delay = 100;
 const nutrients = ['fat', 'carb', 'fibre', 'protein', 'saturatedFat', 'sugar', 'salt', 'calories'];
 
@@ -5258,7 +5286,7 @@ const StyledFloatingOverlay = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__[
 const StyledDialog = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div.withConfig({
   displayName: "Dialog__StyledDialog",
   componentId: "sc-1rl5wsh-1"
-})(["max-width:500px;min-width:335px;margin:15px;background-color:white;padding:15px;border-radius:4px;display:grid;place-items:stretch;"]);
+})(["max-width:350px;min-width:335px;margin:10px;background-color:white;padding:10px;border-radius:10px;display:grid;place-items:stretch;"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     type
@@ -5351,7 +5379,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledInfo = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "About__StyledInfo",
   componentId: "sc-fzx3rk-0"
-})(["height:100%;width:100%;display:grid;grid-template-columns:1fr;grid-template-rows:1fr 4fr 1fr;"]);
+})(["height:100%;width:100%;display:grid;grid-template-columns:1fr;grid-template-rows:1fr 4fr 1fr;background-color:rgb(0,0,255,0.1);"]);
 const StyledInfoHead = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "About__StyledInfoHead",
   componentId: "sc-fzx3rk-1"
@@ -5622,7 +5650,7 @@ async function editAction(_ref3) {
 const StyledEdit = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div.withConfig({
   displayName: "Edit__StyledEdit",
   componentId: "sc-1v25z7u-0"
-})(["height:100%;width:100%;display:grid;grid-template-columns:1fr;grid-template-rows:1fr 2fr 10fr 1fr;background-color:rgb(0,0,255,0.1);"]);
+})(["height:100%;width:100%;display:grid;grid-template-columns:1fr;grid-template-rows:auto;background-color:rgb(0,0,255,0.1);gap:", "px;padding:", "px;border-radius:", "px;border:2px solid ", ";"], props => props.theme.majorSpacing, props => props.theme.majorSpacing, props => props.theme.borderRadius, props => props.theme.borderColour);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref4 => {
   let {
     labelId,
@@ -5677,7 +5705,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledButtons = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "EditButtons__StyledButtons",
   componentId: "sc-1y7g43v-0"
-})(["background-color:rgb(0,0,255,0.1);display:flex;justify-content:space-evenly;"]);
+})(["background-color:rgb(0,0,255,0.1);display:flex;justify-content:space-evenly;border-radius:", "px;border:1px solid ", ";padding:", "px;"], props => props.theme.borderRadius, props => props.theme.borderColour, props => props.theme.minorSpacing);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     buttonDisabled,
@@ -5711,7 +5739,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _EditNutrientInputs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditNutrientInputs */ "./front/src/dialog/content/EditNutrientInputs.tsx");
+/* harmony import */ var _styledComponents__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styledComponents */ "./front/src/styledComponents.ts");
 
 
 
@@ -5720,23 +5748,19 @@ __webpack_require__.r(__webpack_exports__);
 const StyledCalibrate = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "EditCalibrate__StyledCalibrate",
   componentId: "sc-15mkkv0-0"
-})(["background-color:rgb(0,0,255,0.1);display:grid;grid-auto-flow:row;grid-template-columns:1fr 2fr;grid-template-rows:1fr 1fr;"]);
+})(["background-color:rgb(0,0,255,0.1);display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;padding:", "px;border:1px solid ", ";border-radius:", "px;gap:", "px;"], props => props.theme.minorSpacing, props => props.theme.borderColour, props => props.theme.borderRadius, props => props.theme.majorSpacing);
+const StyledCalibrateElement = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
+  displayName: "EditCalibrate__StyledCalibrateElement",
+  componentId: "sc-15mkkv0-1"
+})(["background-color:rgb(0,0,255,0.1);display:grid;grid-template-columns:1fr 2fr;padding:", "px;border-radius:", "px;"], props => props.theme.minorSpacing, props => props.theme.borderRadius);
 const StyledNameLabel = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].label.withConfig({
   displayName: "EditCalibrate__StyledNameLabel",
-  componentId: "sc-15mkkv0-1"
-})(["display:grid;place-items:center;"]);
-const StyledNameInput = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].input.withConfig({
-  displayName: "EditCalibrate__StyledNameInput",
   componentId: "sc-15mkkv0-2"
-})(["display:grid;place-items:center;text-align:center;"]);
+})(["background-color:rgb(0,0,255,0.1);display:grid;place-items:center;height:100%;width:100%;"]);
 const StyledAmountLabel = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].label.withConfig({
   displayName: "EditCalibrate__StyledAmountLabel",
   componentId: "sc-15mkkv0-3"
-})(["display:grid;place-items:center;"]);
-const StyledAmountInput = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].input.withConfig({
-  displayName: "EditCalibrate__StyledAmountInput",
-  componentId: "sc-15mkkv0-4"
-})(["display:grid;place-items:center;text-align:center;"]);
+})(["background-color:rgb(0,0,255,0.1);display:grid;place-items:center;height:100%;width:100%;"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     buttonDisabled,
@@ -5747,20 +5771,20 @@ const StyledAmountInput = styled_components__WEBPACK_IMPORTED_MODULE_2__["defaul
     type: "hidden",
     name: "id",
     value: (0,nanoid__WEBPACK_IMPORTED_MODULE_4__.nanoid)().slice(0, 7)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNameLabel, null, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNameInput, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledCalibrateElement, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNameLabel, null, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledInput, {
     disabled: buttonDisabled,
     type: "text",
     name: "name",
     placeholder: "e.g. Baked Beans",
     defaultValue: listElement && listElement?.name
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAmountLabel, null, "Amount:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EditNutrientInputs__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedInputBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAmountInput, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledCalibrateElement, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledAmountLabel, null, "Amount:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenominatedInput, {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
     name: "userAmount",
     placeholder: "0",
     defaultValue: listElement && listElement?.userAmount
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_1__.StyledDenomination, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")))));
 });
 
 /***/ }),
@@ -5784,7 +5808,7 @@ __webpack_require__.r(__webpack_exports__);
 const StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "EditHeader__StyledHeader",
   componentId: "sc-unf2qz-0"
-})(["background-color:rgb(0,0,255,0.1);display:grid;grid-template-columns:1fr;grid-template-rows:1fr;"]);
+})(["background-color:rgb(0,0,255,0.1);display:grid;border-radius:", "px;border:1px solid ", ";padding:", "px;"], props => props.theme.borderRadius, props => props.theme.borderColour, props => props.theme.minorSpacing);
 const StyledTitle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "EditHeader__StyledTitle",
   componentId: "sc-unf2qz-1"
@@ -5811,7 +5835,6 @@ const StyledTitle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].di
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   StyledDenominatedInputBox: () => (/* binding */ StyledDenominatedInputBox),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -5826,11 +5849,11 @@ __webpack_require__.r(__webpack_exports__);
 const StyledNutrientInputs = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "EditNutrientInputs__StyledNutrientInputs",
   componentId: "sc-16p7vz7-0"
-})(["background-color:rgb(0,0,255,0.1);display:flex;flex-direction:column;"]);
+})(["background-color:rgb(0,0,255,0.1);display:flex;flex-direction:column;border:1px solid ", ";border-radius:", "px;"], props => props.theme.borderColour, props => props.theme.borderRadius);
 const StyledNutrientElement = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "EditNutrientInputs__StyledNutrientElement",
   componentId: "sc-16p7vz7-1"
-})(["display:grid;grid-template-rows:1fr;height:100%;width:100%;padding:10px;background-color:rgb(0,0,255,0.1);", ""], props => {
+})(["display:grid;height:100%;width:100%;padding:", "px;background-color:rgb(0,0,255,0.1);", ""], props => props.theme.minorSpacing, props => {
   switch (props.$reference) {
     case true:
       return (0,styled_components__WEBPACK_IMPORTED_MODULE_3__.css)(["grid-template-columns:2fr 1fr;"]);
@@ -5841,27 +5864,15 @@ const StyledNutrientElement = styled_components__WEBPACK_IMPORTED_MODULE_3__["de
 const StyledReferenceLabel = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].label.withConfig({
   displayName: "EditNutrientInputs__StyledReferenceLabel",
   componentId: "sc-16p7vz7-2"
-})(["display:grid;padding:5px;height:100%;width:100%;text-align:right;"]);
-const StyledReferenceInput = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].input.withConfig({
-  displayName: "EditNutrientInputs__StyledReferenceInput",
-  componentId: "sc-16p7vz7-3"
-})(["width:40px;display:grid;place-self:center;text-align:center;"]);
+})(["display:grid;place-items:center end;height:100%;width:100%;background-color:rgb(0,0,255,0.1);padding-right:5px;"]);
 const StyledNutrientLabel = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].label.withConfig({
   displayName: "EditNutrientInputs__StyledNutrientLabel",
-  componentId: "sc-16p7vz7-4"
-})(["padding-left:5px;display:grid;align-self:center;"]);
-const StyledDenominatedInputBox = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledCentralised).withConfig({
-  displayName: "EditNutrientInputs__StyledDenominatedInputBox",
-  componentId: "sc-16p7vz7-5"
-})(["justify-content:center;"]);
-const StyledNutrientInput = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].input.withConfig({
-  displayName: "EditNutrientInputs__StyledNutrientInput",
-  componentId: "sc-16p7vz7-6"
-})(["width:40px;text-align:center;"]);
+  componentId: "sc-16p7vz7-3"
+})(["display:grid;place-items:center start;height:100%;width:100%;background-color:rgb(0,0,255,0.1);"]);
 const StyledNutrientReference = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "EditNutrientInputs__StyledNutrientReference",
-  componentId: "sc-16p7vz7-7"
-})(["text-align:right;padding-right:5px;display:grid;align-self:center;"]);
+  componentId: "sc-16p7vz7-4"
+})(["display:grid;place-items:center end;height:100%;width:100%;background-color:rgb(0,0,255,0.1);"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref => {
   let {
     buttonDisabled,
@@ -5870,7 +5881,7 @@ const StyledNutrientReference = styled_components__WEBPACK_IMPORTED_MODULE_3__["
   const [refPortion, setRefPortion] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(listElement ? listElement?.refPortion : '0');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientInputs, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientElement, {
     $reference: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledReferenceLabel, null, "Reference portion size:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledDenominatedInputBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledReferenceInput, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledReferenceLabel, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Reference portion size:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledDenominatedBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledDenominatedInput, {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
@@ -5878,14 +5889,14 @@ const StyledNutrientReference = styled_components__WEBPACK_IMPORTED_MODULE_3__["
     onChange: e => setRefPortion(e.target.value),
     defaultValue: listElement && listElement?.refPortion,
     placeholder: "0"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g"))), _constants__WEBPACK_IMPORTED_MODULE_1__.nutrients.map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientElement, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientLabel, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, nutrient)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledDenominatedInputBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientInput, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledDenomination, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")))), _constants__WEBPACK_IMPORTED_MODULE_1__.nutrients.map((nutrient, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientElement, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientLabel, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, nutrient)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledDenominatedBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledDenominatedInput, {
     disabled: buttonDisabled,
     type: "number",
     min: "0",
     name: nutrient,
     placeholder: "0",
     defaultValue: listElement && listElement?.[nutrient]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientReference, null, "per ", refPortion ? refPortion : '0', "g"))));
+  }), nutrient !== 'calories' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_2__.StyledDenomination, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "g")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledNutrientReference, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "per ", refPortion ? refPortion : '0', "g")))));
 });
 
 /***/ }),
@@ -5978,11 +5989,11 @@ async function loader(_ref) {
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_About__WEBPACK_IMPORTED_MODULE_2__.StyledInfo, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_About__WEBPACK_IMPORTED_MODULE_2__.StyledInfoHead, {
     id: labelId
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Your top ", nutrient, " contributors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_About__WEBPACK_IMPORTED_MODULE_2__.StyledInfoBody, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, nutrient, " contributors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_About__WEBPACK_IMPORTED_MODULE_2__.StyledInfoBody, {
     id: descriptionId
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Description element"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, orderedContribution.length >= 1 ? orderedContribution.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, orderedContribution.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "You have no contributors listed for this nutrient"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, orderedContribution.length >= 1 && orderedContribution.map((entry, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: i
-  }, entry.name, ", ", entry.grams, " grams")) : 'You have no contributors listed for this nutrient!')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_About__WEBPACK_IMPORTED_MODULE_2__.StyledInfoFoot, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_3__.StyledButton, {
+  }, entry.name, ", ", entry.grams, "g")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_About__WEBPACK_IMPORTED_MODULE_2__.StyledInfoFoot, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styledComponents__WEBPACK_IMPORTED_MODULE_3__.StyledButton, {
     onClick: () => navigate('/')
   }, "Back")));
 });
@@ -6541,9 +6552,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   StyledButton: () => (/* binding */ StyledButton),
 /* harmony export */   StyledCentralised: () => (/* binding */ StyledCentralised),
+/* harmony export */   StyledDenominatedBox: () => (/* binding */ StyledDenominatedBox),
+/* harmony export */   StyledDenominatedDiv: () => (/* binding */ StyledDenominatedDiv),
+/* harmony export */   StyledDenominatedInput: () => (/* binding */ StyledDenominatedInput),
+/* harmony export */   StyledDenomination: () => (/* binding */ StyledDenomination),
 /* harmony export */   StyledHeader: () => (/* binding */ StyledHeader),
 /* harmony export */   StyledInput: () => (/* binding */ StyledInput),
 /* harmony export */   StyledLabel: () => (/* binding */ StyledLabel),
+/* harmony export */   StyledRadio: () => (/* binding */ StyledRadio),
 /* harmony export */   StyledSelect: () => (/* binding */ StyledSelect),
 /* harmony export */   theme: () => (/* binding */ theme)
 /* harmony export */ });
@@ -6551,32 +6567,55 @@ __webpack_require__.r(__webpack_exports__);
 
 const theme = {
   main: 'blue',
-  borderRadius: '10px'
+  borderRadius: 10,
+  majorSpacing: 10,
+  minorSpacing: 5,
+  borderColour: 'black'
 };
 const StyledButton = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button.withConfig({
   displayName: "styledComponents__StyledButton",
   componentId: "sc-t0t8ar-0"
-})(["color:", ";border:2px solid ", ";padding:5px;border-radius:", ";"], props => props.theme.main, props => props.theme.main, props => props.theme.borderRadius);
+})(["color:", ";border:2px solid ", ";padding:5px;border-radius:", "px;"], props => props.theme.main, props => props.theme.main, props => props.theme.borderRadius);
 const StyledSelect = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].select.withConfig({
   displayName: "styledComponents__StyledSelect",
   componentId: "sc-t0t8ar-1"
-})(["color:", ";border:2px solid ", ";padding:5px;border-radius:", ";"], props => props.theme.main, props => props.theme.main, props => props.theme.borderRadius);
+})(["color:", ";border:2px solid ", ";padding:5px;border-radius:", "px;"], props => props.theme.main, props => props.theme.main, props => props.theme.borderRadius);
 const StyledInput = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input.withConfig({
   displayName: "styledComponents__StyledInput",
   componentId: "sc-t0t8ar-2"
-})(["accent-color:", ";height:20px;width:20px;vertical-align:middle;border-radius:", ";"], props => props.theme.main, props => props.theme.borderRadius);
+})(["accent-color:", ";height:100%;width:100%;text-align:center;vertical-align:middle;"], props => props.theme.main);
+const StyledRadio = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input.withConfig({
+  displayName: "styledComponents__StyledRadio",
+  componentId: "sc-t0t8ar-3"
+})(["accent-color:", ";height:20px;width:20px;text-align:center;vertical-align:middle;"], props => props.theme.main);
 const StyledLabel = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].label.withConfig({
   displayName: "styledComponents__StyledLabel",
-  componentId: "sc-t0t8ar-3"
-})(["color:", ";border:1px solid ", ";padding:5px;border-radius:", ";"], props => props.theme.main, props => props.theme.main, props => props.theme.borderRadius);
+  componentId: "sc-t0t8ar-4"
+})(["color:", ";border:1px solid ", ";padding:5px;border-radius:", "px;"], props => props.theme.main, props => props.theme.main, props => props.theme.borderRadius);
 const StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "styledComponents__StyledHeader",
-  componentId: "sc-t0t8ar-4"
+  componentId: "sc-t0t8ar-5"
 })(["color:", ";font-weight:bold;"], props => props.theme.main);
 const StyledCentralised = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "styledComponents__StyledCentralised",
-  componentId: "sc-t0t8ar-5"
+  componentId: "sc-t0t8ar-6"
 })(["display:flex;align-items:center;flex-direction:row;flex-wrap:nowrap;justify-content:space-evenly;"]);
+const StyledDenominatedBox = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(StyledCentralised).withConfig({
+  displayName: "styledComponents__StyledDenominatedBox",
+  componentId: "sc-t0t8ar-7"
+})(["background-color:rgb(0,0,255,0.1);height:100%;width:100%;display:flex;flex-direction:row;justify-content:center;border:1px solid ", ";"], props => props.theme.borderColour);
+const StyledDenomination = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "styledComponents__StyledDenomination",
+  componentId: "sc-t0t8ar-8"
+})(["background-color:rgb(0,0,255,0.1);display:grid;place-items:center;height:100%;padding:", "px;"], props => props.theme.minorSpacing);
+const StyledDenominatedInput = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(StyledInput).withConfig({
+  displayName: "styledComponents__StyledDenominatedInput",
+  componentId: "sc-t0t8ar-9"
+})(["height:100%;display:grid;place-items:center;text-align:center;padding:", "px;"], props => props.theme.minorSpacing);
+const StyledDenominatedDiv = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "styledComponents__StyledDenominatedDiv",
+  componentId: "sc-t0t8ar-10"
+})(["height:100%;background-color:rgb(0,0,255,0.1);display:grid;place-items:center;text-align:center;"]);
 
 /***/ }),
 
@@ -6600,9 +6639,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `* {
+___CSS_LOADER_EXPORT___.push([module.id, `/*
+  green: rgb(192, 202, 116);
+  frost: rgb(203, 209, 195);
+  gulstream: rgb(17, 130, 144);
+*/
+
+* {
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 0px solid black;
+
 }
 
 html {
@@ -6614,8 +6660,8 @@ html {
 body {
   min-width: 350px;
   margin: 0px;
-  padding: 0px;
-}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n  border: 1px solid black;\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}"],"sourceRoot":""}]);
+  padding: 10px;
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;;;;CAIC;;AAED;EACE,sBAAsB;EACtB,uBAAuB;;AAEzB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf","sourcesContent":["/*\r\n  green: rgb(192, 202, 116);\r\n  frost: rgb(203, 209, 195);\r\n  gulstream: rgb(17, 130, 144);\r\n*/\r\n\r\n* {\r\n  box-sizing: border-box;\r\n  border: 0px solid black;\r\n\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 10px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

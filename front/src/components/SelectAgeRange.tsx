@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 const StyledAge = styled(StyledCentralised)`
   background-color: rgb(0, 0, 255, 0.1);
+  border-right: 0.5px solid ${props => props.theme.borderColour};
 `
 export default () => {
   const [selectDisabled, setSelectDisabled] = useState(false)

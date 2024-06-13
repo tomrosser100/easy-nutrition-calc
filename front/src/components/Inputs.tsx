@@ -1,9 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import styled from 'styled-components'
-import { StyledButton } from '../styledComponents'
-import SelectAgeRange from './SelectAgeRange'
-import SelectSex from './SelectSex'
 import type { ListElement } from '../types'
 import Calibrate from './Calibrate'
 import Foods from './Foods'
@@ -18,8 +15,6 @@ const StyledInputs = styled.div`
 `
 
 export default ({ list }: { list: ListElement[] }) => {
-  const navigate = useNavigate()
-
   return (
     <StyledInputs>
       <Calibrate />

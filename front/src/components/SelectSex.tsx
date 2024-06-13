@@ -6,12 +6,14 @@ import {
   StyledCentralised,
   StyledInput,
   StyledLabel,
+  StyledRadio,
   theme,
 } from '../styledComponents'
 import styled from 'styled-components'
 
 const StyledSex = styled(StyledCentralised)`
   background-color: rgb(0, 0, 255, 0.1);
+  border-right: 0.5px solid ${props => props.theme.borderColour};
 `
 export default () => {
   const [radioDisabled, setRadioDisabled] = useState(false)
@@ -37,7 +39,7 @@ export default () => {
   return (
     <StyledSex>
       <StyledLabel htmlFor='male'>male</StyledLabel>
-      <StyledInput
+      <StyledRadio
         disabled={radioDisabled}
         type='radio'
         id='male'
@@ -46,7 +48,7 @@ export default () => {
         onChange={handleChange}
       />
       <StyledLabel htmlFor='female'>female</StyledLabel>
-      <StyledInput
+      <StyledRadio
         disabled={radioDisabled}
         type='radio'
         id='female'

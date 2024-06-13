@@ -3,38 +3,40 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import type { ListElement } from '../../types'
-import { StyledDenominatedInputBox } from './EditNutrientInputs'
+import { StyledDenominatedBox, StyledDenominatedInput, StyledDenomination, StyledInput } from '../../styledComponents'
 
 const StyledCalibrate = styled.div`
   background-color: rgb(0, 0, 255, 0.1);
   display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
+  padding: ${(props) => props.theme.minorSpacing}px;
+  border: 1px solid ${(props) => props.theme.borderColour};
+  border-radius: ${(props) => props.theme.borderRadius}px;
+  gap: ${(props) => props.theme.majorSpacing}px;
+`
+
+const StyledCalibrateElement = styled.div`
+  background-color: rgb(0, 0, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: ${(props) => props.theme.minorSpacing}px;
+  border-radius: ${(props) => props.theme.borderRadius}px;
 `
 
 const StyledNameLabel = styled.label`
+  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
+  height: 100%;
+  width: 100%;
 `
-
-const StyledNameInput = styled.input`
-  display: grid;
-  place-items: center;
-  text-align: center;
-
-`
-
 const StyledAmountLabel = styled.label`
+  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
-`
-
-const StyledAmountInput = styled.input`
-  display: grid;
-  place-items: center;
-  text-align: center;
-
+  height: 100%;
+  width: 100%;
 `
 
 export default ({
@@ -51,26 +53,30 @@ export default ({
       {!idExists && (
         <input type='hidden' name='id' value={nanoid().slice(0, 7)} />
       )}
-      <StyledNameLabel>Name:</StyledNameLabel>
-      <StyledNameInput
-        disabled={buttonDisabled}
-        type='text'
-        name='name'
-        placeholder='e.g. Baked Beans'
-        defaultValue={listElement && listElement?.name}
-      />
-      <StyledAmountLabel>Amount:</StyledAmountLabel>
-      <StyledDenominatedInputBox>
-      <StyledAmountInput
-        disabled={buttonDisabled}
-        type='number'
-        min='0'
-        name='userAmount'
-        placeholder='0'
-        defaultValue={listElement && listElement?.userAmount}
-      />
-      <div>g</div>
-      </StyledDenominatedInputBox>
+      <StyledCalibrateElement>
+        <StyledNameLabel>Name:</StyledNameLabel>
+        <StyledInput
+          disabled={buttonDisabled}
+          type='text'
+          name='name'
+          placeholder='e.g. Baked Beans'
+          defaultValue={listElement && listElement?.name}
+        />
+      </StyledCalibrateElement>
+      <StyledCalibrateElement>
+        <StyledAmountLabel>Amount:</StyledAmountLabel>
+        <StyledDenominatedBox>
+          <StyledDenominatedInput
+            disabled={buttonDisabled}
+            type='number'
+            min='0'
+            name='userAmount'
+            placeholder='0'
+            defaultValue={listElement && listElement?.userAmount}
+          />
+          <StyledDenomination><div>g</div></StyledDenomination>
+        </StyledDenominatedBox>
+      </StyledCalibrateElement>
     </StyledCalibrate>
   )
 }
