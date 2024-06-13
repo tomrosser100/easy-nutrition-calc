@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { StyledButton, StyledHeader } from '../styledComponents'
 
 const StyledHead = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   display: grid;
@@ -15,7 +14,6 @@ const StyledHead = styled.div`
 `
 
 const StyledTitle = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   justify-items: left;
   align-items: center;
@@ -23,15 +21,15 @@ const StyledTitle = styled.div`
 `
 
 const StyledClear = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
+  padding: 5px;
 `
 
 const StyledAdd = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
+  padding: 5px;
 `
 
 

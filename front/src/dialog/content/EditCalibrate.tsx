@@ -6,7 +6,6 @@ import type { ListElement } from '../../types'
 import { StyledDenominatedBox, StyledDenominatedInput, StyledDenomination, StyledInput } from '../../styledComponents'
 
 const StyledCalibrate = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -17,7 +16,6 @@ const StyledCalibrate = styled.div`
 `
 
 const StyledCalibrateElement = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: ${(props) => props.theme.minorSpacing}px;
@@ -25,14 +23,12 @@ const StyledCalibrateElement = styled.div`
 `
 
 const StyledNameLabel = styled.label`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
   height: 100%;
   width: 100%;
 `
 const StyledAmountLabel = styled.label`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
   height: 100%;

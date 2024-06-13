@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import type { ListElement } from '../../types'
 
 const StyledHeader = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   border-radius: ${props => props.theme.borderRadius}px;
   border: 1px solid ${props => props.theme.borderColour};
@@ -14,7 +13,6 @@ const StyledHeader = styled.div`
 const StyledTitle = styled.div`
   display: grid;
   place-items: center;
-  background-color: rgb(0, 0, 255, 0.1);
 `
 
 export default ({

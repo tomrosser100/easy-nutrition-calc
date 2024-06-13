@@ -82,7 +82,6 @@ const StyledEdit = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  background-color: rgb(0, 0, 255, 0.1);
   gap: ${(props) => props.theme.majorSpacing}px;
   padding: ${props => props.theme.majorSpacing}px;
   border-radius: ${props => props.theme.borderRadius}px;

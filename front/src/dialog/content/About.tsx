@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import styled from 'styled-components'
 import { StyledButton } from '../../styledComponents'
 import { loremIpsum } from '../../constants'
+import { StyledDescription, StyledHeader } from './Clear'
 
 export const StyledInfo = styled.div`
   height: 100%;
@@ -10,12 +11,12 @@ export const StyledInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr 1fr;
-  background-color: rgb(0, 0, 255, 0.1);
 `
 
 export const StyledInfoHead = styled.div`
   display: grid;
   place-items: center;
+  padding: ${props => props.theme.majorSpacing}px;
 `
 
 export const StyledInfoBody = styled.div`
@@ -26,6 +27,14 @@ export const StyledInfoBody = styled.div`
 export const StyledInfoFoot = styled.div`
   display: grid;
   place-items: center;
+  padding: ${props => props.theme.majorSpacing}px;
+`
+
+export const StyledAbout = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 2px solid ${(props) => props.theme.borderColour};
+  border-radius: ${(props) => props.theme.borderRadius}px;
 `
 
 export default ({
@@ -38,16 +47,16 @@ export default ({
   const navigate = useNavigate()
 
   return (
-    <StyledInfo>
-      <StyledInfoHead id={labelId}>
-        <div>Heading element: About my app</div>
-      </StyledInfoHead>
-      <StyledInfoBody id={descriptionId}>
+    <StyledAbout>
+      <StyledHeader id={labelId}>
+        <div>About my app</div>
+      </StyledHeader>
+      <StyledDescription id={descriptionId}>
         <div>Hi and welcome to my app {loremIpsum}</div>
-      </StyledInfoBody>
+      </StyledDescription>
       <StyledInfoFoot>
         <StyledButton onClick={() => navigate('/')}>Return</StyledButton>
       </StyledInfoFoot>
-    </StyledInfo>
+    </StyledAbout>
   )
 }

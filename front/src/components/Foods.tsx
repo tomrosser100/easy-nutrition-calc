@@ -6,7 +6,6 @@ import Head from './Head'
 import List from './List'
 
 const StyledFoods = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   place-self: center;

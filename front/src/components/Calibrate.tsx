@@ -6,7 +6,6 @@ import SelectSex from './SelectSex'
 import { useNavigate } from 'react-router-dom'
 
 const StyledCalibrate = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   display: grid;
@@ -19,12 +18,12 @@ const StyledCalibrate = styled.div`
 `
 
 const StyledHelp = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: flex;
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-evenly;
+  padding: 5px;
 `
 
 export default () => {

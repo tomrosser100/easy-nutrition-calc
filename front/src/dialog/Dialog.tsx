@@ -31,9 +31,9 @@ const StyledFloatingOverlay = styled(FloatingOverlay)`
 const StyledDialog = styled.div`
   max-width: 350px;
   min-width: 335px;
-  margin: 10px;
+  margin: 5px;
   background-color: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 10px;
   display: grid;
   place-items: stretch;

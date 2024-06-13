@@ -9,7 +9,6 @@ const StyledNavLayout = styled.div`
   max-width: ${appMaxWidth}px;
   min-width: ${appMinWidth}px;
   height: 60px;
-  background-color: rgb(0, 128, 0, 0.5);
   display: flex;
   justify-content: flex-end;
   margin-bottom: ${(props) => props.theme.majorSpacing}px;
@@ -17,10 +16,10 @@ const StyledNavLayout = styled.div`
 `
 
 const StyledAbout = styled.div`
-    width: 125px;
-    background-color: rgb(0, 0, 255, 0.1);
+    width: 80px;
     display: grid;
     place-items: center;
+    padding: 10px;
 `
 
 export default () => {

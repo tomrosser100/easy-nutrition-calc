@@ -11,7 +11,6 @@ const StyledInputs = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 8fr;
-  background-color: rgb(0, 0, 255, 0.1);
 `
 
 export default ({ list }: { list: ListElement[] }) => {

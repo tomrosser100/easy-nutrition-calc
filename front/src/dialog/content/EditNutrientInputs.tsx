@@ -9,7 +9,6 @@ import {
 } from '../../styledComponents'
 
 const StyledNutrientInputs = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: flex;
   flex-direction: column;
   border: 1px solid ${(props) => props.theme.borderColour};
@@ -20,7 +19,6 @@ const StyledNutrientElement = styled.div<{ $reference?: boolean }>`
   height: 100%;
   width: 100%;
   padding: ${(props) => props.theme.minorSpacing}px;
-  background-color: rgb(0, 0, 255, 0.1);
 
   ${(props) => {
     switch (props.$reference) {
@@ -31,6 +29,7 @@ const StyledNutrientElement = styled.div<{ $reference?: boolean }>`
       default:
         return css`
           grid-template-columns: 1fr 1fr 1fr;
+          border-top: 0.5px solid ${props => props.theme.borderColour};
         `
     }
   }}
@@ -40,7 +39,6 @@ const StyledReferenceLabel = styled.label`
   place-items: center end;
   height: 100%;
   width: 100%;
-  background-color: rgb(0, 0, 255, 0.1);
   padding-right: 5px;
 `
 
@@ -49,7 +47,6 @@ const StyledNutrientLabel = styled.label`
   place-items: center start;
   height: 100%;
   width: 100%;
-  background-color: rgb(0, 0, 255, 0.1);
 `
 
 const StyledNutrientReference = styled.div`
@@ -57,7 +54,6 @@ const StyledNutrientReference = styled.div`
   place-items: center end;
   height: 100%;
   width: 100%;
-  background-color: rgb(0, 0, 255, 0.1);
 `
 
 export default ({

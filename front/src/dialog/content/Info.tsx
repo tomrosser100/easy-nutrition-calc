@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import {
+  StyledAbout,
   StyledInfo,
   StyledInfoBody,
   StyledInfoFoot,
@@ -8,6 +9,7 @@ import {
 } from './About'
 import { StyledButton } from '../../styledComponents'
 import { loremIpsum } from '../../constants'
+import { StyledDescription, StyledHeader } from './Clear'
 
 export default ({
   labelId,
@@ -19,16 +21,16 @@ export default ({
   const navigate = useNavigate()
 
   return (
-    <StyledInfo>
-      <StyledInfoHead id={labelId}>
-        <div>Where does this data come from?</div>
-      </StyledInfoHead>
-      <StyledInfoBody id={descriptionId}>
-        <div>Great question! Here's where I got the reference data from {loremIpsum}</div>
-      </StyledInfoBody>
+    <StyledAbout>
+      <StyledHeader id={labelId}>
+        <div>Where does this information come from?</div>
+      </StyledHeader>
+      <StyledDescription id={descriptionId}>
+        <div>Here is the source of my information {loremIpsum}</div>
+      </StyledDescription>
       <StyledInfoFoot>
         <StyledButton onClick={() => navigate('/')}>Return</StyledButton>
       </StyledInfoFoot>
-    </StyledInfo>
+    </StyledAbout>
   )
 }

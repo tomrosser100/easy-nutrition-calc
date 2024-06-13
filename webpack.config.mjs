@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 import { merge } from 'webpack-merge'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const mode = 'development'
+const mode = 'production'
 
 const frontConfig = {
   target: "web",

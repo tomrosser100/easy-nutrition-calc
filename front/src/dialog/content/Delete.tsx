@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
 import eventEmitter from '../../eventEmitter'
 import { emitter } from '../Dialog'
-import { StyledClear } from './Clear'
+import { StyledClear, StyledDescription, StyledHeader } from './Clear'
 import { StyledButtons } from './EditButtons'
 import { StyledButton } from '../../styledComponents'
 
@@ -39,10 +39,10 @@ export default ({
   return (
     <Form method='post'>
       <StyledClear>
-        <div id={labelId}>Delete Entry</div>
-        <div id={descriptionId}>
-          Are you sure you want to delete this entry?
-        </div>
+        <StyledHeader id={labelId}><div>Delete</div></StyledHeader>
+        <StyledDescription id={descriptionId}>
+          <div>Are you sure you want to delete this entry?</div>
+        </StyledDescription>
         <StyledButtons className='buttons'>
           <StyledButton disabled={buttonDisabled} type='submit'>
             Delete

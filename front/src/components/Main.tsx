@@ -15,7 +15,6 @@ const StyledMainContainer = styled.div`
   min-width: ${appMinWidth}px;
   height: 100%;
   align-items: center;
-  background-color: rgb(0, 0, 255, 0.2);
   gap: ${props => props.theme.majorSpacing}px;
 `
 
@@ -26,7 +25,6 @@ const StyledMainItem = styled.div`
   flex: 1 1 0px;
   display: flex;
   align-self: stretch;
-  background-color: rgb(0, 0, 255, 0.1);
   border-radius: ${props => props.theme.borderRadius}px;
   border: 2px solid ${props => props.theme.borderColour};
 `

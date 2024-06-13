@@ -17,7 +17,6 @@ const StyledResultsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 0, 255, 0.1);
 `
 const StyledUnorderedList = styled.ul`
   list-style: none;
@@ -33,7 +32,6 @@ const StyledListElement = styled.li<{ $top?: boolean }>`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
 
@@ -108,10 +106,9 @@ const StyledYou = styled(StyledCentralised)<{ $header?: boolean }>`
 `
 
 const StyledNutrientText = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   width: 100%;
   height: 100%;
-  border: 0.5px solid ${(props) => props.theme.borderColour};
+  //border: 0.5px solid ${(props) => props.theme.borderColour};
   display: grid;
   place-items: center;
 `
@@ -171,7 +168,7 @@ export default ({ userReport }: { userReport: UserReport }) => {
                 )}
               </StyledDenominatedBox>
               <StyledButton onClick={() => navigate('more/' + nutrient)}>
-                More
+                more
               </StyledButton>
             </StyledYou>
           </StyledListElement>

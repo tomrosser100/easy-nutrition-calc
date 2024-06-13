@@ -8,7 +8,6 @@ const StyledBot = styled.div`
   max-width: ${appMaxWidth}px;
   width: 100%;
   height: 60px;
-  background-color: rgb(0, 128, 0, 0.5);
   margin-top: ${(props) => props.theme.majorSpacing}px;
   border-radius: ${props => props.theme.borderRadius}px;
 `

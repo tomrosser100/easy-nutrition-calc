@@ -13,6 +13,8 @@ export const StyledButton = styled.button`
   border: 2px solid ${(props) => props.theme.main};
   padding: 5px;
   border-radius: ${(props) => props.theme.borderRadius}px;
+  height: 100%;
+  width: 100%;
 `
 
 export const StyledSelect = styled.select`
@@ -28,6 +30,7 @@ export const StyledInput = styled.input`
   width: 100%;
   text-align: center;
   vertical-align: middle;
+  border: 0.25px solid lightgray;
 `
 
 export const StyledRadio = styled.input`
@@ -59,17 +62,15 @@ export const StyledCentralised = styled.div`
 `
 
 export const StyledDenominatedBox = styled(StyledCentralised)`
-  background-color: rgb(0, 0, 255, 0.1);
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border: 1px solid ${(props) => props.theme.borderColour};
+  border: 0.25px solid lightgray;
 `
 
 export const StyledDenomination = styled.div`
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
   height: 100%;
@@ -82,12 +83,10 @@ export const StyledDenominatedInput = styled(StyledInput)`
   place-items: center;
   text-align: center;
   padding: ${(props) => props.theme.minorSpacing}px;
-
 `
 
 export const StyledDenominatedDiv = styled.div`
   height: 100%;
-  background-color: rgb(0, 0, 255, 0.1);
   display: grid;
   place-items: center;
   text-align: center;

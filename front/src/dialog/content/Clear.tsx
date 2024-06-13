@@ -23,10 +23,23 @@ export async function clearAction({ request }: { request: any }) {
 export const StyledClear = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
-  background-color: rgb(0, 0, 255, 0.1);
+  grid-template-rows: 1fr 1fr 1fr;
+  border: 2px solid ${(props) => props.theme.borderColour};
+  border-radius: ${(props) => props.theme.borderRadius}px;
 `
 
+export const StyledHeader = styled.div`
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-bottom: 1px solid ${(props) => props.theme.borderColour};
+`
+
+export const StyledDescription = styled.div`
+  display: grid;
+  place-items: center;
+  padding: 10px;
+`
 
 export default ({
   labelId,
@@ -42,22 +55,24 @@ export default ({
 
   return (
     <Form method='post'>
-        <StyledClear>
-          <div id={labelId}>
-            Clear All
-          </div>
+      <StyledClear>
+        <StyledHeader>
+          <div id={labelId}>Clear All Foods</div>
+        </StyledHeader>
+        <StyledDescription>
           <div id={descriptionId}>
-            Careful! Are you sure you want to clear all and start again?
+            Are you sure you want to clear your list?
           </div>
-          <StyledButtons>
-            <StyledButton disabled={buttonDisabled} type='submit'>
-              Clear
-            </StyledButton>
-            <StyledButton disabled={buttonDisabled} onClick={() => navigate('/')}>
-              Cancel
-            </StyledButton>
-          </StyledButtons>
-        </StyledClear>
+        </StyledDescription>
+        <StyledButtons>
+          <StyledButton disabled={buttonDisabled} type='submit'>
+            Clear
+          </StyledButton>
+          <StyledButton disabled={buttonDisabled} onClick={() => navigate('/')}>
+            Cancel
+          </StyledButton>
+        </StyledButtons>
+      </StyledClear>
       {error?.status && <p>Something went wrong...</p>}
     </Form>
   )
