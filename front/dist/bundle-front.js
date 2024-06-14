@@ -6712,9 +6712,7 @@ body {
   min-width: 350px;
   margin: 0px;
   padding: 10px;
-  background-color: rgb(0, 0, 0, .2);
-}
-`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;;;;CAIC;;AAED;EACE,sBAAsB;EACtB,uBAAuB;EACvB,yCAAyC;AAC3C;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,aAAa;EACb,kCAAkC;AACpC","sourcesContent":["/*\r\n  green: rgb(192, 202, 116);\r\n  frost: rgb(203, 209, 195);\r\n  gulstream: rgb(17, 130, 144);\r\n*/\r\n\r\n* {\r\n  box-sizing: border-box;\r\n  border: 0px solid black;\r\n  /*background-color: rgb(0, 0, 255, 0.1);*/\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 10px;\r\n  background-color: rgb(0, 0, 0, .2);\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./front/src/styles.css"],"names":[],"mappings":"AAAA;;;;CAIC;;AAED;EACE,sBAAsB;EACtB,uBAAuB;EACvB,yCAAyC;AAC3C;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf","sourcesContent":["/*\r\n  green: rgb(192, 202, 116);\r\n  frost: rgb(203, 209, 195);\r\n  gulstream: rgb(17, 130, 144);\r\n*/\r\n\r\n* {\r\n  box-sizing: border-box;\r\n  border: 0px solid black;\r\n  /*background-color: rgb(0, 0, 255, 0.1);*/\r\n}\r\n\r\nhtml {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 0px;\r\n}\r\n\r\nbody {\r\n  min-width: 350px;\r\n  margin: 0px;\r\n  padding: 10px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
