@@ -95,3 +95,4 @@ export const salt = {
 
 export const loremIpsum =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque sodales ut etiam sit amet nisl purus in. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh. Bibendum at varius vel pharetra vel turpis nunc. Lectus urna duis convallis convallis tellus id. Donec pretium vulputate sapien nec sagittis. Viverra orci sagittis eu volutpat odio facilisis mauris sit. Laoreet suspendisse interdum consectetur libero id. Cursus euismod quis vive'
+

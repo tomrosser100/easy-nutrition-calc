@@ -2,9 +2,10 @@ import path from 'path'
 import nodeExternals from 'webpack-node-externals'
 import { fileURLToPath } from 'url'
 import { merge } from 'webpack-merge'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const mode = 'production'
+const mode = 'development'
 
 const frontConfig = {
   target: "web",
@@ -12,10 +13,17 @@ const frontConfig = {
   output: {
     filename: 'bundle-front.js',
     path: path.resolve(__dirname, 'front/dist'),
-    clean: {
-      keep: 'index.html'
-    }
-  }
+    clean: true
+  },
+  plugins: [new HtmlWebpackPlugin({
+    meta: {
+      viewport:
+        "width=device-width, initial-scale=1, minimum-scale=1,shrink-to-fit=no",
+    },
+    inject: "body",
+    template: "./front/src/index.html",
+    favicon: "./front/src/favicon.png"
+  })]
 }
 
 const backConfig = {
@@ -54,6 +62,10 @@ const common = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.png/,
+        type: 'asset/resource'
       }
     ]
   },
@@ -62,4 +74,4 @@ const common = {
   }
 }
 
-export default [ merge(common, frontConfig), merge(common, backConfig) ]
+export default [merge(common, frontConfig), merge(common, backConfig)]

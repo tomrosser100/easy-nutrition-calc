@@ -13,6 +13,14 @@ const StyledNavLayout = styled.div`
   justify-content: flex-end;
   margin-bottom: ${(props) => props.theme.majorSpacing}px;
   border-radius: ${(props) => props.theme.borderRadius}px;
+  border: 1px solid ${props => props.theme.borderColour};
+
+  background-color: ${props => props.theme.bg};
+`
+
+const StyledAppTitle = styled.div`
+  place-self: center;
+  padding: 10px;
 `
 
 const StyledAbout = styled.div`
@@ -27,6 +35,7 @@ export default () => {
 
   return (
     <StyledNavLayout>
+      <StyledAppTitle>Easy Nutrition Calc</StyledAppTitle>
       <StyledAbout>
         <StyledButton onClick={() => navigate('about')}>about</StyledButton>
       </StyledAbout>

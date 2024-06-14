@@ -10,6 +10,10 @@ const StyledBot = styled.div`
   height: 60px;
   margin-top: ${(props) => props.theme.majorSpacing}px;
   border-radius: ${props => props.theme.borderRadius}px;
+  background-color: ${props => props.theme.bg};
+  border: 1px solid ${props => props.theme.borderColour};
+
+
 `
 
 export default () => {

@@ -26,7 +26,7 @@ export default ({
         <div>Where does this information come from?</div>
       </StyledHeader>
       <StyledDescription id={descriptionId}>
-        <div>Here is the source of my information {loremIpsum}</div>
+        <div>This web app uses information provided in the <a href="https://www.gov.uk/government/publications/the-eatwell-guide">UK government's Eatwell Guide</a>.</div>
       </StyledDescription>
       <StyledInfoFoot>
         <StyledButton onClick={() => navigate('/')}>Return</StyledButton>

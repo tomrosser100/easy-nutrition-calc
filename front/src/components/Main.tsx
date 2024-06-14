@@ -16,6 +16,7 @@ const StyledMainContainer = styled.div`
   height: 100%;
   align-items: center;
   gap: ${props => props.theme.majorSpacing}px;
+
 `
 
 const StyledMainItem = styled.div`
@@ -26,7 +27,8 @@ const StyledMainItem = styled.div`
   display: flex;
   align-self: stretch;
   border-radius: ${props => props.theme.borderRadius}px;
-  border: 2px solid ${props => props.theme.borderColour};
+  border: 1px solid ${props => props.theme.borderColour};
+  background-color: ${props => props.theme.bg};
 `
 
 export default ({

@@ -5,12 +5,13 @@ export const theme = {
   borderRadius: 10,
   majorSpacing: 10,
   minorSpacing: 5,
-  borderColour: 'black',
+  borderColour: 'blue',
+  bg: 'white'
 }
 
 export const StyledButton = styled.button`
   color: ${(props) => props.theme.main};
-  border: 2px solid ${(props) => props.theme.main};
+  border: 0.5px solid ${(props) => props.theme.main};
   padding: 5px;
   border-radius: ${(props) => props.theme.borderRadius}px;
   height: 100%;

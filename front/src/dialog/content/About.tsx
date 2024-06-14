@@ -49,10 +49,10 @@ export default ({
   return (
     <StyledAbout>
       <StyledHeader id={labelId}>
-        <div>About my app</div>
+        <div>About the app</div>
       </StyledHeader>
       <StyledDescription id={descriptionId}>
-        <div>Hi and welcome to my app {loremIpsum}</div>
+        <div>Hello and welcome to the first iteration of easynutritioncalc.com. This app is in active development - watch this space!</div>
       </StyledDescription>
       <StyledInfoFoot>
         <StyledButton onClick={() => navigate('/')}>Return</StyledButton>
