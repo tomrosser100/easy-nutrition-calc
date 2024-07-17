@@ -1,10 +1,13 @@
 import express from 'express'
-import sslRedirect from 'heroku-ssl-redirect'
 
+const domain = 'easynutritioncalc.com'
 const app = express()
 
+app.use((req, res) => {
+  res.redirect(301, 'https://' + domain + req.url);
+})
+
 app.use(express.static(process.cwd() + '/front/dist'))
-app.use(sslRedirect())
 
 app.get('/**', function (req, res) {
   res.sendFile(process.cwd() + '/front/dist/index.html')
