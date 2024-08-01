@@ -4,12 +4,14 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "jest",
-    "build": "webpack",
-    "start": "webpack && heroku local"
+    "tw": "tailwindcss -i ./front/src/styling/tailwind/tw-imports.css -o ./front/src/styling/tailwind/tw-styles.css",
+    "tw-watch": "tailwindcss -i ./front/src/styling/tailwind/tw-imports.css -o ./front/src/styling/tailwind/tw-styles.css --watch",
+    "dev-server": "\"npm run tw\" && webpack serve",
+    "heroku": "\"npm run tw\" && webpack && heroku local",
+    "build": "tailwindcss -i ./front/src/styling/tailwind/tw-imports.css -o ./front/src/styling/tailwind/tw-styles.css && webpack"
   },
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "author": "",
   "license": "ISC",
@@ -51,5 +53,8 @@
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0",
     "webpack-node-externals": "^3.0.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
   }
 }

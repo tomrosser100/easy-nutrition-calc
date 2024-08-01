@@ -1,8 +1,9 @@
 import React from 'react'
-import './styles.css'
+import './styling/styles.css'
+import './styling/tailwind/tw-styles.css'
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import routes from './routes'
+import routes from './routing/routes'
 
 const router = createBrowserRouter(routes)
 

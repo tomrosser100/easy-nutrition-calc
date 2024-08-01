@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid'
+import { nanoid } from "nanoid";
 import type {
   AgeRange,
   ListElement,
@@ -6,20 +6,20 @@ import type {
   Sex,
   StoreData,
   UserReport,
-} from './types'
-import { delay, nutrients, saturatedFat } from './constants'
-import Advisor from './logic/Advisor'
-import nutrientTotals from './logic/nutrientTotals'
-import ListArranger from './logic/ListArranger'
+} from "../types";
+import { delay, nutrients, saturatedFat } from "../constants";
+import Advisor from "./Advisor";
+import nutrientTotals from "./nutrientTotals";
+import ListArranger from "./ListArranger";
 
 export class Store {
-  private advisor: Advisor
-  list: ListElement[]
-  userReport: UserReport
+  private advisor: Advisor;
+  list: ListElement[];
+  userReport: UserReport;
 
   constructor() {
-    this.advisor = new Advisor('female', '19')
-    this.list = []
+    this.advisor = new Advisor("female", "19");
+    this.list = [];
     this.userReport = {
       fat: {
         advice: undefined,
@@ -61,48 +61,48 @@ export class Store {
         total: undefined,
         orderedContributors: undefined,
       },
-    }
+    };
   }
 
   update() {
-    this.updateAdvice()
-    this.updateTotals()
-    this.updateOrderedContributors()
+    this.updateAdvice();
+    this.updateTotals();
+    this.updateOrderedContributors();
   }
 
   updateAdvice() {
-    const advice = this.advisor.report()
+    const advice = this.advisor.report();
 
     nutrients.forEach((nutrient) => {
-      const targetedAdvice = advice[nutrient]
+      const targetedAdvice = advice[nutrient];
 
-      this.userReport[nutrient].advice = targetedAdvice
-    })
+      this.userReport[nutrient].advice = targetedAdvice;
+    });
   }
 
   updateTotals() {
-    const totals = nutrientTotals(this.list)
+    const totals = nutrientTotals(this.list);
 
     nutrients.forEach((nutrient) => {
-      const total = totals[nutrient]
+      const total = totals[nutrient];
 
-      this.userReport[nutrient].total = total
-    })
+      this.userReport[nutrient].total = total;
+    });
   }
 
   updateOrderedContributors() {
-    const listArranger = new ListArranger()
-    const orderedContributors = listArranger.report(this.list)
+    const listArranger = new ListArranger();
+    const orderedContributors = listArranger.report(this.list);
 
     nutrients.forEach((nutrient) => {
-      const orderedContribution = orderedContributors[nutrient]
+      const orderedContribution = orderedContributors[nutrient];
 
-      this.userReport[nutrient].orderedContributors = orderedContribution
-    })
+      this.userReport[nutrient].orderedContributors = orderedContribution;
+    });
   }
 
   getIndexById(id: string) {
-    return this.list.findIndex((entry) => entry.id === id)
+    return this.list.findIndex((entry) => entry.id === id);
   }
 
   async add(data: ListElement) {
@@ -110,22 +110,22 @@ export class Store {
       setTimeout(() => {
         // run calculation here
 
-        const id = data.id
-        const name = data.name
-        const fat = data.fat
-        const carb = data.carb
-        const fibre = data.fibre
+        const id = data.id;
+        const name = data.name;
+        const fat = data.fat;
+        const carb = data.carb;
+        const fibre = data.fibre;
 
         //if (this.list[id] !== undefined) resolve({ status: 'failed' })
 
-        this.list.push(data)
+        this.list.push(data);
 
-        resolve({ status: 'ok' })
-      }, delay)
-    })) as { status: 'ok' | 'failed' }
+        resolve({ status: "ok" });
+      }, delay);
+    })) as { status: "ok" | "failed" };
 
-    console.log(this.list)
-    return response
+    console.log(this.list);
+    return response;
   }
 
   async edit(data: ListElement) {
@@ -133,84 +133,84 @@ export class Store {
       setTimeout(() => {
         // run calculation here
 
-        this.list[this.getIndexById(data.id)] = data
+        this.list[this.getIndexById(data.id)] = data;
 
-        resolve({ status: 'ok' })
-      }, delay)
-    })) as { status: 'ok' | 'failed' }
+        resolve({ status: "ok" });
+      }, delay);
+    })) as { status: "ok" | "failed" };
 
-    console.log('edited', data.id)
-    return response
+    console.log("edited", data.id);
+    return response;
   }
 
   async clear() {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        this.list = []
+        this.list = [];
 
-        resolve({ status: 'ok' })
-      }, delay)
-    })) as { status: 'ok' | 'failed' }
+        resolve({ status: "ok" });
+      }, delay);
+    })) as { status: "ok" | "failed" };
 
-    console.log('cleared list')
-    return response
+    console.log("cleared list");
+    return response;
   }
 
   async delete(id: string) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        this.list.splice(this.getIndexById(id), 1)
+        this.list.splice(this.getIndexById(id), 1);
 
-        resolve({ status: 'ok' })
-      }, delay)
-    })) as { status: 'ok' | 'failed' }
+        resolve({ status: "ok" });
+      }, delay);
+    })) as { status: "ok" | "failed" };
 
-    console.log('deleted', id)
-    return response
+    console.log("deleted", id);
+    return response;
   }
 
   async retrieve() {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        this.update()
+        this.update();
 
         const storeData = {
           sex: this.advisor.getSex(),
           ageRange: this.advisor.getAgeRange(),
           list: this.list,
           userReport: this.userReport,
-        }
+        };
 
-        resolve(storeData)
-      }, delay)
-    })) as StoreData
+        resolve(storeData);
+      }, delay);
+    })) as StoreData;
 
-    return response
+    return response;
   }
 
   async updateSex(sex: Sex) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        this.advisor.updateSex(sex)
+        this.advisor.updateSex(sex);
 
-        resolve({ status: 'ok' })
-      }, delay)
-    })) as { status: 'ok' | 'failed' }
+        resolve({ status: "ok" });
+      }, delay);
+    })) as { status: "ok" | "failed" };
 
-    return response
+    return response;
   }
 
   async updateAgeRange(ageRange: AgeRange) {
     const response = (await new Promise((resolve) => {
       setTimeout(() => {
-        this.advisor.updateAgeRange(ageRange)
+        this.advisor.updateAgeRange(ageRange);
 
-        resolve({ status: 'ok' })
-      }, delay)
-    })) as { status: 'ok' | 'failed' }
+        resolve({ status: "ok" });
+      }, delay);
+    })) as { status: "ok" | "failed" };
 
-    return response
+    return response;
   }
 }
 
-export default new Store()
+export default new Store();
